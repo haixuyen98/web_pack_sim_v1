@@ -1,0 +1,79 @@
+{% extends 'galaxy/base.html' %} 
+{% load static %} 
+{% load sims_tags %}
+
+{% block head %}
+  {% include 'galaxy/layout/head-seo.html' with seo=seo %}
+  {% with article.body|safe as body %}
+    {% with body|find_img_url as img_url %}
+        <meta property="og:type" content="article">
+        <meta property="og:image" content="{{ img_url }}">
+        <meta property="og:image:url" content="{{ img_url }}">
+        <meta property="og:image:secure_url" content="{{ img_url }}">
+        <meta property="article:author" content="{{tenant.theme_config.support.facebook}}">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="675">
+        <meta property="og:image:alt" content="picture">
+    {% endwith %}
+  {% endwith %}
+  <link rel="amphtml" href="{{ host }}/tin-tuc/{{ article.slug }}/amp/" >
+{% endblock %}
+
+{% block body %} 
+<div class="wrapper">
+  <div id="page-content-inner">
+    <div class="post-container breadcrumb-articles">
+      <div class="post-container__head">
+        {% include 'galaxy/blog/breadcum.html' with breadcrumb_data=breadcrumb_data %}
+      </div>
+    </div>
+    <div
+      class="crayons-layout crayons-layout--3-cols crayons-layout--article filter-container"
+    >
+      {% include 'galaxy/layout/sidebar-left.html' with theme_config=theme_config %}
+      <main id="main-content" class="crayons-layout--main grid gap-4">
+        <section class="crayons-layout__content pb-4">
+          <div class="search_articles">
+            {% include 'galaxy/blog/article-filter.html' %}
+          </div>
+          <div class="post-container">
+            <div class="post-container__head">
+              <h1 class="post-container__title">{{ title }}</h1>
+            </div>
+            <div class="post-container__author">
+              <time
+                datetime="{{ article.publishedAt|date_format }}"
+                class="post-container__author__date"
+                >{{ article.publishedAt|date_format }}&nbsp;bởi</time
+              >
+              <span class="post-container__author__fullname"
+                ><a
+                  rel="author"
+                  title="{{ article.user.first_name }} {{ article.user.last_name }}"
+                  href="{% url 'blog:blog_byAuthor' article.user.username %}"
+                  >{{ article.user.first_name }} {{ article.user.last_name }}</a
+                ></span
+              >
+            </div>
+            <div class="post-container__content">{{ content|safe }}</div>
+            {% if related_articles %}
+              <div class="related">
+                <div class="related__head">Bài viết liên quan</div>
+                <div class="related__underlined"></div>
+                <div class="related__content">
+                  <div class="page-articles-left__details">
+                    {% for related_article in related_articles %}
+                      {% include 'galaxy/blog/articles-item.html' with article=related_article category_hidden=True %}
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </section>
+      </main>
+      {% include 'galaxy/blog/blog_sidebar.html' with className="articles-hidden"%}
+    </div>
+  </div>
+</div>
+{% endblock %}

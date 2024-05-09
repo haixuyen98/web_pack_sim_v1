@@ -1,0 +1,54 @@
+{% extends 'admin/sims/custom_action_base.html' %}
+{% block header %}
+{{ block.super }}
+<script>
+    function redirectToSimOrderList() {
+        window.location.href = "{% url 'admin:sims_simorder_changelist' %}";
+    }
+</script>
+{% endblock %}
+
+{% block content %}
+<form method="post" action="">
+    {% csrf_token %}
+    <h2>Đơn hàng:</h2>
+    <input 
+        type="hidden" 
+        name="orders" 
+        value="{% for order in orders %}{{ order.id }}{% if not forloop.last %},{% endif %}{% endfor %}"
+    >
+    <ul>
+        {% for order in orders %}
+            <li>
+                <h4>{{ order }}</h4>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <label style="margin-right: 10px;" for="sale_pic">Chỉ định các đơn hàng ở trên cho: </label>
+    <select id="sale_pic" name="_selected_action">
+        {% for pic in users %}
+            <option value="{{ pic.id }}">{{ pic.username }}</option>
+        {% endfor %}
+    </select>
+
+    <br />
+    <br />
+    <input type="hidden" name="action" value="assign_order_to_pic_action">
+    <input
+        type="submit" 
+        name="apply" 
+        style="background-color: #ba2121;"
+        value="Có, tôi chắc chắn"
+    >
+    <input 
+        type="button" 
+        name="cancel" 
+        class="button cancel" 
+        style="background-color: #333; margin-left: 10px" 
+        value="Không, quay trở lại" onclick="redirectToSimOrderList()"
+    >
+</form> 
+<br class="clear">
+<div id="footer"></div>
+{% endblock %}

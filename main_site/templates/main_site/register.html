@@ -1,0 +1,90 @@
+<form method="post" id="myForm">
+  {% csrf_token %}
+  {% for field in form %}
+      <div class="form-group">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {% comment %} <label for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %}<span class="required">*</span>{% endif %}</label> {% endcomment %}
+          {{ field }}
+          {% if field.errors %}
+              <ul class="errors">
+                  {% for error in field.errors %}
+                      <li>{{ error }}</li>
+                  {% endfor %}
+              </ul>
+          {% endif %}
+      </div>
+  {% endfor %}
+  {% if response_message.status and response_message.message %}
+      <div class="message_success">{{response_message.message}}</div>
+      <div class="message_success">
+        Website: 
+        <a href="//{{ response_message.values_array.0 }}.{{main_site_url}}" target="_blank">
+            {{ response_message.values_array.0 }}.{{main_site_url}}
+        </a>
+      </div>
+      <div class="message_success">
+        Admin quản lý: 
+        <a href="//{{ response_message.values_array.0 }}.{{main_site_url}}/admin" target="_blank">
+            {{ response_message.values_array.0 }}.{{main_site_url}}/admin
+        </a>
+      </div>
+      <div class="message_success">
+        Admin tuỳ chỉnh giao diện: 
+        <a href="//{{ response_message.values_array.0 }}.{{main_site_url}}/theme/config" target="_blank">
+            {{ response_message.values_array.0 }}.{{main_site_url}}/theme/config
+        </a>
+      </div>
+      <div class="message_success">Tài khoản: {{ response_message.values_array.1 }}, Mật khẩu: {{ response_message.values_array.2 }}</div>
+  {% elif not response_message.status and response_message.message %}
+      <div class="message_error">{{response_message.message}}</div>
+  {% endif %}
+  <button type="submit" class="wpcf7-form-control wpcf7-submit has-spinner">Đăng ký</button>
+</form>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var main_site_url = '{{main_site_url}}';
+        $("#id_domain_prefix").wrap('<div></div>').parent().css({"display": "flex"});
+        $('#id_domain_prefix').after('<button id="toggle" disabled>'+ '.' + main_site_url + '</button>');
+        $('#id_domain_prefix').css({"position": "relative"});
+        $('#toggle').css({"position": "absolute", "right": "0", "padding": "0 10px"});
+
+        function validatePhoneNumber(phone) {
+            return /^(?:\+?84|0)(24|28|20[3-9]|21[0-9]|22[0-9]|23[0-9]|25[0-9]|26[0-9]|27[0-9]|29[0-9]|30[2-9]|31[0-9]|32[0-9]|33[0-9]|34[0-9]|35[0-9]|36[0-9]|37[0-9]|38[0-9]|39[0-9]|50[3-9]|52[0-9]|53[0-9]|54[0-9]|55[0-9]|56[0-9]|57[0-9]|58[0-9]|59[0-9]|70[0-9]|76[0-9]|77[0-9]|78[0-9]|79[0-9]|81[0-9]|82[0-9]|83[0-9]|84[0-9]|85[0-9]|86[0-9]|88[0-9]|89[0-9]|91[0-9]|92[0-9]|93[0-9]|94[0-9]|96[0-9]|97[0-9]|98[0-9]|99[0-9])[0-9]{6,7}$/.test(phone);
+        }
+
+        function validateEmail(email) {
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        $('#id_phone').on('change', function() {
+            var phone = $(this).val();
+            if (!validatePhoneNumber(phone)) {
+                alert("Số điện thoại không đúng định dạng");
+                $(this).val("");
+            }
+        });
+
+        
+        $('#id_domain_prefix, #id_password').on('input', function() {
+            var cleanedVal = removeDiacritics($(this).val()).replace(/\s/g, '').replace(/\đ/g, 'd');
+            $(this).val(cleanedVal);
+        });
+        
+        function removeDiacritics(str) {
+            return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        }
+        
+        $('#myForm').on('submit', function() {
+            $('#id_email').on('change', function() {
+                var email = $(this).val();
+                if (!validateEmail(email)) {
+                    alert("Địa chỉ email không hợp lệ");
+                    $(this).val("");
+                }
+            });
+            window.location.href = '/#section-contact';
+        });
+    });
+</script>

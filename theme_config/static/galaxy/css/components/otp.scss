@@ -1,0 +1,97 @@
+.otpBox {
+  position: relative;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+
+  &__input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    caret-color: transparent;
+    // letter-spacing: 150vw;
+    color: transparent;
+  }
+
+  &__pane {
+    display: flex;
+    pointer-events: none;
+    margin-left: -4px;
+    margin-right: -4px;
+
+    &__number {
+      background-color: $color-second;
+      border-radius: 4px;
+      height: 5.6rem;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      padding-top: 0.2em;
+      position: relative;
+      margin-left: 4px;
+      margin-right: 4px;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        height: 1px;
+      }
+
+      &::before {
+        width: 1.8rem;
+        left: 50%;
+        margin-left: -0.9rem;
+        bottom: 1.1rem;
+        background-color: $color-text;
+      }
+
+      &::after {
+        left: 4px;
+        right: 4px;
+        bottom: 0;
+        background-color: $color-primary;
+        opacity: 0;
+      }
+
+      &.--valid {
+        &::before,
+        &::after {
+          opacity: 0;
+        }
+      }
+
+      &.--focus {
+        &::before {
+          background-color: $color-primary;
+        }
+
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &.--error {
+    .otpBox__pane__number {
+      &::after {
+        opacity: 1;
+        background-color: $color-primary;
+      }
+    }
+  }
+}
+
+@keyframes zoomBounce {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.9);
+  }
+}

@@ -1,0 +1,278 @@
+$font-weight-700: 700;
+$font-weight-600: 600;
+$color-white: white;
+$color-ruby-red: #EF2827;
+$color-regent-grey: #8a9399;
+
+
+.fengshui {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  @media only screen and (max-width: 768px) {
+    padding: 0 16px;
+  }
+  &__head {
+    display: flex;
+    padding: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    align-self: stretch;
+    border-radius: 10px;
+    border: 1px solid $color-second;
+    background: var(--GreyScale-100, $color_bg);
+    &--title {
+      color: var(--GreyScale-20, $color-text);
+      font-size: 125%;
+      font-weight: $font-weight-700;
+      line-height: 32px;
+    }
+    .phone {
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      flex-direction: column;
+      width: 100%;
+      &__column {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        flex: 1 0 0;
+        &--input {
+          width: 100%;
+          padding: 9px 0;
+          flex: 1 0 0;
+          border-bottom: 1px solid var(--GreyScale-90, $color-second);
+          background: var(--GreyScale-100, $color_bg);
+          color: var(--GreyScale-50, $color-text);
+          font-size: 88%;
+          font-weight: 500;
+        }
+      }
+    }
+    .datetime {
+      display: grid;
+      width: 100%;
+      grid-template-columns: auto auto;
+      gap: 16px;
+      &__column {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        &--lable {
+          color: var(--GreyScale-30, var(--Text, $color-text));
+          font-size: 100%;
+          font-weight: $font-weight-700;
+          line-height: 20px; /* 142.857% */
+          letter-spacing: -0.1px;
+        }
+        &--input {
+          display: flex;
+          width: 100%;
+          padding: 9px 0;
+          flex: 1 0 0;
+          border-bottom: 1px solid var(--GreyScale-90, $color-second);
+          background: var(--GreyScale-100, $color_bg);
+          color: var(--GreyScale-50, $color-text);
+          font-size: 88%;
+        }
+      }
+    }
+    .gioiTinh {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+      &__label {
+        color: var(--GreyScale-30, var(--Text, $color-text));
+        font-size: 100%;
+        font-weight: $font-weight-700;
+        line-height: 20px;
+        letter-spacing: -0.1px;
+      }
+
+      &__radio {
+        display: inline-flex;
+        margin-right: 10px;
+        gap: 8px;
+        justify-content: center;
+        align-items: center;
+        input[type="radio"] + label {
+          color: var(--GreyScale-30, var(--Text, $color-text));
+          font-size: 88%;
+          font-weight: 500;
+          line-height: 20px; /* 142.857% */
+          letter-spacing: -0.1px;
+        }
+      }
+    }
+  }
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &--center {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin: 16px 0;
+      padding: 12px 14px;
+      align-self: stretch;
+      border-radius: 10px;
+      background: linear-gradient(97deg, $color-primary 1.07%, $color-primary 99.68%);
+      &--title {
+        color: var(--GreyScale-100, $color_bg);
+        font-size: 100%;
+        font-style: normal;
+        font-weight: $font-weight-600;
+      }
+    }
+  }
+  &__title {
+    color: var(--Support-color-Neutral-700, $color-text);
+    font-size: 110%;
+    font-style: normal;
+    font-weight: $font-weight-600;
+    line-height: 32px;
+  }
+  &__detail {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+    @media (min-width: 1280px) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    @media only screen and (max-width: 380px) {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    &--fates {
+      @media (min-width: 1280px) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+    &__link {
+      display: flex;
+      padding: 8px;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+      flex: 1 0 0;
+      border-radius: 8px;
+      background: $color-second;
+      border: 1px solid $color_bg;
+      &:hover {
+        border: 1px solid $color-primary;
+      }
+    }
+
+    &--fate {
+      flex-direction: column;
+      padding: 8px 10px;
+      height: 100%;
+      .sim-tag {
+        color: $color-highlight;
+        font-size: 88%;
+      }
+    }
+  }
+  .errorlist {
+    font-size: 80%;
+    font-weight: 500;
+    color:#ea3d47;
+  }
+}
+
+.listsim-fengshui {
+  @media only screen and (max-width: 768px) {
+    padding: 0 16px;
+  }
+  .title_listsim {
+    text-transform: uppercase;
+    font-weight: $font-weight-700;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid $color-regent-grey;
+    margin-bottom: 0.75rem;
+  }
+
+  .card_listsim {
+    border-bottom: 2px solid $color-regent-grey;
+    .head_card_listsim {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .sim_card_listsim {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 28px;
+        color: var(--Primary, $color-primary);
+      }
+      .telco_card_listsim {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+        border-width: 1px;
+        border-radius: 8px;
+        margin: 8px 0;
+        background: $color-white;
+        cursor: pointer;
+        min-height: 40px;
+        @media only screen and (min-width: 768px) {
+          padding: 0 12px;
+          margin-right: 16px;
+          height: 48px;
+        }
+      }
+    }
+    .point_card_listsim {
+      margin-bottom: 8px;
+    }
+    .price_card_listsim {
+      margin-bottom: 8px;
+      & b {
+        margin-right: 8px;
+      }
+    }
+    .explain_card_listsim {
+      display: grid;
+      .explain {
+        white-space: nowrap;
+      }
+    }
+    .button_card_listsim {
+      margin: 16px 0;
+      font-weight: 500;
+      font-size: 100%;
+      .explanation_card_listsim {
+        padding: 8px 16px;
+        border-radius: 4px;
+        background-color: $color-white;
+        transition-property: all;
+        transition-timing-function: ease-in;
+        transition-duration: 75ms;
+        border: 1px solid $color-regent-grey;
+      }
+      :hover {
+        color: $color-white;
+        border: 1px solid $color-second;
+        background: linear-gradient(97deg, $color-primary 1.07%, $color-primary 99.68%); 
+      }
+      .order_card_listsim {
+        padding: 8px 16px;
+        border-radius: 4px;
+        color: $color-white;
+        background: linear-gradient(97deg, $color-primary 1.07%, $color-primary 99.68%);
+      }
+    }
+  }
+}
+
+.table-container td {
+  border: 1px solid black; /* Định dạng viền cho ô */
+  padding: 5px; /* Định dạng khoảng cách nội dung trong ô */
+}

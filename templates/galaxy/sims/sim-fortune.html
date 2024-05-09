@@ -1,0 +1,89 @@
+{% load sims_tags %}
+
+{% if fortuneData %}
+<div class="sim-fortune">
+    <div class="sim-fortune__head">{{ fortuneData.luan_giai.title }}</div>
+    {% for top in fortuneData.luan_giai.top %}
+        <div class="mb-2">{{ top | safe }}</div>
+    {% endfor %}
+
+    <!-- Mệnh chủ -->
+    <div class="sim-fortune__title">{{fortuneData.luan_giai.menh_chu.title}}</div>
+    {% for text in fortuneData.luan_giai.menh_chu.text %}
+        <div class="mb-2">{{ text | safe}}</div>
+    {% endfor %}
+
+    <!-- Sinh khí -->
+    <div class="sim-fortune__title">{{fortuneData.luan_giai.sinh_khi.title}}</div>
+    {% for text in fortuneData.luan_giai.sinh_khi.text %}
+        <div class="mb-2">{{ text | safe}}</div>
+    {% endfor %}
+
+    <!-- Du niên -->
+    <div class="sim-fortune__title">{{fortuneData.luan_giai.du_nien.title}}</div>
+    {% for text in fortuneData.luan_giai.du_nien.text %}
+        <div class="mb-2">{{ text | safe}}</div>
+    {% endfor %}
+
+    <!-- Âm Dương -->
+    <div class="sim-fortune__title">{{fortuneData.luan_giai.am_duong.title}}</div>
+    {% for top in fortuneData.luan_giai.am_duong.top %}
+        <div class="mb-2">{{ top | safe }}</div>
+    {% endfor %}
+    <div class="sim-fortune__yin-yang">
+        {% for number in fortuneData.luan_giai.am_duong.number %}
+            <div class="sim-fortune__head-number">
+                <div
+                    class="sim-fortune__number"
+                    style="height: 46px; background-color: {{ number.color|safe }}"
+                >
+                    {{number.number}}
+                </div>
+                <div
+                    class="sim-fortune__number"
+                    style="height: 46px; background-color: {{ number.color|safe }}"
+                >
+                    {{number.text}}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="mb-2">
+        {% for text in fortuneData.luan_giai.am_duong.text %}
+            <div>{{ text | safe }}</div>
+        {% endfor %}
+    </div>
+
+    <!-- Ngũ hành -->
+    <div class="sim-fortune__title">{{fortuneData.luan_giai.ngu_hanh.title}}</div>
+    {% for text in fortuneData.luan_giai.ngu_hanh.text %}
+        <div class="mb-2">{{ text | safe}}</div>
+    {% endfor %}
+
+    <!-- Quẻ dịch -->
+    <div class="sim-fortune__title">{{fortuneData.luan_giai.que_dich.title}}</div>
+    {% for text in fortuneData.luan_giai.que_dich.text %}
+        <div class="mb-2">{{ text | safe}}</div>
+    {% endfor %}
+
+    <!-- Bát tự -->
+    <div class="sim-fortune__title">{{fortuneData.luan_giai.bat_tu.title}}</div>
+    <img
+        src="data:image/png;base64,{{fortuneData.luan_giai.bat_tu.image}}"
+        alt="bát tự"
+    />
+
+    <div class="mb-2">{{fortuneData.luan_giai.end.text | safe}}</div>
+
+    <!-- Chấm điểm -->
+    <div class="sim-fortune__point">{{fortuneData.sim.title | safe}}</div>
+    <div class="sim-fortune__scoring">
+        <button
+          type="button"
+          class="sim-fortune__btn"
+        > 
+            Tổng điểm: <span>{{fortuneData.sim.diem}}</span>/10
+        </button>
+      </div>
+</div>
+{% endif %}

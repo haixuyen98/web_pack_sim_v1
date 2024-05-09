@@ -1,0 +1,410 @@
+{% load static %} {% load sims_tags %}
+<!DOCTYPE html>
+<html
+  amp
+  lang="vi"
+  data-amp-auto-lightbox-disable
+  transformed="self;v=1"
+  i-amphtml-layout=""
+  i-amphtml-no-boilerplate=""
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1" />
+    <link
+      rel="canonical"
+      href="{{ host }}/tin-tuc/{{ article.slug }}/"
+    />
+    <style amp-runtime="" i-amphtml-version="012310301456000">
+      html {
+        overflow-x: hidden !important;
+      }
+      html.i-amphtml-fie {
+        height: 100% !important;
+        width: 100% !important;
+      }
+      html:not([amp4ads]),
+      html:not([amp4ads]) body {
+        height: auto !important;
+      }
+      html:not([amp4ads]) body {
+        margin: 0 !important;
+      }
+      body {
+        -webkit-text-size-adjust: 100%;
+        -moz-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+      }
+      html.i-amphtml-singledoc.i-amphtml-embedded {
+        -ms-touch-action: pan-y pinch-zoom;
+        touch-action: pan-y pinch-zoom;
+      }
+      html.i-amphtml-fie > body,
+      html.i-amphtml-singledoc > body {
+        overflow: visible !important;
+      }
+      html.i-amphtml-fie:not(.i-amphtml-inabox) > body,
+      html.i-amphtml-singledoc:not(.i-amphtml-inabox) > body {
+        position: relative !important;
+      }
+      html.i-amphtml-ios-embed-legacy > body {
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        position: absolute !important;
+      }
+      html.i-amphtml-ios-embed {
+        overflow-y: auto !important;
+        position: static;
+      }
+      #i-amphtml-wrapper {
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        margin: 0 !important;
+        display: block !important;
+      }
+      html.i-amphtml-ios-embed.i-amphtml-ios-overscroll,
+      html.i-amphtml-ios-embed.i-amphtml-ios-overscroll > #i-amphtml-wrapper {
+        -webkit-overflow-scrolling: touch !important;
+      }
+      #i-amphtml-wrapper > body {
+        position: relative !important;
+        border-top: 1px solid transparent !important;
+      }
+      #i-amphtml-wrapper + body {
+        visibility: visible;
+      }
+      #i-amphtml-wrapper + body .i-amphtml-lightbox-element,
+      #i-amphtml-wrapper + body[i-amphtml-lightbox] {
+        visibility: hidden;
+      }
+      #i-amphtml-wrapper
+        + body[i-amphtml-lightbox]
+        .i-amphtml-lightbox-element {
+        visibility: visible;
+      }
+      #i-amphtml-wrapper.i-amphtml-scroll-disabled,
+      .i-amphtml-scroll-disabled {
+        overflow-x: hidden !important;
+        overflow-y: hidden !important;
+      }
+      body noscript > * {
+        display: block;
+        overflow: hidden !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+      }
+      body noscript > * {
+        position: absolute !important;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+      }
+      body noscript {
+        display: inline !important;
+      }
+      amp-img:not(.i-amphtml-element)[i-amphtml-ssr]
+        > img.i-amphtml-fill-content {
+        display: block;
+      }
+      template {
+        display: none !important;
+      }
+      html.i-amphtml-fie > amp-analytics {
+        position: initial !important;
+      }
+      /*# sourceURL=/css/ampshared.css*/
+    </style>
+    <noscript
+      ><style amp-boilerplate>
+        body {
+          -webkit-animation: none;
+          -moz-animation: none;
+          -ms-animation: none;
+          animation: none;
+        }
+      </style></noscript
+    >
+    <style amp-custom="">
+      #amp-mobile-version-switcher {
+        left: 0;
+        position: absolute;
+        width: 100%;
+        z-index: 100;
+      }
+      #amp-mobile-version-switcher > a {
+        background-color: #444;
+        border: 0;
+        color: #eaeaea;
+        display: block;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+          Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 15px 0;
+        text-align: center;
+        -webkit-text-decoration: none;
+        text-decoration: none;
+      }
+      #amp-mobile-version-switcher > a:active,
+      #amp-mobile-version-switcher > a:focus,
+      #amp-mobile-version-switcher > a:hover {
+        -webkit-text-decoration: underline;
+        text-decoration: underline;
+      }
+      :where(.wp-block-columns.has-background) {
+        padding: 1.25em 2.375em;
+      }
+      :where(p.has-text-color:not(.has-link-color)) a {
+        color: inherit;
+      }
+      :root {
+        --wp--preset--font-size--normal: 16px;
+        --wp--preset--font-size--huge: 42px;
+      }
+      html :where(.has-border-color),
+      html :where([data-amp-original-style*="border-width"]) {
+        border-style: solid;
+      }
+      html :where(amp-img[class*="wp-image-"]),
+      html :where(amp-anim[class*="wp-image-"]) {
+        height: auto;
+        max-width: 100%;
+      }
+      :where(.wp-block-group.has-background) {
+        padding: 1.25em 2.375em;
+      }
+      amp-img.amp-wp-enforced-sizes {
+        object-fit: contain;
+      }
+      amp-img img,
+      amp-img noscript {
+        image-rendering: inherit;
+        object-fit: inherit;
+        object-position: inherit;
+      }
+      .amp-wp-enforced-sizes {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+      html {
+        background: #0a5f85;
+      }
+      body {
+        background: #fff;
+        color: #353535;
+        font-family: Georgia, "Times New Roman", Times, Serif;
+        font-weight: 300;
+        line-height: 1.75;
+      }
+      p,
+      figure {
+        margin: 0 0 1em;
+        padding: 0;
+      }
+      a,
+      a:visited {
+        color: #0a5f85;
+      }
+      a:hover,
+      a:active,
+      a:focus {
+        color: #353535;
+      }
+      blockquote {
+        color: #353535;
+        background: rgba(127, 127, 127, 0.125);
+        border-left: 2px solid #0a5f85;
+        margin: 8px 0 24px 0;
+        padding: 16px;
+      }
+      blockquote p:last-child {
+        margin-bottom: 0;
+      }
+      .amp-wp-meta,
+      .amp-wp-header div,
+      .amp-wp-title,
+      .amp-wp-tax-category,
+      .amp-wp-comments-link,
+      .amp-wp-footer p,
+      .back-to-top {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+          "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+      }
+      .amp-wp-header {
+        background-color: #0a5f85;
+      }
+      .amp-wp-header div {
+        color: #fff;
+        font-size: 1em;
+        font-weight: 400;
+        margin: 0 auto;
+        max-width: calc(840px - 32px);
+        padding: 0.875em 16px;
+        position: relative;
+      }
+      .amp-wp-header a {
+        color: #fff;
+        text-decoration: none;
+      }
+      .amp-wp-article {
+        color: #353535;
+        font-weight: 400;
+        margin: 1.5em auto;
+        max-width: 840px;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+      }
+      .amp-wp-article-header {
+        align-items: center;
+        align-content: stretch;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .amp-wp-meta {
+        color: #696969;
+        display: inline-block;
+        flex: 2 1 50%;
+        font-size: 0.875em;
+        line-height: 1.5em;
+        margin: 0 0 1.5em;
+        padding: 0;
+      }
+      .amp-wp-article-header .amp-wp-meta:last-of-type {
+        text-align: right;
+      }
+      .amp-wp-article-header .amp-wp-meta:first-of-type {
+        text-align: left;
+      }
+      .amp-wp-byline amp-img,
+      .amp-wp-byline .amp-wp-author {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .amp-wp-byline amp-img {
+        border: 1px solid #0a5f85;
+        border-radius: 50%;
+        position: relative;
+        margin-right: 6px;
+      }
+      .amp-wp-posted-on {
+        text-align: right;
+      }
+      .amp-wp-article-content {
+        margin: 0;
+      }
+      .amp-wp-article-content amp-img {
+        margin: 0 auto;
+      }
+      .amp-wp-article-content img {
+        width: 100%;
+        max-width: 840px;
+        height: auto;
+      }
+      .amp-wp-footer {
+        border-top: 1px solid #c2c2c2;
+        margin: calc(1.5em - 1px) 0 0;
+      }
+      .amp-wp-footer div {
+        margin: 0 auto;
+        max-width: calc(840px - 32px);
+        padding: 1.25em 16px 1.25em;
+        position: relative;
+      }
+      .amp-wp-footer h2 {
+        font-size: 1em;
+        line-height: 1.375em;
+        margin: 0 0 0.5em;
+      }
+      .amp-wp-footer p {
+        color: #696969;
+        font-size: 0.8em;
+        line-height: 1.5em;
+        margin: 0 85px 0 0;
+      }
+      .amp-wp-footer a {
+        text-decoration: none;
+      }
+      .back-to-top {
+        bottom: 1.275em;
+        font-size: 0.8em;
+        font-weight: 600;
+        line-height: 2em;
+        position: absolute;
+        right: 16px;
+      }
+      /*# sourceURL=amp-custom.css */
+    </style>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+  </head>
+  <body>
+    <header id="top" class="amp-wp-header">
+      <div>
+        <a href="/" title="{{tenant}}" >
+          <span class="amp-site-title">{{tenant}}</span>
+        </a>
+      </div>
+    </header>
+    <article class="amp-wp-article">
+      <header class="amp-wp-article-header">
+        <h1 class="amp-site-title">{{title}}</h1>
+        <div class="amp-wp-meta amp-wp-byline">
+          <a
+            rel="author"
+            title="{{ article.user.first_name }} {{ article.user.last_name }}"
+            href="{% url 'blog:blog_byAuthor' article.user.username %}"
+          >
+          {{ article.user.first_name }} {{ article.user.last_name }}
+          </a>
+        </div>
+        <div class="amp-wp-meta amp-wp-posted-on">
+          <time datetime="{{ article.publishedAt|date_format }}">
+            {{ article.publishedAt|date_format }}
+          </time>
+        </div>
+      </header>
+
+      <div class="amp-wp-article-content">{{ clean_html|safe }}</div>
+
+      {% if related_articles %}
+        <div class="hm-related-posts">
+          <div class="wt-container">
+            <h4 class="widget-title">Bài viết liên quan</h4>
+          </div>
+          <div class="hmrp-container"></div>
+        </div>
+        <div class="">
+          {% for related_article in related_articles %}
+            {% include 'galaxy/blog/articles-item.html' with article=related_article category_hidden=True %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </article>
+    <footer class="amp-wp-footer">
+      <div>
+        <h2>{{tenant}}</h2>
+        <a href="#top" class="back-to-top" title="Quay lại đầu trang"
+          >Quay lại đầu trang</a
+        >
+      </div>
+    </footer>
+    <div id="amp-mobile-version-switcher">
+      <a
+        rel="nofollow"
+        href="{% url 'blog:article' article.slug %}"
+        title="Exit mobile version"
+      >
+        Exit mobile version
+      </a>
+    </div>
+  </body>
+</html>

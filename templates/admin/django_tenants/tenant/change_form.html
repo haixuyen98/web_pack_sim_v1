@@ -1,0 +1,6 @@
+{% extends "admin/change_form.html" %}{% load i18n tenant %}
+
+{% block submit_buttons_bottom %}
+{% public_schema as public_schema_name %}
+{{ block.super }}
+{% endblock %}

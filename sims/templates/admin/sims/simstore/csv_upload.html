@@ -1,0 +1,95 @@
+{% extends 'admin/sims/custom_action_base.html' %} {% block extrastyle %}
+{% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" integrity="sha512-wJgJNTBBkLit7ymC6vvzM1EcSWeM9mmOu+1USHaRBbHkm6W9EgM0HY27+UtUaprntaYQJF75rc8gjxllKs5OIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+{% block header %}
+    <link rel="stylesheet" href="{% static '/admin/sims/css/upload_csv.css' %}?v={{ current_time }}">
+{% endblock %}
+{% endblock %} {% block extrahead %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.3/ace.js"
+  integrity="sha512-hWCQiPFpU0dM1jkN2dkt/OrdSXO4KN5y2utMvF0ZkacWmRvbOlEygqBW0YiJwq/nn6iywh4XnMGMG6ESQYM7WA=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://unpkg.com/read-excel-file@5.x/bundle/read-excel-file.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js" integrity="sha512-zlWWyZq71UMApAjih4WkaRpikgY9Bz1oXIW5G0fED4vk14JjGlQ1UmkGM392jEULP8jbNMiwLWdM8Z87Hu88Fw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
+<script src="{% static '/admin/sims/js/sim_store.js' %}"></script>
+
+{% endblock %} {% block content %}
+<div>
+  
+  <form enctype="multipart/form-data" method="POST" action="." id="form-table">
+    {% csrf_token %}
+    {% include 'admin/sims/simstore/components/info_add_sim_store.html' %}
+    <a href="{% static 'sims/files/upload_sims_example.xlsx' %}" download="upload_sims_example.xlsx">
+      <button type="button" class="btn_download">
+        Download file excel mẫu
+      </button>
+    </a>
+    <div class="form-input-csv">
+      <p class="mg_file">
+        <input type="file" name="excel" id="file" accept=".csv, .xlsx, .xls, .xlsm" />
+      </p>
+      <button type="button" onclick="readCSVFile()" id="check-file" class="btn_download">
+        <div class="loader hidden"></div>
+        Kiểm tra
+      </button>
+    </div>
+    {% include 'admin/sims/simstore/components/table_info_add_sim_store.html' %}
+  </form>
+</div>
+
+<script>
+
+  function readCSVFile() {
+    const files = document.querySelector("#file").files;
+    if (files.length > 0) {
+      $('.loader').removeClass('hidden')
+      $('#check-file').attr("disabled", true)
+      // Selected file
+      const file = files[0];
+
+      readXlsxFile(file).then(function (rows) {
+        if(rows.length > 50001) {
+          $.toast({
+            heading: 'Cảnh báo',
+            text: 'File có dung lượng vượt quá 50k số ',
+            position: {
+              top: 20,
+              right: 80
+            },
+            icon: 'warning'
+          })
+          $('.loader').addClass('hidden')
+          $('#check-file').attr("disabled", false)
+          return;
+        }
+        const dataExcels = [...rows.slice(1)]
+
+        formatData(dataExcels)
+
+        $('.loader').addClass('hidden')
+
+      }).catch(err => {
+        $('.loader').addClass('hidden')
+        console.log(err);
+      });
+
+    } else {
+      $.toast({
+        heading: 'Lỗi',
+        text: 'Vui lòng chọn file.',
+        position: {
+          top: 20,
+          right: 80
+        },
+        icon: 'error'
+      })
+    }
+  }
+
+</script>
+{% endblock %}

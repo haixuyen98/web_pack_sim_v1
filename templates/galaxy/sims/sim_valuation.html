@@ -1,0 +1,43 @@
+{% load static %}
+
+<div class="sim-price">
+  <div class="sim-price__detail">
+    <div class="sim-price__detail__title">
+      <span class="sim-price__detail__title__text">Nhập số sim cần định giá</span>
+    </div>
+    <form method="get" action="{% url 'sims:sim_valuation' %}" class="w-100 fm_valuation"> 
+      <div class="sim-price__detail__form">
+        <div class="form-group">
+          <input name="sim" class="form-control form-control--sim-price" placeholder="Nhập số sim cần định giá (*)" type="text"  value="{{ sim }}"/>
+        </div>
+        <button type="submit" class="btn btn--sim-required btn--sim-price">
+          <span class="txt-sim-required">Định giá</span>
+        </button>
+      </div>
+    </form>
+    {% if content %}     
+      {{ content }}
+    {% endif %}
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+<script>
+  $('.btn--sim-price').click(function(e){
+    e.preventDefault();
+    var txt_sim = $('input[name="sim"]').val();
+    if(txt_sim == ''){
+      alert("Nhập số sim cần định giá");
+      return;
+    }
+    if(!/^0\d{9}$/.test(txt_sim)){
+      alert("Số sim không đúng định dạng");
+      return;
+    }
+    if(txt_sim && /^0\d{9}$/.test(txt_sim)){
+      $('.fm_valuation').submit();
+    }
+  })
+</script>
+

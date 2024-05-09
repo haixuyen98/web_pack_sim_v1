@@ -1,0 +1,159 @@
+{% extends "admin/base_site.html" %} 
+{% block extrastyle %}
+{% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" integrity="sha512-wJgJNTBBkLit7ymC6vvzM1EcSWeM9mmOu+1USHaRBbHkm6W9EgM0HY27+UtUaprntaYQJF75rc8gjxllKs5OIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+{% endblock %}
+{% block header %}
+  <link rel="stylesheet" href="{% static '/admin/sims/css/upload_csv.css' %}?v={{ current_time }}">
+{% endblock %}
+{% block extrahead %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.3/ace.js" integrity="sha512-hWCQiPFpU0dM1jkN2dkt/OrdSXO4KN5y2utMvF0ZkacWmRvbOlEygqBW0YiJwq/nn6iywh4XnMGMG6ESQYM7WA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js" integrity="sha512-zlWWyZq71UMApAjih4WkaRpikgY9Bz1oXIW5G0fED4vk14JjGlQ1UmkGM392jEULP8jbNMiwLWdM8Z87Hu88Fw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
+  <script src="{% static '/admin/sims/js/sim_store.js' %}"></script>
+{% endblock %}
+{% block content %} 
+{{ block.super }}
+
+<div id="content-main">
+  
+  <form method="post" action="." id="form-table">
+    {% csrf_token %}
+    {% include 'admin/sims/simstore/components/info_add_sim_store.html' %}
+    <div class="form-input-csv">
+      <textarea rows="1" id="excelPasteBox" placeholder="Dán dữ liệu sim theo thứ tự vào đây..." class="mb_15"></textarea>
+    </div>
+    {% include 'admin/sims/simstore/components/table_info_add_sim_store.html' %}
+    {% include 'admin/sims/simstore/components/popup_modal_confirm.html' %}
+  </form>
+
+ 
+</div>
+<script>
+
+  $(document).on('paste', 'textarea#excelPasteBox', function(e) {
+    idCount = {};
+    countError = 0;
+    dataTable = [];
+    currentPage = 1;
+    uniqueIds = {};
+    e.preventDefault();
+    let cb;
+    let clipText = '';
+  
+    if (window.clipboardData && window.clipboardData.getData) {
+      cb = window.clipboardData;
+      clipText = cb.getData('Text');
+    } else if (e.clipboardData && e.clipboardData.getData) {
+      cb = e.clipboardData;
+      clipText = cb.getData('text/plain');
+    } else {
+      cb = e.originalEvent.clipboardData;
+      clipText = cb.getData('text/plain');
+    }
+  
+    // Tách các dòng
+    const clipRows = clipText.split('\n');    
+    const nonEmptyRows = clipRows.filter(function(row) {
+      return row.trim() !== '';
+    });
+
+    if(nonEmptyRows.length > 50000) {
+      $.toast({
+        heading: 'Cảnh báo',
+        text: 'File có dung lượng vượt quá 50k số ',
+        position: {
+          top: 20,
+          right: 80
+        },
+        icon: 'warning'
+      })
+      return;
+    }
+
+    // Lọc ra các dòng không phải trắng
+    for (i = 0; i < nonEmptyRows.length; i++) {
+      const wordsArray = nonEmptyRows[i].split(/\t|\s{1,}/);
+      if (wordsArray.length <= 2 ) {
+        nonEmptyRows[i] = [...wordsArray]
+      } else if (wordsArray.length === 3) {
+        if (checkPack(wordsArray[2], pack)){
+          nonEmptyRows[i] = [...wordsArray,'','']
+        } else {
+          if (checkHomeNetWork(wordsArray[2], homeNetwork)) {
+            nonEmptyRows[i] = [...wordsArray.slice(0,2),'', wordsArray[2],'']
+          } else {
+            nonEmptyRows[i] = [...wordsArray.slice(0,2),'','', wordsArray[2]]
+          }
+        } 
+      } else if (wordsArray.length === 4) {
+        if (checkPack(wordsArray[2], pack)) {
+          if(checkHomeNetWork(wordsArray[3], homeNetwork)) {
+            nonEmptyRows[i] = [...wordsArray]
+          }
+          else {
+            nonEmptyRows[i] = [...wordsArray.slice(0,2),'', wordsArray[3]]
+          }
+        } else {
+          if(checkHomeNetWork(wordsArray[2], homeNetwork)) {
+            nonEmptyRows[i] = [...wordsArray.slice(0,2),'',wordsArray[2], wordsArray[3]]
+          }
+          else {
+            // người dùng nhập sai
+            nonEmptyRows[i] = [...wordsArray]
+          }
+        } 
+      } else {
+        const remainingPartArray = wordsArray.slice(0, 4);
+        const remainingPart = wordsArray.slice(4).join(' ');
+        nonEmptyRows[i] = [...remainingPartArray, remainingPart]
+      }
+    }
+    const jsonObj = [];
+    for (i = 0; i < nonEmptyRows.length ; i++) {
+      const item = [];
+      for (j = 0; j < nonEmptyRows[i].length; j++) {
+        if (nonEmptyRows[i][j] != '\r') {
+          item.push(nonEmptyRows[i][j])
+        }
+      }
+      jsonObj.push(item);
+    }
+
+    if(jsonObj.length === 0) {
+      $.toast({
+        heading: 'Lỗi',
+        text: 'Vui lòng paste data hợp lệ.',
+        position: {
+          top: 20,
+          right: 80
+        },
+        icon: 'error'
+      })
+
+      return;
+    }
+    
+    formatData(jsonObj)
+    $(this).val('');
+  });
+
+  function handleCheckFile(){
+    if(dataTable.length === 0) {
+      $.toast({
+        heading: 'Lỗi',
+        text: 'Vui lòng paste data',
+        position: {
+          top: 20,
+          right: 80
+        },
+        icon: 'error'
+      })
+    }
+  }
+
+</script>
+{% endblock %}

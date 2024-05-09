@@ -1,0 +1,54 @@
+<div class="theme-editor__panel" id="panel_mod_right">
+  <header class="te-panel__header">
+    <button
+      class="ui-button btn--plain te-panel__header-action"
+      onclick="closeSection('panel_mod_right')"
+      data-trekkie-id="close-panel"
+      aria-label="Back to theme settings"
+      type="button"
+      name="button"
+    >
+      <i class="las la-angle-left" style="font-size: 22px"></i>
+    </button>
+    <h2 class="ui-heading theme-editor__heading">Sidebar Phải</h2>
+  </header>
+  <div class="theme-editor__panel-body">
+    <div id="mod_sortable" class="mt-2 list-group">
+      {% for item in tenant.theme_config.sidebar %}
+      <div class="list-group-item" data-editable="{{item.editable}}" data-name="{{item.title}}" data-content="{{item.content}}" data-hide_title="{{item.hide_title}}" data-hide="{{item.is_hide}}" data-id="1">
+        <div class="row">
+          <div class="col-md-9 name">
+            <img
+              class="icon_move"
+              src="https://doan.websim.vn/images/Move.png"
+              alt=""
+            />
+            <span class="mname">{{item.title}}</span>
+          </div>
+          <div class="col-md-3 remove">
+            {% if item.editable %}
+            <a href="javascript:;" title="Xóa module" onclick="remove_custom_module($(this))"><i class="las la-trash-alt"></i></a>
+            {% endif %}
+            <a
+              href="javascript:;"
+              title="Ẩn/Hiện module"
+              onclick="toggle_block($(this))"
+              ><i class="las {% if item.is_hide == "1" %}la-low-vision{% else %}la-eye{% endif %}"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="d-flex justify-content-end">
+      <a
+        data-toggle="modal"
+        data-target="#sidebar-module-modal"
+        class="btn btn-primary btn-sm"
+        style="color: #ffffff"
+        >Thêm module</a
+      >
+    </div>
+    <input type="hidden" name="sidebar" value="{{tenant.theme_config.sidebar}}" id="sidebar"/>
+  </div>
+</div>

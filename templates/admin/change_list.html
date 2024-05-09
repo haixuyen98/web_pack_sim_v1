@@ -1,0 +1,127 @@
+{% extends "admin/change_list.html" %}
+{% block filters %}
+  {{ block.super }}
+{% endblock %}
+{% block breadcrumbs %}
+  <style>
+    .authentication_file {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      max-width: 50vw;
+    }
+
+    #changelist-filter {
+      position: relative;
+    }
+
+    .icon_filter {
+      background: var(--primary);
+      padding: 2px 3px;
+      position: absolute;
+      opacity: 1;
+      right: 5%;
+      z-index: 999;
+      cursor: pointer;
+    }
+
+    @media only screen and (min-width: 910px) and (max-width: 1150px) {
+        .icon_filter {
+            padding: 2px 8px;
+        }
+    }
+
+    @media only screen and (max-width: 910px) {
+        .icon_filter {
+            display: none;
+        }
+        .ps_static {
+        position: static !important;
+        margin-top: 15px;
+      }
+    }
+
+    .icon_arrow {
+      background: var(--primary);
+      padding: 2px 3px;
+      position: absolute;
+      opacity: 1;
+      right: 3%;
+      z-index: 999;
+      cursor: pointer;
+      transition: transform 0.5s ease;
+    }
+
+    @media only screen and (max-width: 767px) {
+      .icon_arrow {
+        display: none;
+      }
+    }
+
+    .icon_arrow.clicked {
+      transform: scaleX(-1);
+    }
+  </style>
+  {{ block.super }}
+  <div class="btn-clear-cache">
+    <a href="/clear">Xoá cache</a>
+  </div>
+{% endblock %}
+{% block content %}
+  {{ block.super }}
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var contents = document.querySelectorAll(".field-content");
+      contents.forEach(function(content) {
+        content.classList.add("authentication_file");
+      });
+  
+      var anchors = document.querySelectorAll('a.addlink');
+  
+      anchors.forEach(function(anchor) {
+          var content = anchor.innerHTML || anchor.innerText;
+          if (content.includes("Thêm vào")) {
+              content = content.replace("Thêm vào", "Tạo mới");
+              anchor.innerHTML = content;
+          }
+      });
+
+      // Ẩn hiện lọc
+      var changelistParent = document.getElementById("changelist");
+      var filter = document.getElementById('changelist-filter');
+      if (filter) {
+        var imgElement = document.createElement("img");
+        imgElement.setAttribute("class", "icon_filter");
+        imgElement.setAttribute("alt", "Icon filter");
+        imgElement.setAttribute("src", "/static/admin/images/filter.svg");
+  
+        var imgElement1 = document.createElement("img");
+        imgElement1.setAttribute("class", "icon_arrow");
+        imgElement1.setAttribute("alt", "Icon arrow");
+        imgElement1.setAttribute("src", "/static/admin/images/arrow.svg");
+  
+        // Thêm phần tử img vào phần tử cha
+        changelistParent.appendChild(imgElement);
+        changelistParent.appendChild(imgElement1);
+  
+        // Gán sự kiện click cho cả hai phần tử img
+        imgElement.addEventListener("click", toggleDisplay);
+        imgElement1.addEventListener("click", toggleDisplay);
+  
+        // Hàm xử lý sự kiện click
+        function toggleDisplay() {
+            var changelistFilter = document.getElementById("changelist-filter");
+            if (changelistFilter.style.display === "none") {
+                changelistFilter.style.display = "block";
+                imgElement1.classList.remove('ps_static');
+            } else {
+                changelistFilter.style.display = "none";
+                imgElement1.classList.add('ps_static');
+            }
+            imgElement.classList.toggle("clicked");
+            imgElement1.classList.toggle("clicked");
+        }
+      }
+    });
+  </script>
+{% endblock %}

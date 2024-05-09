@@ -1,0 +1,27 @@
+{% extends 'galaxy/base.html' %}
+{% load compress %}
+{% load sims_tags %}
+{% load static %}
+
+{% include 'galaxy/layout/head-seo.html' with seo=seo %}
+
+{% block body %}
+  <div class="wrapper">
+    <div id="page-content-inner">
+      <div class="crayons-layout crayons-layout--3-cols crayons-layout--article">
+        {% include 'galaxy/layout/sidebar-left.html' with theme_config=theme_config %}
+        <main id="main-content" class="crayons-layout__content gap-4">
+            {% if breadcrumb_data %}
+              <div class="breadcrumb-slug">
+                {% include 'galaxy/blog/breadcum.html' with breadcrumb_data=breadcrumb_data %}
+              </div>
+            {% endif %}
+            {% include "galaxy/sims/sim-detail.html" with sim=sim theme_folder=theme_folder%}
+            {{content}}
+        </main>
+        {% include 'galaxy/layout/sidebar.html' with theme_config=theme_config %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
+

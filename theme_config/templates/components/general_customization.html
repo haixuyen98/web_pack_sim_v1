@@ -1,0 +1,185 @@
+<div class="general-customization">
+  <div class="general-customization__detail">
+    <div class="general-customization__content">
+      <form method="post" action="." class="form-customize">
+        {% csrf_token %}
+        <div class="fm-customize fm-customize--settings">
+          <div class="fm-customize__item">
+            <div class="fm-customize__item__label fm-customize__item__label--title">
+              Tuỳ chỉnh tỉ lệ hiển thị danh sách sim theo Nhà mạng
+            </div>
+            <div class="fm-customize__item__percent">Tổng tỉ lệ: 100%</div>
+            <div class="fm-customize__list">
+              <div class="fm-customize__list__item">
+                <div class="fm-customize__list__item__image">
+                  <img
+                    class="preview"
+                    src="../../static/theme_config/images/logo_mang/icon_viettel.svg"
+                    style="max-width: 100%;
+                          height: auto;
+                          background-size: cover;
+                          background-position: center center;"
+                  />
+                </div>
+                <div class="form-group">
+                  <input class="form-control form-control--settings input_percent" min="0" max="100" type="number" name="telco_rates.viettel"
+                          value="{{ store_config.telco_rates.viettel }}" />
+                </div>
+              </div>
+              <div class="fm-customize__list__item">
+                <div class="fm-customize__list__item__image">
+                  <img
+                    class="preview"
+                    src="../../static/theme_config/images/logo_mang/icon_vinaphone.svg"
+                    style="max-width: 100%;
+                          height: auto;
+                          background-size: cover;
+                          background-position: center center;"
+                  />
+                </div>
+                <div class="form-group">
+                  <input class="form-control form-control--settings input_percent"  min="0" max="100" type="number" name="telco_rates.vinaphone"
+                          value="{{ store_config.telco_rates.vinaphone }}" />
+                </div>
+              </div>
+              <div class="fm-customize__list__item">
+                <div class="fm-customize__list__item__image">
+                  <img
+                    class="preview"
+                    src="../../static/theme_config/images/logo_mang/icon_mobiphone.svg"
+                    style="max-width: 100%;
+                          height: auto;
+                          background-size: cover;
+                          background-position: center center;"
+                  />
+                </div>
+                <div class="form-group">
+                  <input class="form-control form-control--settings input_percent"  min="0" max="100" type="number" name="telco_rates.mobifone"
+                          value="{{ store_config.telco_rates.mobifone }}" />
+                </div>
+              </div>
+              <div class="fm-customize__list__item">
+                <div class="fm-customize__list__item__image">
+                  <img
+                    class="preview"
+                    src="../../static/theme_config/images/logo_mang/icon_itel.svg"
+                    style="max-width: 100%;
+                          height: auto;
+                          background-size: cover;
+                          background-position: center center;"
+                  />
+                </div>
+                <div class="form-group">
+                  <input class="form-control form-control--settings input_percent"  min="0" max="100" type="number" name="telco_rates.itel"
+                          value="{{ store_config.telco_rates.itel }}" />
+                </div>
+              </div>
+              <div class="fm-customize__list__item">
+                <div class="fm-customize__list__item__image">
+                  <img
+                    class="preview"
+                    src="../../static/theme_config/images/logo_mang/icon_vietnamobile.svg"
+                    style="max-width: 100%;
+                          height: auto;
+                          background-size: cover;
+                          background-position: center center;"
+                  />
+                </div>
+                <div class="form-group">
+                  <input class="form-control form-control--settings input_percent"  min="0" max="100" type="number" name="telco_rates.vietnamobile"
+                          value="{{ store_config.telco_rates.vietnamobile }}" />
+                </div>
+              </div>
+              <div class="fm-customize__list__item">
+                <div class="fm-customize__list__item__image">
+                  <img
+                    class="preview"
+                    src="../../static/theme_config/images/logo_mang/icon_mobile.svg"
+                    style="max-width: 100%;
+                          height: auto;
+                          background-size: cover;
+                          background-position: center center;"
+                  />
+                </div>
+                <div class="form-group">
+                  <input class="form-control form-control--settings input_percent"  min="0" max="100" type="number" name="telco_rates.gmobile"
+                          value="{{ store_config.telco_rates.gmobile }}" />
+                </div>
+              </div>
+              <div class="fm-customize__list__item">
+                <div class="fm-customize__list__item__image">
+                  <img
+                    class="preview"
+                    src="../../static/theme_config/images/logo_mang//icon_wintel.svg"
+                    style="max-width: 100%;
+                          height: auto;
+                          background-size: cover;
+                          background-position: center center;"
+                  />
+                </div>
+                <div class="form-group">
+                  <input class="form-control form-control--settings input_percent"  min="0" max="100" type="number" name="telco_rates.wintel"
+                          value="{{ store_config.telco_rates.wintel }}" />
+                </div>
+              </div>
+              <div class="fm-customize__list__item">
+                <div class="fm-customize__list__item__image">
+                  <img
+                    class="preview"
+                    src="../../static/theme_config/images/logo_mang/icon_phone.svg"
+                    style="max-width: 100%;
+                          height: auto;
+                          background-size: cover;
+                          background-position: center center;"
+                  />
+                </div>
+                <div class="form-group">
+                  <input class="form-control form-control--settings input_percent"  min="0" max="100" type="number" name="telco_rates.phone"
+                          value="{{ store_config.telco_rates.phone }}" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fm-customize__item">
+            <span class="fm-customize__item__label">
+              <strong>Ưu tiên hiển thị theo Khoảng giá (vnđ)</strong>
+            </span>
+            <div class="fm-customize__item__content">
+              <div class="form-group">
+                <div class="fm-customize__item__content__from">
+                  <span class="fm-customize__item__label">Từ</span>
+                  <input type="text" class="form-control form-control" placeholder="Từ 0" name="gte" 
+                          value="{{ store_config.gte }}" />
+                </div>
+              </div>
+              <span class="fm-customize__item__content__from">
+                -
+              </span>
+              <div class="form-group">
+                <div class="fm-customize__item__content__from">
+                  <span class="fm-customize__item__label">Đến</span>
+                  <input type="text" class="form-control form-control" placeholder="5.000.000" name="lte" 
+                          value="{{ store_config.lte }}" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fm-customize__item">
+            <div class="fm-customize__item__label">
+              <strong>Tuỳ chỉnh hiển thị Sắp xếp</strong>
+              <br/>
+              <i>Nếu áp dụng sắp xếp tăng giảm, thì các thành phần ưu tiên sẽ không được áp dụng</i>
+            </div>
+            <div class="form-group">
+              <select name="d" class="form-control">
+                <option value="0" {% if store_config.d == '0' %}selected{% endif %}>Ngẫu nhiên</option>
+                <option value="-1" {% if store_config.d == '-1' %}selected{% endif %}>Tăng dần</option>
+                <option value="1" {% if store_config.d == '1' %}selected{% endif %}>Giảm dần</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

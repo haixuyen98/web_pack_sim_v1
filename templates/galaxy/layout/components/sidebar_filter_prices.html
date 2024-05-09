@@ -1,0 +1,7 @@
+  <div class="sim-sidebar__detail sim-sidebar__price--prices">
+      {% for item in items %}
+      <a href="{{ item.link }}" class="sim-sidebar__detail__link sim-sidebar__price--prices__link">
+        <div class="sim-tag">{{ item.name }} </div>
+      </a>
+      {% endfor %}
+  </div>

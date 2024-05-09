@@ -1,0 +1,37 @@
+{% extends "admin/change_list.html" %}
+{% load static %}
+
+{% block extrahead %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static '/admin/sims/css/custom_action_modal.css' %}">
+  <script src="{% static '/admin/sims/js/admin_custom.js' %}"></script>
+{% endblock %}
+{% block object-tools-items %}
+{{ block.super}}
+<li>
+    <a class="addlink" href="{% url 'admin:simstore_upload_csv' %}">
+        Up số excel
+    </a>
+</li>
+<li>
+    <a class="addlink" target='_blank' href="{% url 'admin:simstore_export_csv' %}?{{ request.GET.urlencode }}">
+        Tải xuống excel
+    </a>
+</li>
+<li>
+    <a href="{% url 'admin:simstore_delete_all' %}" class="delete-all-link" style="background-color: #ba2121;">Xóa tất cả sim</a>
+</li>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var firstListItem = document.querySelector('.object-tools li:first-child');
+        if (firstListItem) {
+            var firstLink = firstListItem.querySelector('a');
+            if (firstLink) {
+                firstLink.textContent = 'Thêm vào kho sim';
+                firstLink.innerHTML = 'Up số thủ công'
+                firstLink.setAttribute('title', 'Thêm vào kho sim');
+            }
+        }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,107 @@
+{% load sims_tags %}
+<footer id="footer" class="footer">
+  <div class="footer__container">
+    <div class="description">
+      {% if tenant.site_name %}
+        <a
+          class="description__title-head"
+          href="/"
+          title="{{tenant.site_name}}">
+          <p>{{tenant.site_name}}</p>
+        </a>
+      {% endif %}
+      <div class="div-phone">
+        {% if theme_config.support.hotline1 %}
+          <div class="phone">
+            <img loading="lazy" decoding="async" onload="this.style.opacity=1"
+              class="phone__icon lazy"
+              src="/static/galaxy/images/footer/footer-phone-img.svg"
+              alt=""
+            />
+            <div>
+              <p class="phone__title">{{theme_config.support.title1}}</p>
+              <a href="tel:{{theme_config.support.hotline1|removeDot}}" class="phone__number">
+                <p>{{theme_config.support.hotline1}}</p>
+              </a>
+            </div>
+          </div>
+        {% endif %}
+        {% if theme_config.support.hotline2 %}
+          <div class="phone">
+            <img loading="lazy" decoding="async" onload="this.style.opacity=1"
+              class="phone__icon lazy"
+              src="/static/galaxy/images/footer/footer-phone-img.svg"
+              alt=""
+            />
+            <div>
+              <p class="phone__title">{{theme_config.support.title2}}</p>
+              <a href="tel:{{theme_config.support.hotline2|removeDot}}" class="phone__number">
+                <p>{{theme_config.support.hotline2}}</p>
+              </a>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+      {% if theme_config.support.facebook or theme_config.support.linkedin or theme_config.support.twitter or theme_config.support.youtube %}
+        <div class="social">
+          <div class="social__title">LIÊN HỆ</div>
+          <div class="social__content">
+            {% if theme_config.support.facebook %}
+              <a href="{{ theme_config.support.facebook }}" title="facebook support" class="support__social">
+                <img loading="lazy" decoding="async" onload="this.style.opacity=1" class="phone__sidebar lazy" src="/static/{{ tenant.theme_folder }}/images/home_contact/facebook.svg" alt="Icon facebook"/>
+              </a>
+            {% endif %}
+            {% if theme_config.support.linkedin %}
+              <a href="{{ theme_config.support.linkedin }}" title="linkedin support" class="support__social">
+                <img loading="lazy" decoding="async" onload="this.style.opacity=1" class="phone__sidebar lazy" src="/static/{{ tenant.theme_folder }}/images/home_contact/linkedin.svg" alt="Icon linkedin"/>
+              </a>
+            {% endif %}
+            {% if theme_config.support.twitter %}
+              <a href="{{ theme_config.support.twitter }}" title="twitter support" class="support__social">
+                <img loading="lazy" decoding="async" onload="this.style.opacity=1" class="phone__sidebar lazy" src="/static/{{ tenant.theme_folder }}/images/home_contact/twitter.svg" alt="Icon twitter"/>
+              </a>
+            {% endif %}
+            {% if theme_config.support.youtube %}
+              <a href="{{ theme_config.support.youtube }}" title="youtube support" class="support__social">
+                <img loading="lazy" decoding="async" onload="this.style.opacity=1" class="phone__sidebar lazy" src="/static/{{ tenant.theme_folder }}/images/home_contact/youtube.svg" alt="Icon youtube"/>
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    
+      {% if theme_config.support.business_hours %}
+        <p class="fs-s"><b>Giờ mở cửa: </b>{{theme_config.support.business_hours}}</p>
+      {% endif %}
+      {% if theme_config.support.email %}
+        <p class="fs-s">{{theme_config.support.email}}</p>
+      {% endif %}
+    </div>
+    {% if theme_config.footer_link %}
+      <div class="description">
+        <a class="description__title-head" href="#" title="THÔNG TIN">
+          <p>THÔNG TIN</p>
+        </a>
+        <ul class="description__nav-links">
+          {% for item in theme_config.footer_link %}
+            <li>
+              <a class="hover-line" href="{{item.link}}" title="{{item.title}}">
+                {{item.title}}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    {% if theme_config.support.download_and_certification %}
+      {{ theme_config.support.download_and_certification|safe}}
+    {% endif %}
+  </div>
+  <hr />
+  <div class="copyright">
+    <p class="copyright__info">
+      © Copyright 2022. All rights reserved. Version 2.0.1
+    </p>
+  </div>
+</footer>

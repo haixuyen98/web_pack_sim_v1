@@ -1,0 +1,61 @@
+<div class="theme-editor__panel" id="panel-3">
+  <header class="te-panel__header">
+    <button
+      class="ui-button btn--plain te-panel__header-action"
+      onclick="closeSection('panel-3')"
+      data-trekkie-id="close-panel"
+      aria-label="Back to theme settings"
+      type="button"
+      name="button"
+    >
+      <i class="las la-angle-left" style="font-size: 22px"></i>
+    </button>
+    <h2 class="ui-heading theme-editor__heading">Cài đặt menu</h2>
+  </header>
+  <div class="theme-editor__panel-body" data-scrollable="">
+    <div id="menu-editor" class="list-group">
+      {% for item in tenant.theme_config.menu_top %}
+      <div
+        class="list-group-item"
+        data-module="m1"
+        data-name="{{item.title}}"
+        data-link="{{item.link}}"
+        data-id="1"
+      >
+        <div class="row">
+          <div class="col-md-9 name">
+            <img
+              class="icon_move"
+              src="https://doan.websim.vn/images/Move.png"
+              alt=""
+            />
+            <span class="mname">{{item.title}}</span>
+          </div>
+          <div class="col-md-3 remove">
+            <a href="javascript:void(0)"
+              ><i class="las la-pen" onclick="editMenuItem($(this))"></i
+            ></a>
+            <a href="javascript:void(0)"
+              ><i
+                style="color: red"
+                class="las la-trash-alt"
+                onclick="removeMenuItem($(this))"
+              ></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      <input type="hidden" name="menu_top" value="{{tenant.theme_config.menu_top}}" id="menu_top"/>
+    </div>
+    <div class="d-flex justify-content-end">
+      <a
+        data-toggle="modal"
+        data-target="#menu-modal"
+        class="btn btn-primary btn-sm"
+        style="color: #ffffff"
+        >Thêm menu</a
+      >
+    </div>
+  </div>
+</div>

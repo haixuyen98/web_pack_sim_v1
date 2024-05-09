@@ -1,0 +1,64 @@
+{% extends 'admin/sims/custom_action_base.html' %}
+{% load static %}
+{% block header %}
+    <link rel="stylesheet" href="{% static '/admin/sims/css/custom_action_modal.css' %}">
+{% endblock %}
+{% block breadcrumbs %}
+{% endblock %}
+{% block content %}
+
+<div class="custom-action-modal">
+    <form 
+        id="statusChangeForm"
+        method="POST" 
+        action="{% url 'admin:sim_status_change_action' data.id %}"
+    >
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="submit-status">Thay đổi</button>
+      </form>
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var changeStatusForm = document.getElementById('statusChangeForm');
+
+        changeStatusForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Perform an asynchronous request to update the status
+            fetch(this.action, {
+                method: 'POST',
+                body: new FormData(this),
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    // Close the modal if the status update was successful
+                    window.top.location.reload();
+                }
+            });
+        });
+        const ovflow = document.querySelector('#content-start');
+        ovflow.style.overflow = 'scroll';
+        ovflow.style.msOverflowStyle = 'none';
+        ovflow.style.scrollbarWidth = 'none';
+
+        ovflow.style.webkitOverflowScrolling = 'touch'; // for iOS
+
+        // Ẩn thanh cuộn trên trình duyệt dựa trên Webkit
+        ovflow.style.webkitScrollbarDisplay = 'none';
+
+        const id_status = document.querySelector('#id_status');
+        id_status.style.width = '100%'
+
+        var h1Elements = document.querySelector('h1');
+        h1Elements.classList.add('card_h1');
+
+        var labelElement = document.querySelector('label[for="id_status"]');
+        labelElement.textContent = 'Trạng thái:';
+        labelElement.style.whiteSpace = 'nowrap';
+    });
+</script>
+
+{% endblock %}

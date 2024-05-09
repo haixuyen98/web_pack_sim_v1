@@ -1,0 +1,17 @@
+.item-nowrap {
+    white-space: nowrap;
+}
+
+.item-nowrap:not(:last-child) {
+    margin-bottom: 4px;
+}
+
+.row-search td {
+    vertical-align: middle;
+    padding: 6px 4px;
+}
+
+.row-search .item-cat {
+    text-align: left ;
+    min-width: 160px;
+}

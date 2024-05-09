@@ -1,0 +1,186 @@
+{% load sims_tags %}
+<div
+  class="modal fade in"
+  id="footer_content"
+  role="dialog"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered mw-70vw">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form
+          id="form-reset-theme"
+          method="post"
+          action="{% url 'theme_config:submit_config'%}"
+        >
+          <div class="box-body row">
+            <div class="form-group col-md-12">
+              <label for="name-text-input" class="title_reset"
+                >Chọn chân trang</label
+              >
+              <select class="form-control" name="main_color">
+                <option id="fixColor" value="#DD1A21">Tùy chỉnh</option>
+                <option value="#206FEE">Mặc định</option>
+                <option value="#E97A39">Tươi mới</option>
+                <option value="#DD1A21">Rực rỡ</option>
+                <option value="#187551">Xanh mát</option>
+              </select>
+            </div>
+          </div>
+          <!-- <input type="hidden" name="resetTheme" value="true" /> -->
+          <footer id="footer" class="footer2">
+            <div class="footer2__container">
+              <div class="footer2__container--content">
+                <div class="row">
+                    <div class="row__content">
+                        <div class="single-footer-widget">
+                            <a href="/" class="logo">
+                                <h3 class="footer-site-name">Sim Số Đẹp</h3>
+                            </a>
+                            <p class="slogan">Địa chỉ mua bán, trao đổi, định giá sim số đẹp hàng đầu với 10 năm phát triển thị trường sim số. Cung cấp sim số đẹp từ tất cả các nhà mạng tại Việt Nam.</p>
+                            <div class="social-links">
+                              {% if theme_config.support.facebook %}
+                                <a href="{{ theme_config.support.facebook }}" title="facebook support" class="support__social">
+                                  <img loading="lazy" decoding="async" onload="this.style.opacity=1" class="phone__sidebar lazy" src="/static/{{ tenant.theme_folder }}/images/home_contact/facebook.svg" alt="Icon facebook"/>
+                                </a>
+                              {% endif %}
+                              {% if theme_config.support.linkedin %}
+                                <a href="{{ theme_config.support.linkedin }}" title="linkedin support" class="support__social">
+                                  <img loading="lazy" decoding="async" onload="this.style.opacity=1" class="phone__sidebar lazy" src="/static/{{ tenant.theme_folder }}/images/home_contact/linkedin.svg" alt="Icon linkedin"/>
+                                </a>                      
+                              {% endif %}
+                              {% if theme_config.support.twitter %}
+                                <a href="{{ theme_config.support.twitter }}" title="twitter support" class="support__social">
+                                  <img loading="lazy" decoding="async" onload="this.style.opacity=1" class="phone__sidebar lazy" src="/static/{{ tenant.theme_folder }}/images/home_contact/twitter.svg" alt="Icon twitter"/>
+                                </a>                    
+                              {% endif %}
+                              {% if theme_config.support.youtube %}
+                                <a href="{{ theme_config.support.youtube }}" title="youtube support" class="support__social">
+                                  <img loading="lazy" decoding="async" onload="this.style.opacity=1" class="phone__sidebar lazy" src="/static/{{ tenant.theme_folder }}/images/home_contact/youtube.svg" alt="Icon youtube"/>
+                                </a>
+                              {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row__network">
+                        <div class="single-footer-widget pl-2">
+                            <h3>Sim theo mạng</h3>
+                            <ul class="links-list">
+                                <li>
+                                    <a href="/sim-so-dep-viettel.html">Sim Viettel</a>
+                                </li>
+                                <li>
+                                    <a href="/sim-so-dep-vinaphone.html">Sim Vinaphone</a>
+                                </li>
+                                <li>
+                                    <a href="/sim-so-dep-mobifone.html">Sim Mobifone</a>
+                                </li>
+                                <li>
+                                    <a href="/sim-so-dep-gmobile.html">Sim Gmobile</a>
+                                </li>
+                                <li>
+                                    <a href="/sim-so-dep-vietnamobile.html">Sim Vietnamobile</a>
+                                </li>
+                                <li>
+                                    <a href="/sim-so-dep-itelecom.html">Sim Itelecom</a>
+                                </li>
+                                <li>
+                                    <a href="/sim-so-dep-reddi.html">Sim Reddi</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row__type">
+                        <div class="single-footer-widget">
+                            <h3>Sim theo loại</h3>
+                            <ul class="links-list">
+                                <li>
+                                    <a href="/sim-vip.html">Sim Vip</a>
+                                </li>
+                                <li>
+                                    <a href="/sim-nguquy.html">Sim Ngũ quý</a>
+                                </li>
+                                <li>
+                                    <a href="/sim-tuquy.html">Sim Tứ quý</a>
+                                </li>
+                                <li>
+                                    <a href="/sim-tamhoa.html">Sim Tam hoa</a>
+                                </li>
+                                <li>
+                                    <a href="/sim-thantai.html">Sim Thần tài</a>
+                                </li>
+                                <li>
+                                    <a href="/sim-namsinh.html">Sim Năm sinh</a>
+                                </li>
+                                <li>
+                                    <a href="/sim-taxi.html">Sim Taxi</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row__price">
+                        <div class="single-footer-widget">
+                            <h3>Sim theo giá</h3>
+                            <ul class="links-list">
+                                <li>
+                                    <a href="/sim-gia-duoi-500nghin-p1.html">Sim giá dưới 500 nghìn</a>
+                                </li>
+                                <li>
+                                    <a href="/sim-gia-500nghin-1trieu-p1.html">Sim 500 nghìn - 1 triệu</a>
+                                </li>
+                                <li>
+                                    <a href="/sim-gia-1trieu-3trieu-p1.html">Sim 1 triệu - 3 triệu</a>
+                                </li>
+                                <li>
+                                    <a href="/sim-gia-3trieu-5trieu-p1.html">Sim 3 triệu - 5 triệu</a>
+                                </li>
+                                <li>
+                                    <a href="/sim-gia-5trieu-10trieu-p1.html">Sim 5 triệu - 10 triệu</a>
+                                </li>
+                                <li>
+                                    <a href="/sim-gia-10trieu-20trieu-p1.html">Sim 10 triệu - 20 triệu</a>
+                                </li>
+                                <li>
+                                    <a href="/sim-gia-tren-20trieu.html">Sim trên 20 triệu</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row__advise">
+                        <div class="single-footer-widget">
+                            <h3>Tư vấn</h3>
+                            <div class="support-block">
+                                <div class="support-item support-zalo">
+                                    <a href="https://zalo.me/">Chat tư vấn</a>
+                                </div>
+                                <div class="support-item">
+                                    <a href="https://zalo.me/">Góp ý phản ánh</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright-area">
+                    <p>Copyright @2021  <strong>Sim số đẹp</strong>. All Rights Reserved by <a href="/" target="_blank">Sim số đẹp</a>
+                    </p>
+                </div>
+              </div>
+            </div>
+          </footer>
+          <div class="modal-footer-reset">
+            <button
+              type="button"
+              class="btn btn_cancel_reset"
+              data-dismiss="modal"
+            >
+              Hủy
+            </button>
+            <button type="submit" class="btn btn-primary">Xác nhận</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

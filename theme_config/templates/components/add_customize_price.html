@@ -1,0 +1,80 @@
+<div class="modal fade in" id="customize-modal" role="dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="header-modal-customize">Thêm mới Tuỳ chỉnh giá</h2>
+        <span class="close" data-dismiss="modal">
+          <img
+            class="preview"
+            src="../../static/theme_config/images/icon_close.svg"
+            style="max-width: 100%;
+                  height: auto;
+                  background-size: cover;
+                  background-position: center center;"
+          />
+        </span>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="." id="form_add_price" class="form-customize">
+          {% csrf_token %}
+          <div class="fm-customize">
+            <div class="fm-customize__item">
+              <span class="fm-customize__item__label">
+                Ưu tiên hiển thị theo Khoảng giá (vnđ) <span class="fm-customize__item__label__sao">*</span>
+              </span>
+              <div class="fm-customize__item__content">
+                <div class="form-group">
+                  <div class="fm-customize__item__content__from">
+                    <span class="fm-customize__item__label">Từ</span>
+                    <input type="hidden" id="id_uuid" name="uuid" value=""/>
+                    <input type="text" class="form-control" placeholder="Từ 0" name="price_from"/>
+                  </div>
+                </div>
+                <span class="fm-customize__item__content__from">
+                  -
+                </span>
+                <div class="form-group">
+                  <div class="fm-customize__item__content__from">
+                    <span class="fm-customize__item__label">Đến</span>
+                    <input type="text" class="form-control" placeholder="5.000.000" name="price_to"/>
+                  </div>
+                </div>
+              </div>
+              <p class="fm-customize__item__content__note">Giá bạn nhập phải là mức giá chính xác.<br>VD: 1.000.000</p>
+            </div>
+            <div class="fm-customize__item">
+              <span class="fm-customize__item__label">
+                Phần trăm điều chỉnh(&lt;100%) <span class="fm-customize__item__label__sao">*</span>
+              </span>
+              <div class="form-group">
+                <input class="form-control" type="number" name="percent"/>
+              </div>
+            </div>
+            {% comment %} <div class="fm-customize__item">
+              <span class="fm-customize__item__label">
+                Làm tròn (nghìn đồng)          
+              </span>
+              <div class="form-group">
+                <select name="rounding" id="cars" class="form-control">
+                  {% for item in list_rounding %}
+                    <option value="{{ item }}">{{ item }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div> {% endcomment %}
+          </div>
+          <div class="modal-footer" style="margin-top:15px">
+            <div class="button-group">
+              <button type="button" class="btn btn--cancel-item" data-dismiss="modal">
+                Huỷ
+              </button>
+              <button type="submit" class="btn btn--add-item" onclick="saveCustomizePrice(event)">
+                Áp dụng
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

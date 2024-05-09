@@ -1,0 +1,56 @@
+{% block content %}
+<input class="vTextField" id="id_slug" maxlength="250" name="slug" required="" type="text" value="{{value}}">
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var valueFromTemplate = "{{value}}";
+        // Kiểm tra xem giá trị đã được truyền từ template hay không
+        if (valueFromTemplate == 'None') {
+            document.getElementById('id_slug').value = '';
+        }
+
+        //article
+        document.getElementById('id_title').addEventListener('change', function() {
+            var title = this.value;
+            var slug = slugify(title);
+            document.getElementById('id_slug').value = slug;
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var valueFromTemplate = "{{value}}";
+        // Kiểm tra xem giá trị đã được truyền từ template hay không
+        if (valueFromTemplate == 'None') {
+            document.getElementById('id_slug').value = '';
+        }
+
+        //category
+        document.getElementById('id_name').addEventListener('change', function() {
+            var title = this.value;
+            var slug = slugify(title);
+            document.getElementById('id_slug').value = slug;
+        });
+    });
+    function slugify(text) {
+        return text.toString().toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/đ/g, 'd')
+            .replace(/[^\w\-]+/g, '-')
+            .replace(/\-\-+/g, '-')
+            .replace(/^-+/, '')
+            .replace(/-+$/, '');
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+    var relatedPagesInput = document.querySelector(
+      'textarea[name="related_pages"]'
+    );
+    if (relatedPagesInput) {
+      relatedPagesInput.setAttribute(
+        "placeholder",
+        "SIM Viettel 03|sim-dau-so-03\nSIM Viettel 09|sim-dau-so-09\n"
+      );
+    }
+  });
+</script>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% load sims_tags %}
+
+<div class="pagination">
+  {% if total_pages > 1 %}
+    <div class="step-links">
+      {% if prev_page is not none %}
+        <a href="{% add_page_param prev_page %}" class="arrow">&laquo;</a>
+      {% endif %}
+      
+      {% for page_num in pages %}
+        {% if page_num == current %}
+          <span class="current">{{ page_num }}</span>
+        {% else %}
+        <a href="{% add_page_param page_num %}">{{ page_num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if next_page is not none %}
+        <a href="{% add_page_param next_page %}" class="arrow">&raquo;</a>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>

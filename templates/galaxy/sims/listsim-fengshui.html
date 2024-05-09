@@ -1,0 +1,41 @@
+{% load sims_tags %} 
+{% if dataSim %}
+    <div class="listsim-fengshui">
+        <div class="title_listsim">
+            TỔNG QUAN ƯU, KHUYẾT ĐIỂM CỦA MỆNH CHỦ {{ form_data.birthday|format_date }}
+        </div>
+        <div>{{ dataSim.menh_chu|format_menh_chu|safe }}</div>
+        <p class="title_listsim">Sim hợp tuổi {{ form_data.birthday|format_date }}</p>
+        {% for sims in dataSim.lists %}
+            <div class="card_listsim">
+                <div class="head_card_listsim">
+                    <div class="sim_card_listsim">{{sims.sim}}</div>
+                    <div class="telco_card_listsim">
+                    <img
+                        loading="lazy"
+                        decoding="async"
+                        onload="this.style.opacity=1"
+                        class="{{ sims.telco }} lazy"
+                        src="{{ theme_folder|renderLogoTelIcon:sims.telco.lower }}"
+                        alt="{{ sims.telco }}"
+                    />
+                    </div>
+                </div>
+                <div class="point_card_listsim">Điểm phong thủy: {{sims.diem}}/10</div>
+                <div class="price_card_listsim"><b>Giá:</b>{{sims.giaban | render_price}}</div>
+                <div class="explain_card_listsim">
+                    <b class="explain">Diễn giải:</b>
+                    <span>{{sims.dien_giai|format_menh_chu|safe}}</span>
+                </div>
+                <div class="button_card_listsim">
+                    <a 
+                        href="/xem-phong-thuy?sim={{sims.sim}}&birth_date={{form_data.birthday|format_date}}&birth_time={{form_data.appt}}&sex={{form_data.sex}}" 
+                        class="explanation_card_listsim">
+                        Xem luận giải
+                    </a>
+                    <a href="{{ sims.sim }}" class="order_card_listsim">Đặt mua sim</a>
+                </div>
+            </div>
+        {% endfor %} 
+    </div>
+{% endif %}

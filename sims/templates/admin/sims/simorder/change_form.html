@@ -1,0 +1,86 @@
+{% extends "admin/change_form.html" %}
+{% load sims_tags %}
+{% load static %}
+{% load i18n admin_urls %}
+{% block extrahead %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static '/admin/sims/css/custom_action_modal.css' %}">
+  <link rel="stylesheet" href="{% static '/admin/sims/css/custom_order.css' %}">
+  <script src="{% static '/admin/sims/js/sim_detail.js' %}?v=1714013212"></script>
+{% endblock %}
+
+{% block content %}
+  {{ block.super }}
+
+  <input type="hidden" id="searched_sim" name="searched_sim">
+  <input 
+    type="submit" 
+    value="{% trans 'Search' %}" 
+    name="_search_button" 
+    id="search_sim"
+    class="default"
+  >
+{% endblock %}
+
+{% block submit_buttons_bottom %}
+  <div id="btn-check-kho">
+    {% if data_kho is not None %} 
+      {% include "admin/sims/simorder/tbl_kho_sim.html" with  phonesInfo=data_kho.phonesInfo search_store_list=data_kho.search_store_list agencies=data_kho.agencies %}
+    {% endif %}
+  </div>
+  
+  {% block object_history %}
+    <div class="module" style="padding-left: 16px;">
+      <h2>Thay đổi gần đây:</h2>
+      <ul style="padding-left: 0;">
+          {% for log_entry in log_entries|slice:"5" %}
+          <li style="float: none">{{ log_entry.action_time|date_format }} - {{ log_entry.user }}: {{ log_entry.get_change_message }}</li>
+          {% endfor %}
+          <li>
+              {% url opts|admin_urlname:'history' original.pk|admin_urlquote as history_url %}
+              <a href="{% add_preserved_filters history_url %}" class="historylink">{% translate "History" %}</a>
+          </li>
+          {% if has_absolute_url %}<li><a href="{{ absolute_url }}" class="viewsitelink">{% translate "View on site" %}</a></li>{% endif %}
+      </ul>
+  </div>
+  {% endblock %}
+  {{ block.super }}
+  <script src="{% static '/admin/sims/js/admin_custom.js' %}"></script>
+  <script src="{% static '/admin/sims/js/sim_installment.js' %}?v=1714013212"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <style>
+    input[type="text"]:read-only, input[type="number"]:read-only, textarea:read-only {
+      cursor: normal;
+      background-color: #f8f8f8;
+      color: #868889;
+      cursor: not-allowed;
+  }
+  .field-iir > div:first-child{
+    display: flex;
+    align-items: center;
+  }
+  #id_iir_helptext{
+    margin: 0;
+  }
+  #id_installment_type{
+    display: flex;
+    flex-direction: row;
+  }
+  #id_installment_type label{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+  }
+  .add-debt{
+    display: none;
+    padding-left: 16px;
+    font-size: 0.75rem;
+    color: var(--link-fg);
+    text-decoration: none;
+    transition: color 0.15s, background 0.15s;
+  }
+  </style>
+{% endblock %}

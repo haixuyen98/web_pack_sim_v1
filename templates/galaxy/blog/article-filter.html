@@ -1,0 +1,32 @@
+<div class="sim-sidebar sim-sidebar--tag bg-article-repeat__search {{className}}">
+  <form
+      accept-charset="UTF-8"
+      method="get"
+      role="search"
+      action="/tin-tuc/"
+    >
+    <div class="crayons-fields crayons-fields--horizontal">
+      <div class="crayons-field flex-1 relative">
+        <input
+            class="crayons-header--search-input crayons-textfield js-search-input"
+            type="text"
+            id="nav-search"
+            name="query"
+            autocomplete="on"
+            value="{{ query }}" 
+            placeholder="Tìm kiếm bài viết"
+        />
+        <button
+            type="submit"
+            aria-label="Search"
+            class="c-btn c-btn--icon-alone absolute inset-px left-auto py-0 crayons-header--btn--search btn-search-categories"
+        >
+            <img loading="lazy" decoding="async" onload="this.style.opacity=1"
+            class="phone__icon lazy"
+            src="/static/galaxy/images/icons/search-header.svg"
+            alt="Icon phone"/>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

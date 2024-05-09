@@ -1,0 +1,284 @@
+<div class="theme-editor__panel" id="panel-7">
+  <header class="te-panel__header">
+    <button
+      class="ui-button btn--plain te-panel__header-action"
+      onclick="closeSection('panel-7')"
+      type="button"
+      name="button"
+    >
+      <i class="las la-angle-left" style="font-size: 22px"></i>
+    </button>
+    <h2 class="ui-heading theme-editor__heading">Màu sắc</h2>
+  </header>
+
+  <div class="theme-editor__panel-body" data-scrollable="" data-title="Màu sắc">
+    <div class="card mt-3">
+      <div class="card-body">
+        <h5 style="margin-bottom: 8px">MÀU CHỦ ĐẠO</h5>
+        <div class="form-group use_color_block" style="display: block">
+          <div
+            class="input-group my-colorpicker2 colorpicker-element"
+            title="Using input value"
+            >
+            <select name="main_color" class="form-control">
+              <option id="fixColor" value="{{tenant.theme_config.color.main_color}}">Tùy chỉnh</option>
+              {% for color in theme_color_templates %}
+                <option value="{{ color.main_color }}">{{ color.title }}</option>
+              {% endfor %}
+            </select>
+            <span class="input-group-append">
+              <input
+                type="color"
+                id="favcolor"
+                value="{{tenant.theme_config.color.main_color}}"
+                style="height: 100%"
+              />
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card mt-3">
+      <div class="card-body">
+        <div class="form-group">
+          <label for="exampleListSim">MÀU BACKGROUND BUTTON</label>
+          <div class="form-group">
+            <div
+              class="input-group my-colorpicker2 colorpicker-element"
+              title="Using input value"
+            >
+              <input
+                type="text"
+                class="form-control"
+                name="second_color"
+                id="colorListSim"
+                value="{{tenant.theme_config.color.second_color}}"
+              />
+              <span class="input-group-append">
+                <input
+                  type="color"
+                  id="favcolorListSim"
+                  value="{{tenant.theme_config.color.second_color}}"
+                  style="height: 100%"
+                />
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card mt-3">
+      <div class="card-body">
+        <div class="form-group">
+          <label for="exampleListSim">MÀU BACKGROUND LỚN</label>
+          <div class="form-group">
+            <div
+              class="input-group my-colorpicker2 colorpicker-element"
+              title="Using input value"
+            >
+              <input
+                type="text"
+                class="form-control"
+                name="color_bg"
+                id="colorBG"
+                value="{{tenant.theme_config.color.color_bg}}"
+              />
+              <span class="input-group-append">
+                <input
+                  type="color"
+                  id="favcolorBG"
+                  value="{{tenant.theme_config.color.color_bg}}"
+                  style="height: 100%"
+                />
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card mt-3">
+      <div class="card-body">
+        <div class="form-group">
+          <label for="exampleSearch">MÀU CHỮ</label>
+          <div class="form-group">
+            <div
+              class="input-group my-colorpicker2 colorpicker-element"
+              title="Using input value"
+            >
+              <input
+                type="text"
+                class="form-control"
+                name="text_color"
+                id="colorSearch"
+                value="{{tenant.theme_config.color.text_color}}"
+              />
+              <span class="input-group-append">
+                <input
+                  type="color"
+                  id="favcolorSearch"
+                  value="{{tenant.theme_config.color.text_color}}"
+                  style="height: 100%"
+                />
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card mt-3">
+      <div class="card-body">
+        <div class="form-group">
+          <label for="exampleSearch">MÀU GIÁ SIM</label>
+          <div class="form-group">
+            <div
+              class="input-group my-colorpicker2 colorpicker-element"
+              title="Using input value"
+            >
+              <input
+                type="text"
+                class="form-control"
+                name="text_highlight"
+                id="colorHighlight"
+                value="{{tenant.theme_config.color.text_highlight}}"
+              />
+              <span class="input-group-append">
+                <input
+                  type="color"
+                  id="favcolorHighlight"
+                  value="{{tenant.theme_config.color.text_highlight}}"
+                  style="height: 100%"
+                />
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card mt-3">
+      <div class="card-body">
+        <div class="form-group">
+          <label for="exampleSearch">MÀU BACKGROUND MENU</label>
+          <div class="form-group">
+            <div
+              class="input-group my-colorpicker2 colorpicker-element"
+              title="Using input value"
+            >
+              <input
+                type="text"
+                class="form-control"
+                name="color_bg_menu"
+                id="colorBgMenu"
+                value="{{tenant.theme_config.color.color_bg_menu}}"
+              />
+              <span class="input-group-append">
+                <input
+                  type="color"
+                  id="favcolorBgMenu"
+                  value="{{tenant.theme_config.color.color_bg_menu}}"
+                  style="height: 100%"
+                />
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card mt-3">
+      <div class="card-body">
+        <div class="form-group">
+          <label for="exampleSearch">MÀU CHỮ MENU</label>
+          <div class="form-group">
+            <div
+              class="input-group my-colorpicker2 colorpicker-element"
+              title="Using input value"
+            >
+              <input
+                type="text"
+                class="form-control"
+                name="color_text_menu"
+                id="colorTextMenu"
+                value="{{tenant.theme_config.color.color_text_menu}}"
+              />
+              <span class="input-group-append">
+                <input
+                  type="color"
+                  id="favcolorTextMenu"
+                  value="{{tenant.theme_config.color.color_text_menu}}"
+                  style="height: 100%"
+                />
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card mt-3">
+      <div class="card-body">
+        <div class="form-group">
+          <label for="exampleFontFamily">FONT CHỮ</label>
+          <select name="font_family" class="form-control">
+            <option id="font_family" value="{{tenant.theme_config.color.font_family}}">{{tenant.theme_config.color.font_family}}</option>
+            {% for font_family in font_family_templates %}
+              <option value="{{ font_family.font }}">{{ font_family.font }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="card mt-3">
+      <div class="card-body">
+        <div class="form-group">
+          <label for="exampleFS">CỠ CHỮ DANH SÁCH SIM</label>
+          <input
+            type="number"
+            class="form-control"
+            name="font_size"
+            placeholder="Font size"
+            value="{{tenant.theme_config.color.font_size}}"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const colorInput = document.getElementById("favcolor");
+  const textInput = document.getElementById("fixColor");
+  const colorListSim = document.getElementById("favcolorListSim");
+  const textListSim = document.getElementById("colorListSim");  
+  const colorSearch = document.getElementById("favcolorSearch");
+  const textSearch = document.getElementById("colorSearch");
+  const colorHighlight = document.getElementById("favcolorHighlight");
+  const textHighlight = document.getElementById("colorHighlight");
+  const colorBG = document.getElementById("favcolorBG");
+  const textBG = document.getElementById("colorBG");
+  const colorBgMenu = document.getElementById("favcolorBgMenu");
+  const textBgMenu = document.getElementById("colorBgMenu");
+  const colorTextMenu = document.getElementById("favcolorTextMenu");
+  const textMenu = document.getElementById("colorTextMenu");
+
+  $('select').on('change', function() {
+    {% for color in theme_color_templates %}
+    if(this.value.toUpperCase() === "{{ color.main_color }}") {
+      colorListSim.value = "{{color.second_color}}";
+      textListSim.value = "{{color.second_color}}";
+      colorSearch.value = "{{color.text_color}}";
+      textSearch.value = "{{color.text_color}}";
+      colorHighlight.value = "{{color.text_highlight}}";
+      textHighlight.value = "{{color.text_highlight}}";
+      colorBG.value = "{{color.color_bg}}";
+      textBG.value = "{{color.color_bg}}";
+      colorBgMenu.value = "{{color.color_bg_menu}}";
+      textBgMenu.value = "{{color.color_bg_menu}}";
+      colorTextMenu.value = "{{color.color_text_menu}}";
+      textMenu.value = "{{color.color_text_menu}}";
+      colorInput.value = this.value;
+    }
+    {% endfor %}
+  });
+
+  $('#favcolor').on('change', function() {
+    textInput.value = colorInput.value;
+  })
+</script>

@@ -1,0 +1,174 @@
+{% extends 'admin/change_list.html' %}
+{% load compress %} 
+{% load sims_tags %} 
+{% load static %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  {% compress css file theme_warehouse_config1 %}
+  <link
+    type="text/x-scss"
+    href="{% static 'theme_config/css/theme_warehouse_config.scss' %}?v=111"
+    rel="stylesheet"
+    media="screen"
+  />
+  {% endcompress %}
+  {% compress css file theme_templates_store_config1 %}
+  <link
+    type="text/x-scss"
+    href="{% static 'theme_config/css/theme_customize_price.scss' %}?v=111"
+    rel="stylesheet"
+    media="screen"
+  />
+  {% endcompress %}
+{% endblock %}
+
+
+{% block pagination %}{% endblock %}
+{% block filters %}{% endblock filters %}
+{% block object-tools %}{% endblock object-tools %}
+{% block search %}{% endblock %}
+ 
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+  <a href="{% url 'admin:index' %}">Home</a>
+  {% if page_name %} &rsaquo; {{ page_name }}{% endif %}
+</div>
+<div class="btn-clear-cache">
+  <a href="/clear">Xoá cache</a>
+</div>
+{% endblock %}
+ 
+{% block result_list %}
+<div class="theme-warehouse-wrapper theme-customize-wrapper">
+  <div class="theme-warehouse-header">
+    <div class="theme-warehouse-header__title">Cài Đặt Kho Số</div>
+    <div class="theme-warehouse-header__detail">Áp dụng cho toàn website</div>
+  </div>
+
+  <div class="theme-warehouse-note">
+    <div class="theme-warehouse-note__header">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.46552 10.7615C8.38388 5.58716 9.84306 3 12.1538 3C14.4646 3 15.9237 5.58716 18.8421 10.7615L19.2058 11.4063C21.6309 15.7061 22.8435 17.856 21.7476 19.428C20.6516 21 17.9402 21 12.5175 21H11.7901C6.36737 21 3.65598 21 2.56007 19.428C1.46415 17.856 2.67672 15.7061 5.10186 11.4063L5.46552 10.7615ZM12.1538 7.25C12.568 7.25 12.9038 7.58579 12.9038 8V13C12.9038 13.4142 12.568 13.75 12.1538 13.75C11.7396 13.75 11.4038 13.4142 11.4038 13V8C11.4038 7.58579 11.7396 7.25 12.1538 7.25ZM12.1538 17C12.7061 17 13.1538 16.5523 13.1538 16C13.1538 15.4477 12.7061 15 12.1538 15C11.6015 15 11.1538 15.4477 11.1538 16C11.1538 16.5523 11.6015 17 12.1538 17Z" fill="#FD3426"/>
+      </svg>
+      <span class="theme-warehouse-note__text">Lưu ý</span>
+    </div>
+    <div class="theme-warehouse-note__content">
+      <div class="theme-warehouse-note__content__title">Thứ tự hiển thị danh sách số ưu tiên theo thứ tự sau:</div>
+      <ol class="theme-warehouse-note__content__list-note">
+        <li>Sim thuộc kho cá nhân</li>
+        <li>Sim thuộc kho ưu tiên hiển thị</li>
+        <li>Sim thuộc kho Appsim</li>
+      </ol>
+      <div class="theme-warehouse-note__content__title">
+        Và toàn bộ sim thuộc những ID kho trong mục Ẩn hiển thị sẽ không hiển thị trên website bán hàng.
+      </div>
+    </div>
+  </div>
+  <div class="fm-customize__item" style="width:0;height:0; visibility:hidden">
+    <span class="fm-customize__item__label">
+      <strong>Kiểu bán</strong>  
+    </span>
+    <div class="form-group">
+      <input type="radio" id="option1" name="store_type" value="1" {% if store_config.store_type == '1' %}checked{% endif %}>
+      <label for="option1">&nbsp;Hỗn hợp (Kho Sim và Kho AppSim)</label><br>
+      <input type="radio" id="option2" name="store_type" value="2" {% if store_config.store_type == '2' %}checked{% endif %}>
+      <label for="option2">&nbsp;Kho AppSim</label><br>
+      <input type="radio" id="option3" name="store_type" value="3" {% if store_config.store_type == '3' %}checked{% endif %}>
+      <label for="option3">&nbsp;Kho Sim</label><br>
+    </div>
+  </div>
+  <div class="fm-customize__item"  style="width:0;height:0; visibility:hidden">
+    <span class="fm-customize__item__label">
+      <strong>Trường hiển thị giá</strong>  
+    </span>
+    <div class="form-group">
+      <input class="form-control form-control--settings form-control--disable" type="text" name="sim_price_display_field" value="{{store_config.sim_price_display_field}}" readonly>
+    </div>
+  </div>
+  <div class="fm-customize__item"  style="width:0;height:0; visibility:hidden">
+    <span class="fm-customize__item__label">
+      <strong>APPSIM API URL</strong>  
+    </span>
+    <div class="form-group">
+      <input class="form-control form-control--settings form-control--disable" type="text" name="sim_api_url" value="{{ config.sim_api_url }}" readonly/>
+    </div>
+  </div>
+  <div class="fm-customize__item">
+    <span class="fm-customize__item__label">
+      <strong>Lọc SIM cập nhật nhỏ hơn(ngày)</strong>  
+    </span>
+    <div class="form-group">
+      <input class="form-control form-control--settings" name="l_sec_gte" value="{{ store_config.l_sec_gte }}" />
+    </div>
+  </div>
+  <div class="theme-warehouse-detail">
+    <div class="theme-warehouse-left">
+      <div class="theme-warehouse-left__header">
+        <span class="theme-warehouse-left__header__note">Ưu tiên hiển thị</span>
+      </div>
+      <div class="theme-warehouse-left__content">
+        <div>
+          <input id="is_only_sale_stores" {% if store_config.is_only_sale_stores %}checked{% endif %}  type="checkbox" name="is_only_sale_stores"></input>
+          <label for="is_only_sale_stores">&nbsp;<strong>Chỉ bán trên những kho này</strong></label>
+
+        </div>
+        <div>Nhập ID của đại lý muốn <span class="theme-warehouse-left__content--bold">ưu tiên hiển thị</span></div>
+        <div><i>(Có thể nhập nhiều ID, mỗi ID cách nhau bởi một lần xuống dòng)</i></div>
+      </div>
+      <div class="form-group">
+        <textarea class="form-control form-control--textarea" rows="6" name="priority_stores" placeholder="ID 1&#10;ID 2">{{store_config.priority_stores}}</textarea>
+      </div>
+    </div>
+
+    <div class="theme-warehouse-left">
+      <div class="theme-warehouse-left__header theme-warehouse-left__header--hidden">
+        <span class="theme-warehouse-left__header__note theme-warehouse-left__header__note--hidden"> Ẩn hiển thị kho</span>
+      </div>
+      <div class="theme-warehouse-left__content">
+        <div>Nhập ID của đại lý muốn <span class="theme-warehouse-left__content--bold">ẩn hiển thị</span></div>
+        <div><i>(Có thể nhập nhiều ID, mỗi ID cách nhau bởi một lần xuống dòng)</i></div>
+      </div>
+      <div class="form-group">
+        <textarea class="form-control form-control--textarea" rows="6" name="store_ignores" placeholder="ID 1&#10;ID 2">{{store_config.store_ignores}}</textarea>
+      </div>
+    </div>
+  </div>
+  <div class="theme-warehouse-detail">
+    <div class="theme-warehouse-left">
+      <div class="theme-warehouse-left__header">
+        <span class="theme-warehouse-left__header__note">Ẩn Số Trên Web</span>
+      </div>
+      <div class="theme-warehouse-left__content">
+        <div><i>Lưu ý: Mỗi số muốn ẩn tương ứng với một dòng</i></div>
+      </div>
+      <div class="form-group">
+        <textarea class="form-control form-control--textarea" rows="6" name="numbers_hidden" placeholder="ID 1&#10;ID 2">{{store_config.numbers_hidden}}</textarea>
+      </div>
+    </div>
+  </div>
+  {% include "components/general_customization.html" with tenant=tenant %}
+  <div class="theme-warehouse-footer">
+    <button type="submit" class="btn btn--btn-blue" id="save_config">
+      <span class="btn__text">Lưu cài đặt</span>
+    </button>
+  </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("save_config").addEventListener("click", function(event) {
+      var totalPercentage = 0;
+      var inputPercentFields = document.querySelectorAll(".input_percent");
+      
+      inputPercentFields.forEach(function(field) {
+        totalPercentage += parseFloat(field.value) || 0;
+      });
+      
+      if (totalPercentage !== 100) {
+        alert("Tổng tỉ lệ hiển thị danh sách sim theo Nhà mạng phải bằng 100%");
+        event.preventDefault();
+      }
+    });
+  });
+</script>
+{% endblock result_list %}

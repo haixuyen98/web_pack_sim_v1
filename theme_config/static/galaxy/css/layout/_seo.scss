@@ -1,0 +1,47 @@
+.seo {
+  .seo__content {
+    max-height: 500px;
+    min-height: 200px;
+    overflow-y: auto;
+    background-color: $color_bg;
+    padding: 0.8rem;
+    text-align: justify;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    & strong {
+      line-height: 20px;
+      color: $color-primary;
+    }
+    & em {
+      font-weight: 600;
+    }
+    & p {
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+
+    & h1 {
+      font-size: 150%;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    & h2 {
+      font-size: 113%;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    & ul,
+    ol {
+      margin-left: 2em;
+      margin-bottom: 10px;
+      list-style-type: circle;
+    }
+    & img {
+      object-fit: contain;
+      height: auto !important;
+      width: auto !important;
+    }
+  }
+}

@@ -1,0 +1,76 @@
+.n-checkbox {
+  cursor: pointer;
+  font-weight: normal;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1.1rem;
+  color: $color-text;
+  padding-left: 3.1rem;
+  min-height: 2.4rem;
+  padding-top: .5em;
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+
+    &:checked ~ .n-checkbox__icon {
+
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__icon {
+    width: 2.4rem;
+    height: 2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    transition: .1s;
+
+    &::before {
+      content: '';
+      display: block;
+      opacity: 0;
+      transition: inherit;
+    }
+  }
+
+  a {
+    position: relative;
+    z-index: 1;
+  }
+
+  &.--checkbox {
+
+    .n-checkbox__icon {
+      border-radius: 50%;
+      border: solid 1px $color-text;
+
+      &::before {
+        width: 1.3rem;
+        height: 1rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url('~/assets/images/icons/check-white.svg');
+      }
+    }
+    
+    .n-checkbox__input:checked ~ .n-checkbox__icon {
+      background-color: $color-primary;
+      border-color: $color-primary;
+    }
+  }
+}

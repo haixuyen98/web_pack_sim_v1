@@ -1,0 +1,83 @@
+<div class="sim-required">
+  <div class="sim-required__detail">
+    <div class="sim-required__detail__header">
+      <div class="sim-required__detail__header__title">Đặt sim theo yêu cầu</div>
+      <div class="sim-required__detail__header__content">Miễn phí giao hàng toàn quốc</div>
+    </div>
+    <form method="POST" action="/dat-sim-theo-yeu-cau/" class="fm_required" onSubmit="return changeSubmitRequired()"> 
+      {% csrf_token %}  
+      <div class="sim-required__detail__content">
+        <div class="sim-required__detail__content__form">
+          <div class="form-group">
+            <input name="name" class="form-control" placeholder="Họ và tên (*)" type="text"/>
+          </div>
+          <div class="form-group">
+            <input name="phone" class="form-control" placeholder="Số điện thoại liên hệ (*)" type="text" />
+          </div>
+          <div class="sim-required__detail__header__title sim-required__detail__header__title--text">
+            Thêm các đặc điểm sim mà bạn muốn đặt:
+          </div>
+          <div class="sim-required__detail__content__form__telco">
+            <div class="form-group">
+              <input name="telco" type="telco" class="form-control" placeholder="Nhà mạng"/>
+            </div>
+            <div class="form-group">
+              <input name="number_nice" class="form-control" placeholder="Kiểu số đẹp" type="text"/>
+            </div>
+            <div class="form-group">
+              <input name="price" class="form-control" placeholder="Khoảng giá" type="text"/>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control form-control--textarea" rows="6" name="notes" placeholder="Ghi chú: 
+Gọi điện cho tôi ngay
+Tôi muốn mua số chính xác: 0981231234"></textarea>
+            </div>
+            <div class="sim-required__detail__content__form__telco__note">
+              Sau khi bấm đặt mua, nhân viên giao dịch sẽ gọi lại cho bạn sau ít phút
+            </div>
+          </div>
+        </div>
+        <div class="sim-required__detail__content__button">
+          <button type="submit" class="btn btn--sim-required" id="submit-btn">
+            <span class="txt-sim-required">Đặt mua</span>
+          </button>
+        </div>
+      </div>
+    </form>  
+  </div>
+</div>
+
+<script>
+  function changeSubmitRequired(){
+    var txt_name = document.querySelector("[name='name']").value;
+    var phone = document.querySelector("[name='phone']").value;
+    var error_phone = false;
+    var form = document.querySelector('.fm_required');
+    var submitButton = document.getElementById('submit-btn');
+    var processing = false;
+
+    if(txt_name == ''){
+      alert("Nhập tên khách hàng");
+      return false;
+    }
+    if(phone == ''){
+      alert("Nhập số điện thoại khách hàng");
+      return false;
+    }
+    if(!/^(?:\+?84|0)(24|28|20[3-9]|21[0-9]|22[0-9]|23[0-9]|25[0-9]|26[0-9]|27[0-9]|29[0-9]|30[2-9]|31[0-9]|32[0-9]|33[0-9]|34[0-9]|35[0-9]|36[0-9]|37[0-9]|38[0-9]|39[0-9]|50[3-9]|52[0-9]|53[0-9]|54[0-9]|55[0-9]|56[0-9]|57[0-9]|58[0-9]|59[0-9]|70[0-9]|76[0-9]|77[0-9]|78[0-9]|79[0-9]|81[0-9]|82[0-9]|83[0-9]|84[0-9]|85[0-9]|86[0-9]|88[0-9]|89[0-9]|91[0-9]|92[0-9]|93[0-9]|94[0-9]|96[0-9]|97[0-9]|98[0-9]|99[0-9])[0-9]{6}$/.test(phone)){
+      error_phone = true;
+      alert("Số điện thoại không đúng định dạng");
+      return false;
+    }
+    if(txt_name && phone && !error_phone && !processing){
+      processing = true;
+      submitButton.disabled = true;
+      submitButton.textContent = 'Đang xử lý...';
+
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+      });
+      return true;
+    }
+  }
+</script>

@@ -1,0 +1,251 @@
+{% load sims_tags %} 
+{% load static %}
+<div class="theme-customize-header">
+  <div class="theme-customize-header__left">
+    <div class="theme-customize-header__left__title">Danh sách các số</div>
+  </div>
+</div>
+<div class="crayons-header--search js-search-form" >
+    <form
+        method="GET"
+        role="search"
+    >
+        <div class="crayons-fields crayons-fields--horizontal">
+            <div class="crayons-field flex-1 relative fm_search_sim">
+                <input type="hidden" name="data" id="data_input" />
+                <input
+                    class="crayons-header--search-input crayons-textfield js-search-input fm_search_sim__input"
+                    type="tel"
+                    id="nav-search"
+                    name="q"
+                    oninput="handleSearchChange(this)"
+                    placeholder="Nhập số sim bạn cần tìm"
+                    autocomplete="on"
+                />
+                <button
+                    type="submit"
+                    onclick="handleSearchStoreSubmit(event)"
+                    aria-label="Search"
+                    class="c-btn c-btn--icon-alone absolute inset-px left-auto py-0 crayons-header--btn--search fm_search_sim__button"
+                >
+                    <img loading="lazy" decoding="async" onload="this.style.opacity=1"
+                    class="phone__icon lazy fm_search_sim__button__img"
+                    src="/static/galaxy/images/icons/search-header.svg"
+                    alt="Icon phone"/>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="theme-customize-content">
+  <div style="overflow-x: auto;">
+    <table id="tbl-customize-price">
+      <tr>
+        <th>No.</th>
+        <th>Số sim</th>
+        <th>Nhà mạng</th>
+        <th width="200px;">Loại sim</th>
+        <th width="70px;">Mã thợ Appsim</th>
+        <th>
+          <div>Tên đại lý</div>
+          <div>(Thợ sim)</div>
+        </th>
+        <th width="100px;">
+          <div>Giá bán</div>
+          <div>(Giá đại lý)</div>
+        </th>
+        <th width="100px;">
+          <div>Giá gốc</div>
+          <div>(Giá thợ thu)</div>
+        </th>
+        <th width="100px;">
+          <div>Lãi</div>
+          <div>(Chênh lệch Giá bán - Giá gốc)</div>
+        </th>
+        <th>Hotline</th>
+        <th>Ngày cập nhật</th>
+      </tr>
+        {% if search_store_list is not None %} 
+          {% for item in search_store_list %}
+          <tr class="item-customize-price row-search">
+              <td>{{ forloop.counter }}</td>
+              <td>{{ item.f }}</td>
+              <td>{{ item.telcoText }}</td>
+              {% if item.cText %}
+                <td class="item-cat">{{ item.cText }}</td>
+              {% else %}
+                <td class="item-cat">{% for category in item.categoriesText %}
+                      {{ category.name }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+              {% endif %}
+              
+              {% if item.s3 and item.s3|length > 0 %}
+                <td>
+                  {% for agency_id in item.s3 %}
+                    <div class="item-nowrap">
+                      {{ agency_id }}
+                    </div>
+                  {% endfor %}
+                </td>
+              {% else %}
+                <td></td>
+              {% endif %}
+
+              {% if item.highlight %}
+                <td>
+                  {% for agency_id in item.s3 %}
+                      <div class="item-nowrap">
+                        {% if agency_id in agencies %}
+                          {{ agencies|get_value_from_key:agency_id|get_value_from_key:"name" }}
+                          {% if not forloop.last %} {% endif %}
+                          {% else %}
+                          Chưa có thông tin
+                        {% endif %}
+                      </div>
+                  {% endfor %}
+                </td>
+              {% else %}
+                <td>Bảng số cá nhân</td>
+              {% endif %}
+
+              {% if item.highlight %}
+                <td>
+                  {% for agency_id in item.s3 %}
+                    <div class="item-nowrap">
+                      {% if agency_id in agencies %}
+                        {% with pb=phonesInfo|get_value_from_key:item.id|get_record_from_array:agency_id|get_value_from_key:"pb" %}
+                          {% if pb|formatPrice == '0' %}
+                            Chưa có thông tin
+                          {% else %}
+                            {{ pb|formatPrice }}
+                          {% endif %}
+                        {% endwith %}
+                        {% if not forloop.last %} {% endif %}
+                      {% else %}
+                        Chưa có thông tin
+                      {% endif %}
+                    </div>
+                  {% endfor %}
+                </td>
+              {% else %}
+                <td>{{ item.pb|formatPrice }}</td>
+              {% endif %}
+
+              {% if item.highlight %}
+                <td>
+                  {% for agency_id in item.s3 %}
+                    <div class="item-nowrap">
+                      {% if agency_id in agencies %}
+                        {% with pg=phonesInfo|get_value_from_key:item.id|get_record_from_array:agency_id|get_value_from_key:"pg" %}
+                          {% if pg|formatPrice == '0' %}
+                            Chưa có thông tin
+                          {% else %}
+                            {{ pg|formatPrice }}
+                          {% endif %}
+                        {% endwith %}
+                        {% if not forloop.last %} {% endif %}
+                      {% else %}
+                        Chưa có thông tin
+                      {% endif %}
+                    </div>
+                  {% endfor %}
+                </td>
+              {% else %}
+                <td>{{ item.pb|formatPrice }}</td>
+              {% endif %}
+
+              {% if item.highlight %}
+                <td>
+                  {% for agency_id in item.s3 %}
+                    <div class="item-nowrap">
+                      {% if agency_id in agencies %}
+                        {% with pi=phonesInfo|get_value_from_key:item.id|get_record_from_array:agency_id|get_value_from_key:"pi" %}
+                          {% if pi|formatPrice == '0' %}
+                            Chưa có thông tin
+                          {% else %}
+                            {{ pi|formatPrice }}
+                          {% endif %}
+                        {% endwith %}
+                        {% if not forloop.last %} {% endif %}
+                      {% else %}
+                        Chưa có thông tin
+                      {% endif %}
+                    </div>
+                  {% endfor %}
+                </td>
+              {% else %}
+                <td>{{ 0 |formatPrice }}</td>
+              {% endif %}
+
+              {% if item.highlight %}
+                <td>
+                  {% for agency_id in item.s3 %}
+                    <div class="item-nowrap">
+                      {% if agency_id in agencies %}
+                        {{ agencies|get_value_from_key:agency_id|get_value_from_key:"phone" }}{% if not forloop.last %} {% endif %}
+                      {% else %}
+                        Chưa có thông tin
+                      {% endif %}
+                    </div>
+                  {% endfor %}
+                </td>
+              {% else %}
+                <td>Bảng số cá nhân</td>
+              {% endif %}
+
+              {% if item.highlight %}
+                <td></td>
+              {% else %}
+                <td>{{ item.publish|date_format }}</td>
+              {% endif %}
+            </tr>
+          {% endfor %}
+        {% endif %}
+    </table>
+  </div>
+</div>
+<script src="{% static 'galaxy/js/search-keyword.js' %}?v={{ current_time }}"></script>
+<script>
+  function handleSearchStoreSubmit(event) {
+    event.preventDefault();
+    const keyword = document.getElementById("nav-search").value;
+    const urlPath = getUrlByKeyWord(keyword);
+    window.location.href = `?path=${urlPath}&q=${keyword}`;
+    return false;
+  }
+</script> 
+<style>
+  .fm_search_sim{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .fm_search_sim__input{
+    height: 1.1875rem;
+    border: 1px solid var(--border-color);
+    padding: 4px 5px !important;
+    vertical-align: top;
+    font-size: 0.8125rem;
+    max-width: 100%;
+    width: 400px;
+    border-radius: 4px;
+  }
+  .fm_search_sim__button{
+    align-items: center;
+    display: flex;
+    padding: 6px 8px;
+    border: 1px solid var(--border-color);
+    font-size: 0.8125rem;
+    margin: 0;
+    vertical-align: middle;
+    box-shadow: 0 -15px 20px -10px rgba(0, 0, 0, 0.15) inset;
+    cursor: pointer;
+    color: var(--body-fg);
+    border-radius: 4px;
+    height: 29px;
+  }
+  .fm_search_sim__button__img{
+    width: 14px;
+  }
+</style>

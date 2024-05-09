@@ -1,0 +1,184 @@
+<div class="theme-editor__panel" id="panel-5">
+  <header class="te-panel__header">
+    <button
+      class="ui-button btn--plain te-panel__header-action"
+      onclick="closeSection('panel-5')"
+      type="button"
+      name="button"
+    >
+      <i class="las la-angle-left" style="font-size: 22px"></i>
+    </button>
+    <h2 class="ui-heading theme-editor__heading">Hotline</h2>
+  </header>
+
+  <div
+    class="theme-editor__panel-body"
+    data-scrollable=""
+    data-title="Cài đặt chung"
+    id="hotline-editor"
+  >
+    <div class="card mt-3">
+      <form id="support-form" method="post" action="#">
+        <div class="card-body">
+          <div class="form-group">
+            <label for="exampleTitleHotline1">Title hotline1</label>
+            <input
+              class="form-control"
+              name="title1"
+              placeholder="Title hotline1"
+              value="{{tenant.theme_config.support.title1}}"
+            />
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="exampleHotline1">Hotline 1</label>
+            <input
+              class="form-control"
+              name="hotline1"
+              placeholder="Hotline 1"
+              value="{{tenant.theme_config.support.hotline1}}"
+            />
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="exampleTitleHotline2">Title hotline2</label>
+            <input
+              class="form-control"
+              name="title2"
+              placeholder="Title hotline2"
+              value="{{tenant.theme_config.support.title2}}"
+            />
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="exampleHotline2">Hotline 2</label>
+            <input
+              class="form-control"
+              name="hotline2"
+              placeholder="Hotline 2"
+              value="{{tenant.theme_config.support.hotline2}}"
+            />
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="exampleFB">Facebook</label>
+            <input
+              class="form-control"
+              name="facebook"
+              placeholder="Nhập link Facebook"
+              value="{{tenant.theme_config.support.facebook}}"
+            />
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="exampleMessenger">Messenger</label>
+            <input
+              class="form-control"
+              name="messenger"
+              placeholder="Nhập link Messenger"
+              value="{{tenant.theme_config.support.messenger}}"
+            />
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="exampleZalo">ZALO</label>
+            <input
+              class="form-control"
+              name="zalo"
+              placeholder="Nhập link zalo"
+              value="{{tenant.theme_config.support.zalo}}"
+            />
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="exampleLinkedin">Linkedin</label>
+            <input
+              class="form-control"
+              name="linkedin"
+              placeholder="Nhập link Linkedin"
+              value="{{tenant.theme_config.support.linkedin}}"
+            />
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="exampleTwitter">Twitter</label>
+            <input
+              class="form-control"
+              name="twitter"
+              placeholder="Nhập link Twitter"
+              value="{{tenant.theme_config.support.twitter}}"
+            />
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="exampleYoutube">Youtube</label>
+            <input
+              class="form-control"
+              name="youtube"
+              placeholder="Nhập link Youtube"
+              value="{{tenant.theme_config.support.youtube}}"
+            />
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="exampleBusinessHours">Giờ mở cửa</label>
+            <input
+              class="form-control"
+              name="business_hours"
+              placeholder="08:00 - 21:00"
+              value="{{tenant.theme_config.support.business_hours}}"
+            />
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="exampleEmail">Email</label>
+            <input
+              class="form-control"
+              name="email"
+              placeholder="abc@gmail.com"
+              value="{{tenant.theme_config.support.email}}"
+            />
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="form-group">
+            <label for="exampleInputFile">Tải ứng dụng và chứng nhận</label>
+            <textarea
+              class="form-control ckeditor"
+              name="download_and_certification"
+              id=""
+              cols="30"
+              rows="10"
+              style="height: 100px; visibility: hidden; display: none"
+            >{{ tenant.theme_config.support.download_and_certification }}</textarea>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="exampleInputFile">Hiển thị hotline theo style</label>
+            <div>
+              <input type="radio" name="displayStyle" value="1" {% if tenant.theme_config.support.displayStyle == "1" %} checked {% endif %}/>
+              <label for="style1">Style 1</label>
+            </div>
+            <div>
+              <input type="radio" name="displayStyle" value="2" {% if tenant.theme_config.support.displayStyle == "2" %} checked {% endif %}/>
+              <label for="style2">Style 2</label>
+            </div>
+          </div>
+        </div>        
+      </form>
+    </div>
+  </div>
+</div>

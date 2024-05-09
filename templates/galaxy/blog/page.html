@@ -1,0 +1,41 @@
+{% extends 'galaxy/base.html' %}
+{% load compress %}
+{% load sims_tags %}
+{% load static %}
+
+{% block body %}
+  <div class="wrapper">
+    <div id="page-content-inner">
+      {% if breadcrumb_data %}
+        <div class="post-container breadcrumb-articles">
+          <div class="post-container__head">
+            {% include 'galaxy/blog/breadcum.html' with breadcrumb_data=breadcrumb_data %}
+          </div>
+        </div>
+      {% endif %}
+      <div class="crayons-layout crayons-layout--3-cols crayons-layout--article">
+        {% include 'galaxy/layout/sidebar-left.html' %}
+        <main id="main-content" class="crayons-layout__content gap-4 success">
+            {% if page and show_title %}
+              <div class="title_post">{{page.title}}</div>
+            {% endif %}
+            {{content}}
+        </main>
+        {% include 'galaxy/blog/blog_sidebar.html' with disable_sidebar_article=disable_sidebar_article %}
+      </div>
+    </div>
+  </div>
+  <script>
+    function copyOrderCode() {
+      var orderCode = "{{ order.code }}";
+      var tempInput = document.createElement("input");
+      tempInput.value = orderCode;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand("copy");
+      document.body.removeChild(tempInput);
+      alert("Đã sao chép mã đơn hàng thành công!");
+    }
+  </script>
+{% endblock %}
+

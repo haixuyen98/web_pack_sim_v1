@@ -1,0 +1,67 @@
+{% extends 'admin/sims/custom_action_base.html' %}
+{% load static %}
+{% block header %}
+    <link rel="stylesheet" href="{% static '/admin/sims/css/custom_action_modal.css' %}">
+{% endblock %}
+{% block breadcrumbs %}
+{% endblock %}
+{% block content %}
+
+<div class="custom-action-modal">
+    <form 
+        id="simCommentsChangeForm"
+        method="POST" 
+        action="{% url 'admin:sim_comments_change_action' data.id %}"
+    >
+        {% csrf_token %}
+        <textarea id="id_new_comment" name="new_comment" cols="40" rows="10" required></textarea>
+
+        <button id="submit-btn" type="submit" class="submit-status">Thêm</button>
+    </form>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var changeSimCommentsForm = document.getElementById('simCommentsChangeForm');
+    var submitBtn = document.getElementById('submit-btn');
+    var newComment = document.getElementById('id_new_comment');
+
+    changeSimCommentsForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        if (submitBtn.disabled) {
+            event.preventDefault();
+            return;
+        }
+
+        // Add the new comment to the form data
+        var formData = new FormData(this);
+        formData.append('new_comment', newComment.value);
+
+        // Perform an asynchronous request to update the comments
+        fetch(this.action, {
+            method: 'POST',
+            body: formData,
+        })
+        .then(function(response) {
+            if (response.ok) {
+                // Close the modal if the update was successful
+                window.top.location.reload();
+            }
+        });
+
+        var isValid = true;
+        if (newComment.value.trim() === '') {
+            isValid = false;
+        }
+
+        if (isValid) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Xử lý...';
+        } else {
+            event.preventDefault();
+        }
+    });
+});
+</script>
+
+{% endblock %}

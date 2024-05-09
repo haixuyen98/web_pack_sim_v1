@@ -1,0 +1,1966 @@
+{% load static %}
+{% load core_tags %}
+
+{% get_current_base_url as base_url %}
+
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <base href="{{base_url}}" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Thiết kế website sim giá rẻ, chuyên nghiệp, hiệu quả</title>
+    <meta name="keywords" content="Thiết kế web sim, web sim">
+    <meta name="description" content="Thiết kế website kinh doanh sim nhanh chóng, đơn giản với kho sim trên 30 triệu số. Giúp quản lý, kinh doanh hiệu quả, tra cứu thông tin đại lý dễ dàng, tiện lợi.">
+    <meta name="robots" content="max-image-preview:large" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link rel="profile" href="http://gmpg.org/xfn/11" />
+    <link href="https://fonts.gstatic.com" crossorigin rel="preconnect" />
+    <link rel="canonical" href="{{ request.build_absolute_uri }}" />
+    <link
+      rel="icon"
+      href="{% static '/main_site/images/favicon.png' %}"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{% static '/main_site/css/main_site.css' %}"
+      type="text/css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      id="wp-block-library-css"
+      href="{% static '/main_site/css/style.min.css' %}"
+      type="text/css"
+      media="all"
+    />
+    
+    <link
+      rel="stylesheet"
+      id="swiper-css"
+      href="{% static '/main_site/css/swiper.min.css' %}"
+      type="text/css"
+      media="all"
+    />
+    
+    <link
+      rel="stylesheet"
+      id="lightgallery-css"
+      href="{% static '/main_site/css/lightgallery.min.css' %}"
+      type="text/css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      id="aeroland-style-css"
+      href="{% static '/main_site/css/aeroland-style.css' %}"
+      type="text/css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static '/main_site/css/custom.css' %}"
+      type="text/css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      id="perfect-scrollbar-woosw-css"
+      href="{% static '/main_site/css/perfect-scrollbar-woosw.css' %}"
+      type="text/css"
+      media="all"
+    />
+    
+    <link
+      rel="stylesheet"
+      id="magnific-popup-css"
+      href="{% static '/main_site/css/magnific-popup.css' %}"
+      type="text/css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      id="lightslider-css"
+      href="{% static '/main_site/css/lightslider.min.css' %}"
+      type="text/css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      id="js_composer_front-css"
+      href="{% static '/main_site/css/js_composer.min.css' %}"
+      type="text/css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      id="aeroland-child-demo-style-css"
+      href="{% static '/main_site/css/style.css' %}"
+      type="text/css"
+      media="all"
+    />
+   
+    <link
+      rel="stylesheet"
+      property="stylesheet"
+      id="rs-icon-set-fa-icon-css"
+      href="https://aeroland.thememove.com/start-ups/wp-content/plugins/revslider/public/assets/fonts/font-awesome/css/font-awesome.css"
+      type="text/css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      id="vc_tta_style-css"
+      href="{% static '/main_site/css/js_composer_tta.min.css' %}"
+      type="text/css"
+      media="all"
+    />
+
+  </head>
+  <body
+    class="home page-template-default page page-id-2 wp-embed-responsive theme-aeroland  desktop desktop-menu  page-has-animation one-page header-sticky-both wide page-has-no-sidebar wpb-js-composer js-comp-ver-7.0 vc_responsive"
+    data-site-width="1200px"
+    data-content-width="1200"
+    data-header-sticky-height="80"
+  >
+    <div id="page-preloader" class="page-loading clearfix">
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+      <div class="page-load-inner">
+        <div class="preloader-wrap">
+          <div class="wrap-2">
+            <div class="inner">
+              <div class="sk-wrap sk-bg-child sk-three-bounce">
+                <div class="sk-child sk-bounce1"></div>
+                <div class="sk-child sk-bounce2"></div>
+                <div class="sk-child sk-bounce3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page" class="site">
+      <div class="content-wrapper">
+        <header
+          id="page-header"
+          class="page-header header-03 header-layout-fixed light-logo-version header-sticky-dark-logo"
+        >
+          <div class="page-header-place-holder"></div>
+          <div id="page-header-inner" class="page-header-inner" data-sticky="1">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="header-wrap">
+                    <div class="branding">
+                      <div class="branding__logo">
+                        <a
+                          href="/"
+                          rel="home"
+                        >
+                          <img
+                            src="{% static '/main_site/images/logowhite.svg' %}"
+                            alt="Web sim"
+                            class="light-logo"
+                          />
+                          <img
+                            src="{% static '/main_site/images/logo.svg' %}"
+                            alt="Web sim"
+                            class="dark-logo"
+                          />
+                        </a>
+                      </div>
+                    </div>
+                    <div
+                      id="page-navigation"
+                      class="navigation page-navigation"
+                    >
+                      <nav id="menu" class="menu menu--primary">
+                        <ul
+                          id="menu-primary"
+                          class="menu__container sm sm-simple"
+                        >
+                          <li
+                            id="menu-item-137"
+                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-137 level-1"
+                          >
+                            <a href="#interface"
+                              ><div class="menu-item-wrap">
+                                <span class="menu-item-title">Kho giao diện</span>
+                              </div></a
+                            >
+                          </li>
+                          <li
+                            id="menu-item-138"
+                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-138 level-1"
+                          >
+                            <a href="#section-about"
+                              ><div class="menu-item-wrap">
+                                <span class="menu-item-title">Tính năng</span>
+                              </div></a
+                            >
+                          </li>
+                          <li
+                            id="menu-item-139"
+                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-139 level-1"
+                          >
+                            <a href="#tm-row-65d805d76fa7a"
+                              ><div class="menu-item-wrap">
+                                <span class="menu-item-title">Bảng giá</span>
+                              </div></a
+                            >
+                          </li>
+                          <li
+                            id="menu-item-140"
+                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-140 level-1"
+                          >
+                            <a href="#section-team"
+                              ><div class="menu-item-wrap">
+                                <span class="menu-item-title">Ý kiến khách hàng</span>
+                              </div></a
+                            >
+                          </li>
+                        </ul>
+                      </nav>
+                    </div>
+
+                    <div class="header-right">
+                      <div
+                        id="page-open-mobile-menu"
+                        class="page-open-mobile-menu"
+                      >
+                        <div class="inner">
+                          <div class="icon"><i></i></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div id="page-content" class="page-content">
+          <div class="container">
+            <div class="row">
+              <div id="page-main-content" class="page-main-content">
+                <article
+                  id="post-2"
+                  class="post-2 page type-page status-publish hentry post-no-thumbnail"
+                >
+                  <h2 class="screen-reader-text">Homepage</h2>
+                  <section class="wpb-content-wrapper">
+                    <div
+                      id="tm-row-65b8a278f3685"
+                      data-vc-full-width="true"
+                      data-vc-full-width-init="false"
+                      data-vc-stretch-content="true"
+                      class="vc_row vc_row-outer vc_row-fluid"
+                    >
+                      <div class="wavify-wrapper">
+                        <svg
+                          width="100%"
+                          height="100%"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="wavify-item"
+                          data-wavify-height="200"
+                          data-wavify-background="#ffffff"
+                          data-wavify-amplitude="100"
+                          data-wavify-bones="2"
+                        >
+                          <title>Wave</title>
+                          <defs></defs>
+                          <path d="" />
+                        </svg>
+                      </div>
+                      <div
+                        id="tm-column-65b8a2790128c"
+                        class="wpb_column vc_column_container vc_col-sm-12 vc_col-md-6"
+                      >
+                        <div class="vc_column-inner">
+                          <div class="wpb_wrapper">
+                            <div
+                              id="tm-row-inner-65b8a27908013"
+                              class="vc_row vc_inner vc_row-fluid"
+                            >
+                              <div
+                                id="tm-column-inner-65b8a2790870d"
+                                class="wpb_column vc_column_container vc_col-sm-12"
+                              >
+                                <div class="vc_column-inner">
+                                  <div class="wpb_wrapper">
+                                    <div
+                                      class="tm-spacer"
+                                      id="tm-spacer-65b8a2790a8f8"
+                                    ></div>
+
+                                    <div
+                                      class="tm-heading left tm-animation move-up"
+                                      id="tm-heading-65b8a2790aab5"
+                                    >
+                                      <h3 class="heading">
+                                        Làm Chủ Website Chuyên Nghiệp<br />
+                                        Đột phá Kinh doanh Sim Số Đẹp!
+                                      </h3>
+                                    </div>
+
+                                    <div
+                                      class="tm-spacer"
+                                      id="tm-spacer-65b8a2790ac73"
+                                    ></div>
+
+                                    <div
+                                      class="tm-heading left tm-animation move-up"
+                                      id="tm-heading-65b8a2790ad3d"
+                                    >
+                                      <div class="heading">
+                                        Tạo Website dễ dàng, không cần là chuyên gia kỹ thuật. 
+                                        Kho sim hơn 30 triệu số, 1500+ khách hàng tin dùng. 
+                                        Sở hữu ngay Web Sim Số đẹp Sáng tạo, Tối ưu, Chuẩn SEO, Chuyên nghiệp và Hiệu quả!
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="tm-spacer"
+                              id="tm-spacer-65b8a2790af01"
+                            ></div>
+                            <div
+                              class="tm-button-group"
+                              id="tm-button-group-65b8a2790b4e1"
+                            >
+                              <div
+                                class="tm-button-wrapper tm-animation move-up"
+                                id="tm-button-65b8a2790ba9d"
+                              >
+                                <a
+                                  class="tm-button style-flat tm-button-custom tm-button-custom"
+                                  href="#section-contact"
+                                >
+                                  <span
+                                    class="button-text"
+                                    data-text="Get started"
+                                  >
+                                    Dùng Thử Ngay
+                                  </span>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        id="tm-column-65b8a2790c0b5"
+                        class="wpb_column vc_column_container vc_col-sm-12 vc_col-md-6"
+                      >
+                        <div class="vc_column-inner">
+                          <div class="wpb_wrapper">
+                            <div
+                              class="tm-spacer"
+                              id="tm-spacer-65b8a2790c22b"
+                            ></div>
+                            <div
+                              class="tm-image tm-animation move-up"
+                              id="tm-image-65b8a2790c2e7"
+                            >
+                              <div class="image">
+                                <img
+                                  src="{% static '/main_site/images/aeroland-startup-hero-image-reup.png' %}"
+                                  alt="aeroland-startup-hero-image-reup"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="vc_row-full-width vc_clearfix"></div>
+                    <div class="vc_row vc_row-outer vc_row-fluid">
+                      {% include 'main_site/interface.html' with tenant_templates=tenant_templates %}
+                    </div>
+                    <div class="vc_row-full-width vc_clearfix"></div>
+                    <div
+                      id="section-about"
+                      class="vc_row vc_row-outer vc_row-fluid"
+                    >
+                      <div
+                        id="tm-column-65b8a2790d319"
+                        class="wpb_column vc_column_container vc_col-sm-12"
+                      >
+                        <div class="vc_column-inner">
+                          <div class="wpb_wrapper">
+                            <div
+                              class="tm-spacer"
+                              id="tm-spacer-65b8a2790d483"
+                            ></div>
+
+                            <div
+                              class="tm-heading center tm-animation move-up"
+                              id="tm-heading-65b8a2790d5c8"
+                            >
+                              <h3 class="heading">
+                                Website chuyên nghiệp dành riêng cho Kinh doanh Sim số đẹp <br>SÁNG TẠO - TỐI ƯU - HIỆU QUẢ</br>
+                              </h3>
+                            </div>
+
+                            <div
+                              class="tm-spacer"
+                              id="tm-spacer-65b8a2790d7e4"
+                            ></div>
+                            <div
+                              class="tm-spacer"
+                              id="tm-spacer-65b8a2790da2d"
+                            ></div>
+                            <div
+                              class="tm-grid-wrapper tm-grid-group"
+                              id="tm-grid-65b8a2790eacb"
+                              data-item-wrap="1"
+                            >
+                              <div
+                                class="tm-grid modern-grid has-animation move-up"
+                              >
+                                <div
+                                  class="tm-box-icon style-06 tm-animation move-up"
+                                  id="tm-box-icon-65b8a2790ecc9"
+                                >
+                                  <a href="#" class="link-secret">
+                                    <div class="content-wrap">
+                                      <div class="image">
+                                        <img
+                                          src="{% static '/main_site/images/aeroland-startup-box-icon-01.png' %}"
+                                          alt="aeroland-startup-box-icon-01"
+                                          width="64"
+                                        />
+                                      </div>
+
+                                      <div class="content">
+                                        <h4 class="heading">Xây dựng website</h4>
+
+                                        <div class="text">
+                                          Đội ngũ chuyên gia kỹ thuật về xây dựng web
+                                          và ứng dụng sẽ giúp bạn có ngay
+                                          website ưng ý một cách nhanh chóng.
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </a>
+                                </div>
+                                <div
+                                  class="tm-box-icon style-06 tm-animation move-up"
+                                  id="tm-box-icon-65b8a2790f6c1"
+                                >
+                                  <a href="#" class="link-secret">
+                                    <div class="content-wrap">
+                                      <div class="image">
+                                        <img
+                                          src="{% static '/main_site/images/aeroland-startup-box-icon-02.png' %}"
+                                          alt="aeroland-startup-box-icon-02"
+                                          width="64"
+                                        />
+                                      </div>
+
+                                      <div class="content">
+                                        <h4 class="heading">Web Design, UI/UX</h4>
+
+                                        <div class="text">
+                                          Tuỳ chọn mẫu website
+                                          tối ưu cho Kinh doanh Sim số đẹp
+                                          trên mọi nền tảng, thiết bị, dễ dàng tuỳ chỉnh phù hợp với nhu cầu.
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </a>
+                                </div>
+                                <div
+                                  class="tm-box-icon style-06 tm-animation move-up"
+                                  id="tm-box-icon-65b8a27910a96"
+                                >
+                                  <a href="#" class="link-secret">
+                                    <div class="content-wrap">
+                                      <div class="image">
+                                        <img
+                                          src="{% static '/main_site/images/aeroland-startup-box-icon-03.png' %}"
+                                          alt="aeroland-startup-box-icon-03"
+                                          width="64"
+                                        />
+                                      </div>
+
+                                      <div class="content">
+                                        <h4 class="heading">SEO Marketing</h4>
+
+                                        <div class="text">
+                                          Website được tối ưu hoá SEO, 
+										                      thân thiện với bộ máy tìm kiếm, tăng khả năng hiển thị
+                                          và thu hút khách hàng tiềm năng.
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </a>
+                                </div>
+                                <div
+                                  class="tm-box-icon style-06 tm-animation move-up"
+                                  id="tm-box-icon-65b8a27911015"
+                                >
+                                  <a href="#" class="link-secret">
+                                    <div class="content-wrap">
+                                      <div class="image">
+                                        <img
+                                          src="{% static '/main_site/images/aeroland-startup-box-icon-04.png' %}"
+                                          alt="aeroland-startup-box-icon-04"
+                                          width="64"
+                                        />
+                                      </div>
+
+                                      <div class="content">
+                                        <h4 class="heading">Tiện ích phong phú</h4>
+
+                                        <div class="text">
+                                          Tự động đồng bộ kho số hơn 30 triệu số.
+                                          Tra cứu, tìm kiếm sim nhanh chóng, tiện lợi.
+                                          Tuỳ chỉnh giá, ẩn/hiện số sim, kho số.
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </a>
+                                </div>
+                                <div
+                                  class="tm-box-icon style-06 tm-animation move-up"
+                                  id="tm-box-icon-65b8a27911864"
+                                >
+                                  <a href="#" class="link-secret">
+                                    <div class="content-wrap">
+                                      <div class="image">
+                                        <img
+                                          src="{% static '/main_site/images/search-worker.svg' %}"
+                                          alt="aeroland-startup-box-icon-05"
+                                          width="64"
+                                        />
+                                      </div>
+
+                                      <div class="content">
+                                        <h4 class="heading">
+                                          Tra cứu thợ
+                                        </h4>
+
+                                        <div class="text">
+                                          Tra cứu, xem chi tiết thông tin đại lý cầm sim:
+                                          điện thoại liên hệ, giá đại lý...
+                                          dễ dàng so sánh ngay trên web.
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </a>
+                                </div>
+                                <div
+                                  class="tm-box-icon style-06 tm-animation move-up"
+                                  id="tm-box-icon-65b8a279128bc"
+                                >
+                                  <a href="#" class="link-secret">
+                                    <div class="content-wrap">
+                                      <div class="image">
+                                        <img
+                                          src="{% static '/main_site/images/split-order.svg' %}"
+                                          alt="aeroland-startup-box-icon-06"
+                                          width="64"
+                                        />
+                                      </div>
+
+                                      <div class="content">
+                                        <h4 class="heading">
+                                          Tự động chia đơn
+                                        </h4>
+
+                                        <div class="text">
+                                          Quản lý đơn hàng đơn giản, tiện lợi.
+                                          Tự động chia đơn, chăm sóc khách hàng hiệu quả.
+                                          Tự động thông báo đơn hàng về APPSIM.
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div
+                              class="tm-spacer"
+                              id="tm-spacer-65b8a27912de7"
+                            ></div>
+                            <div
+                              class="tm-button-wrapper tm-animation move-up"
+                              id="tm-button-65b8a27912e9d"
+                            >
+                              <a
+                                class="tm-button style-flat tm-button-custom tm-button- has-icon icon-right"
+                                href="#efficiency"
+                              >
+                                <span
+                                  class="button-text"
+                                  data-text="Discover how it works"
+                                >
+                                  Tìm hiểu thêm >
+                                </span>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="vc_row-full-width vc_clearfix"></div>
+                    <div
+                      id="tm-section-65b8a279179d1"
+                      data-vc-full-width="true"
+                      data-vc-full-width-init="false"
+                      class="vc_section"
+                    >
+                      <div
+                        id="tm-row-65b8a27918aae"
+                        class="vc_row vc_row-outer vc_row-fluid vc_row-o-content-middle vc_row-flex"
+                      >
+                        <div
+                          id="tm-column-65b8a27919794"
+                          class="wpb_column vc_column_container vc_col-sm-12 vc_col-md-6"
+                        >
+                          <div class="vc_column-inner">
+                            <div class="wpb_wrapper">
+                              <div
+                                class="tm-spacer"
+                                id="tm-spacer-65b8a27919921"
+                              ></div>
+
+                              <div
+                                class="tm-heading left tm-animation move-up"
+                                id="tm-heading-65b8a27919a6c"
+                              >
+                                <h3 class="heading">
+                                  Dùng thử 7 ngày miễn phí
+                                </h3>
+                              </div>
+
+                              <div
+                                class="tm-spacer"
+                                id="tm-spacer-65b8a27919c57"
+                              ></div>
+
+                              <div
+                                class="tm-heading left tm-animation move-up"
+                                id="tm-heading-65b8a27919d51"
+                              >
+                                <div class="heading">
+                                  Websim luôn đồng hành và hỗ trợ bạn xây dựng website sim kinh doanh, 
+                                  quản lí tập trung và marketing online hiệu quả.
+                                </div>
+                              </div>
+
+                              <div
+                                class="tm-spacer"
+                                id="tm-spacer-65b8a27919f0a"
+                              ></div>
+                              <div
+                                class="tm-button-wrapper tm-animation move-up"
+                                id="tm-button-65b8a27919ff3"
+                              >
+                                <a
+                                  class="tm-button style-flat tm-button-nm tm-button-custom has-icon icon-left"
+                                  href="#section-contact"
+                                >
+                                  <span
+                                    class="button-text"
+                                    data-text="Get AeroLand"
+                                  >
+                                    Đăng ký ngay
+                                  </span>
+                                </a>
+                              </div>
+                              <div
+                                class="tm-spacer"
+                                id="tm-spacer-65b8a2791a1e1"
+                              ></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          id="tm-column-65b8a2791a2ad"
+                          class="wpb_column vc_column_container vc_col-sm-12 vc_col-md-6"
+                        >
+                          <div class="vc_column-inner">
+                            <div class="wpb_wrapper">
+                              <div
+                                id="tm-row-inner-65b8a2791a49f"
+                                class="vc_row vc_inner vc_row-fluid"
+                              >
+                                <div
+                                  id="tm-column-inner-65b8a2791a67d"
+                                  class="wpb_column vc_column_container vc_col-sm-12"
+                                >
+                                  <div class="vc_column-inner">
+                                    <div class="wpb_wrapper pd-image">
+                                      <div
+                                        class="tm-spacer"
+                                        id="tm-spacer-65b8a2791a775"
+                                      ></div>
+                                      <div
+                                        class="tm-image tm-animation move-up"
+                                        id="tm-image-65b8a2791a80b"
+                                      >
+                                        <div class="image">
+                                          <img
+                                            src="{% static '/main_site/images/try-seven-day.svg' %}"
+                                            alt="aeroland-startup-section-download-image"
+                                          />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="vc_row-full-width vc_clearfix"></div>
+                    </div>
+
+                    <div class="vc_row-full-width vc_clearfix"></div>
+                    <div
+                      id="tm-row-65d805d76fa7a"
+                      data-vc-full-width="true"
+                      data-vc-full-width-init="true"
+                      class="vc_row vc_row-outer vc_row-fluid vc_row-has-separator"
+                      style="
+                        position: relative;
+                        left: -102.4px;
+                        box-sizing: border-box;
+                        width: 1145px;
+                        max-width: 1145px;
+                        padding-left: 102.4px;
+                        padding-right: 102.6px;
+                        margin-top: 24px;
+                      "
+                    >
+                      <div
+                        id="tm-column-65d805d76fc14"
+                        class="wpb_column vc_column_container vc_col-sm-12"
+                      >
+                        <div class="vc_column-inner">
+                          <div class="wpb_wrapper">
+                            <div class="tm-spacer" id="tm-spacer-65d805d76fd31"></div>
+                            <div class="header-price">
+                              <h3>Các gói thiết kế website sim</h3>
+                              <div>WEBSIM cung cấp đầy đủ mọi giải pháp giúp việc kinh doanh sim của bạn ngày càng dễ dàng.</div>
+                            </div>
+                            <div
+                              class="tm-grid-wrapper tm-grid-group"
+                              id="tm-grid-65d805d76fda6"
+                              data-item-wrap="1"
+                            >
+                              <div class="tm-grid has-animation move-up table-price">
+                                <div class="grid-item animate">
+                                  <div
+                                    class="tm-pricing style-03 tm-animation move-up animate"
+                                    id="tm-pricing-65d805d76fef9"
+                                  >
+                                    <div class="inner">
+                                      <div >
+                                        <div class="image">
+                                          <img
+                                            src="{% static '/main_site/images/aeroland-pricing-image-06.png' %}"
+                                            alt="aeroland-pricing-image-06"
+                                            width="260"
+                                          />
+                                        </div>
+
+                                        <h5 class="title">Cơ bản</h5>
+
+                                        <div class="price-wrap">
+                                          <div class="price_now">5.668.000đ</div>
+                                          <div class="price_sale">12.000.000đ</div>
+                                          <div class="price_text">Duy trì</div>
+                                          <div class="price_month">12 tháng</div>
+                                        </div>
+                                      </div>
+                                      <div class="tm-pricing-footer">
+                                        <a
+                                          href="#section-contact"
+                                          class="tm-button style-flat tm-button-sm tm-pricing-button"
+                                          >Đăng ký</a
+                                        >
+                                      </div>
+                                      <div class="tm-pricing-content">
+                                        <ul class="tm-pricing-list">
+                                          <li class="pricing-item">
+                                            <div class="feature-text">Sở hữu kho sim hơn 30 triệu số</div>
+                                          </li>
+                                          <li class="pricing-item">
+                                            <div class="feature-text">Miễn phí hosting</div>
+                                          </li>
+                                          <li class="pricing-item">
+                                            <div class="feature-text">Miễn phí tên miền (.com or .net)</div>
+                                          </li>
+                                          <li class="pricing-item">
+                                            <div class="feature-text">Hỗ trợ Up bảng số</div>
+                                          </li>
+                                          <li class="pricing-item">
+                                            <div class="feature-text">Hỗ trợ kỹ thuật riêng</div>
+                                          </li>
+                                          <li class="pricing-item">
+                                            <div class="feature-text">Tặng 2 ảnh banner top</div>
+                                          </li>
+                                          <li class="pricing-item">
+                                            <div class="feature-text">Tặng 2 ảnh banner dọc</div>
+                                          </li>
+                                          <li class="pricing-item">
+                                            <div class="feature-text">Viết thêm 1 danh mục sim</div>
+                                          </li>
+                                          <li class="pricing-item">
+                                            <div class="feature-text">
+                                              Tặng tài khoản ứng dụng Appsim dành cho thợ sim trị giá 2.400.000đ
+                                            </div>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grid-item animate">
+                                  <div
+                                    class="tm-pricing style-03 tm-animation move-up highlight animate"
+                                    id="tm-pricing-65d805d770281"
+                                  >
+                                    <div class="inner">
+                                      <div class="tm-pricing-feature-mark">
+                                        <span>HOT</span>
+                                      </div>
+
+                                      <div class="price_image">
+                                        <div class="image">
+                                          <img
+                                            src="{% static '/main_site/images/aeroland-pricing-image-05.png' %}"
+                                            alt="aeroland-pricing-image-05"
+                                            width="238"
+                                          />
+                                        </div>
+
+                                        <h5 class="title">Nâng cao</h5>
+                                        <div class="price-wrap">
+                                          <div class="price-wrap">
+                                            <div class="price_now">12.368.000đ</div>
+                                            <div class="price_sale">20.000.000đ</div>
+                                            <div class="price_text">Duy trì</div>
+                                            <div class="price_month">24 tháng</div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="tm-pricing-footer">
+                                        <a
+                                          href="#section-contact"
+                                          class="tm-button style-flat tm-button-sm tm-pricing-button"
+                                          >Đăng ký</a
+                                        >
+                                      </div>
+                                      <div class="tm-pricing-content">
+                                        <ul class="tm-pricing-list">
+                                          <li class="pricing-item">
+                                            <div class="feature-text">Sở hữu kho sim hơn 30 triệu số</div>
+                                          </li>
+                                          <li class="pricing-item">
+                                            <div class="feature-text">Miễn phí hosting</div>
+                                          </li>
+                                          <li class="pricing-item">
+                                            <div class="feature-text">Miễn phí tên miền (.com or .net)</div>
+                                          </li>
+                                          <li class="pricing-item">
+                                            <div class="feature-text">Hỗ trợ Up bảng số</div>
+                                          </li>
+                                          <li class="pricing-item">
+                                            <div class="feature-text">Hỗ trợ kỹ thuật riêng 24/7</div>
+                                          </li>
+                                          <li class="pricing-item">
+                                            <div class="feature-text">Tặng 2 ảnh banner top</div>
+                                          </li>
+                                          <li class="pricing-item">
+                                            <div class="feature-text">Tặng 2 ảnh banner dọc</div>
+                                          </li>
+                                          <li class="pricing-item">
+                                            <div class="feature-text">Viết thêm 1 danh mục sim</div>
+                                          </li>
+                                          <li class="pricing-item">
+                                            <div class="feature-text">Tuỳ biến giao diện</div>
+                                          </li>
+                                          <li class="pricing-item">
+                                            <div class="feature-text">
+                                              Tặng tài khoản ứng dụng Appsim dành cho thợ sim trị giá 4.800.000đ
+                                            </div>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grid-item animate">
+                                  <div
+                                    class="tm-pricing style-03 tm-animation move-up animate"
+                                    id="tm-pricing-65d805d770541"
+                                  >
+                                    <div class="inner">
+                                      <div>
+                                        <div class="image">
+                                          <img
+                                            src="{% static '/main_site/images/aeroland-pricing-image-07.png' %}"
+                                            alt="aeroland-pricing-image-07"
+                                            width="240"
+                                          />
+                                        </div>
+                                        <h5 class="title">Cao cấp</h5>
+                                        <div class="price-wrap">
+                                          <div class="price_now">19.968.000đ</div>
+                                          <div class="price_sale">35.000.000đ</div>
+                                          <div class="price_text">Duy trì</div>
+                                          <div class="price_month">24 tháng</div>
+                                        </div>
+                                      </div>
+                                      <div class="tm-pricing-footer">
+                                        <a
+                                          href="#section-contact"
+                                          class="tm-button style-flat tm-button-sm tm-pricing-button"
+                                          >Đăng ký</a
+                                        >
+                                      </div>
+                                      <div class="tm-pricing-content">
+                                        <ul class="tm-pricing-list">
+                                          <li class="pricing-item">
+                                            <div class="feature-text">Miễn phí hosting 2 năm đầu</div>
+                                          </li>
+                                          <li class="pricing-item">
+                                            <div class="feature-text">Miễn phí tên miền (.com or .net) 2 năm đầu</div>
+                                          </li>
+                                          <li class="pricing-item">
+                                            <div class="feature-text">Hỗ trợ kỹ thuật riêng 24/7</div>
+                                          </li>
+                                          <li class="pricing-item">
+                                            <div class="feature-text">Tặng 2 ảnh banner top</div>
+                                          </li>
+                                          <li class="pricing-item">
+                                            <div class="feature-text">Tặng 2 ảnh banner dọc</div>
+                                          </li>
+                                          <li class="pricing-item">
+                                            <div class="feature-text">Tùy chọn thay đổi giao diện</div>
+                                          </li>
+                                          <li class="pricing-item">
+                                            <div class="feature-text">Gói bảo mật chống DDoS quy mô lớn</div>
+                                          </li>
+                                          <li class="pricing-item">
+                                            <div class="feature-text">Tặng gói bảo mật SSL</div>
+                                          </li>
+                                          <li class="pricing-item">
+                                            <div class="feature-text">Viết thêm danh mục sim, danh mục khác</div>
+                                          </li>
+                                          <li class="pricing-item">
+                                            <div class="feature-text">Tuỳ biến giao diện</div>
+                                          </li>
+                                          <li class="pricing-item">
+                                            <div class="feature-text">
+                                              Tặng 2 tài khoản ứng dụng Appsim dành cho thợ sim trị giá 9.600.000đ
+                                            </div>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="tm-spacer" id="tm-spacer-65d805d7707f9"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="vc_row-separator tilt_right top">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          version="1.1"
+                          preserveAspectRatio="none"
+                          viewBox="0 0 4 0.266661"
+                        >
+                          <linearGradient id="svg-fill-65d805d770853">
+                            <stop offset="0%" stop-color="#a890f2"></stop>
+                            <stop offset="100%" stop-color="#8481ec"></stop>
+                          </linearGradient>
+                          <polygon
+                            points="4,0 4,0.266661 -0,0.266661"
+                            fill="url( #svg-fill-65d805d770853 )"
+                          ></polygon>
+                        </svg>
+                      </div>
+                    </div>
+
+                    <div class="vc_row-full-width vc_clearfix"></div>
+                    <div
+                      id="section-team"
+                      data-vc-full-width="true"
+                      data-vc-full-width-init="false"
+                      class="vc_row vc_row-outer vc_row-fluid"
+                    >
+                      <div
+                        id="tm-column-65b8a2792830a"
+                        class="wpb_column vc_column_container vc_col-sm-12"
+                      >
+                        <div class="vc_column-inner">
+                          <div class="wpb_wrapper">
+                            <div
+                              class="tm-spacer"
+                              id="tm-spacer-65b8a27928411"
+                            ></div>
+
+                            <div
+                              class="tm-heading center tm-animation move-up"
+                              id="tm-heading-65b8a27928534"
+                            >
+                              <h3 class="heading">
+                                Hơn 1.500 khách hàng đã tin dùng các giải pháp công nghệ của WEBSIM
+                              </h3>
+                            </div>
+
+                            <div
+                              class="tm-spacer"
+                              id="tm-spacer-65b8a279289dd"
+                            ></div>
+                            <div
+                              class="tm-slider-group tm-swiper swiper-has-shadow pagination-style-02"
+                              id="tm-slider-group-65b8a27928ac2"
+                              data-slide-wrap="1"
+                              data-xs-items="1"
+                              data-sm-items="1"
+                              data-md-items="1"
+                              data-lg-items="1"
+                              data-pagination="1"
+                              data-loop="1"
+                            >
+                              <div class="swiper-inner">
+                                <div class="swiper-container">
+                                  <div class="swiper-wrapper">
+                                    <div
+                                      class="tm-team-member style-02 tm-animation move-up"
+                                      id="tm-team-member-65b8a27929ac7"
+                                    >
+                                      <div class="inner slider">
+                                        <div class="photo">
+                                          <img  src="{% static '/main_site/images/user1.jpg' %}" alt="avatar-06" />
+                                        </div>
+                                        <div class="info">
+                                          <h3 class="name">
+                                            <img src="{% static '/main_site/images/team1.png' %}" alt="avatar-06" />
+                                          </h3>
+                                          <div class="position">
+                                            Giải pháp của websim giúp dễ dàng quản lý việc bán hàng, tăng trải nghiệm cho khách với sự phục vụ chuyên nghiệp.
+                                          </div>
+                                          <hr class="line-customer">
+                                          <div class="name-users">Anh Phạm Đức Điệp (Sim league)</div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div
+                                      class="tm-team-member style-02 tm-animation move-up"
+                                      id="tm-team-member-65b8a2792a850"
+                                    >
+                                      <div class="inner slider">
+                                        <div class="photo">
+                                          <img src="{% static '/main_site/images/user2.jpg' %}" alt="avatar-06" />
+                                        </div>
+                                        <div class="info">
+                                          <h3 class="name">
+                                            <img src="{% static '/main_site/images/team2.png' %}" alt="avatar-06" />
+                                          </h3>
+                                          <div class="position">
+                                            Với websim, việc tra cứu hotline, giá thợ gốc rất thuận tiện, là công cụ rất hữu ích với anh em thợ sim. 
+                                            Có nhiều nâng cấp thường xuyên và giúp ích cho công việc của mình.
+                                          </div>
+                                          <hr class="line-customer">
+                                          <div class="name-users">Anh Giang Kim Mã</div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div
+                                      class="tm-team-member style-02 tm-animation move-up"
+                                      id="tm-team-member-65b8a2792b39d"
+                                    >
+                                      <div class="inner slider">
+                                        <div class="photo">
+                                          <img src="{% static '/main_site/images/user3.jpg' %}" alt="avatar-06" />
+                                        </div>
+                                        <div class="info">
+                                          <h3 class="name">
+                                            <img src="{% static '/main_site/images/team3.jpg' %}" alt="avatar-06" />
+                                          </h3>
+                                          <div class="position">
+                                            Có website kinh doanh sim không chỉ đem lại việc tiếp cận nhiều khách hàng, doanh số cao hơn mong đợi, 
+                                            mà còn nâng cao uy tín cá nhân. Ngoài ra websim có nhiều giao diện để mình có thể lựa chọn và tùy chỉnh.
+                                          </div>
+                                          <hr class="line-customer">
+                                          <div class="name-users">Anh Hải Hòa Bình</div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div
+                                      class="tm-team-member style-02 tm-animation move-up"
+                                      id="tm-team-member-65b8a2792b894"
+                                    >
+                                      <div class="inner slider">
+                                        <div class="photo">
+                                          <img src="{% static '/main_site/images/user4.jpg' %}" alt="avatar-06" />
+                                        </div>
+
+                                        <div class="info">
+                                          <h3 class="name">
+                                            <img src="{% static '/main_site/images/team4.jpg' %}" alt="avatar-06" />
+                                          </h3>
+                                          <div class="position">
+                                            Kho số khổng lồ mà websim và đa dạng giao diện website là 2 điều khiến mình lựa chọn là đơn vị thiết kế website kinh doanh sim. 
+                                            Chỉ với 5 phút là mình đã hoàn thành 1 website kinh doanh sim hoàn chỉnh, điều mà các đơn vị khác không có được. 
+                                          </div>
+                                          <hr class="line-customer">
+                                          <div class="name-users">Anh Nguyễn Thái</div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="tm-spacer"
+                              id="tm-spacer-65b8a2792c1d2"
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="vc_row-full-width vc_clearfix"></div>
+                    <div
+                      id="efficiency"
+                      data-vc-full-width="true"
+                      data-vc-full-width-init="false"
+                      class="vc_row vc_row-outer vc_row-fluid"
+                    >
+                      <div
+                        id="tm-column-65b8a2792c55a"
+                        class="wpb_column vc_column_container vc_col-sm-12"
+                      >
+                        <div class="vc_column-inner">
+                          <div class="wpb_wrapper">
+                            <div
+                              class="tm-spacer"
+                              id="tm-spacer-65b8a2792c69c"
+                            ></div>
+
+                            <div
+                              class="tm-heading center tm-animation move-up"
+                              id="tm-heading-65b8a2792c7e0"
+                            >
+                              <h3 class="heading">
+                                Tối ưu hiệu suất - Tối đa lợi nhuận
+                              </h3>
+                            </div>
+
+                            <div
+                              class="tm-spacer"
+                              id="tm-spacer-65b8a2792c940"
+                            ></div>
+
+                            <div
+                              class="tm-heading center tm-animation move-up"
+                              id="tm-heading-65b8a2792cad3"
+                            >
+                              <div class="heading">
+                                Giải pháp tối ưu, tận tâm hỗ trợ.
+                              </div>
+                            </div>
+
+                            <div
+                              class="tm-spacer"
+                              id="tm-spacer-65b8a2792cc14"
+                            ></div>
+                            <div
+                              id="tm-tta-container-65b8a2792ed85"
+                              class="tm-tta-container tm-animation move-up"
+                            >
+                              <div
+                                class="vc_tta-container"
+                                data-vc-action="collapse"
+                              >
+                                <div
+                                  class="vc_general vc_tta vc_tta-tabs vc_tta-color-primary vc_tta-style-aeroland-02 vc_tta-shape-rounded vc_tta-o-shape-group vc_tta-has-pagination vc_tta-tabs-position-top vc_tta-controls-align-left dp-flex"
+                                >
+                                  <div class="vc_tta-tabs-container">
+                                    <ul class="vc_tta-tabs-list">
+                                      <li
+                                        class="vc_tta-tab vc_active"
+                                        data-vc-tab
+                                      >
+                                        <div
+                                          data-vc-tabs
+                                          data-vc-container=".vc_tta"
+                                          ><i class="vc_tta-icon fal">
+                                            <img src="{% static '/main_site/images/support.svg' %}" alt="Icon performance"/>
+                                          </i>
+                                          <span class="vc_tta-title-text"
+                                            ><b>Giải pháp tối ưu, tận tâm hỗ trợ.</b
+                                            ></span
+                                          ></a
+                                        >
+                                      </li>
+                                      <li class="vc_tta-tab vc_active" data-vc-tab>
+                                        <div
+                                          data-vc-tabs
+                                          data-vc-container=".vc_tta"
+                                          ><i class="vc_tta-icon fal">
+                                            <img src="{% static '/main_site/images/devices.svg' %}" alt="Icon performance"/>
+                                          </i>
+                                          <span class="vc_tta-title-text"
+                                            ><b>Tối ưu trên Mobile, PC, Laptop...</b
+                                            ></span
+                                          ></div
+                                        >
+                                      </li>
+                                      <li class="vc_tta-tab vc_active" data-vc-tab>
+                                        <div
+                                          data-vc-tabs
+                                          data-vc-container=".vc_tta"
+                                          ><i class="vc_tta-icon fal">
+                                            <img src="{% static '/main_site/images/warehouse.svg' %}" alt="Icon performance"/>
+                                            
+                                          </i>
+                                          <span class="vc_tta-title-text">
+                                            <b>Kho sim hơn 30 triệu số</b>
+                                          </span>
+                                        </div>
+                                      </li>
+                                      <li class="vc_tta-tab vc_active" data-vc-tab>
+                                        <div
+                                          data-vc-tabs
+                                          data-vc-container=".vc_tta"
+                                          ><i class="vc_tta-icon fal">
+                                            <img src="{% static '/main_site/images/single-division.svg' %}" alt="Icon performance"/>
+                                          </i>
+                                          <span class="vc_tta-title-text">
+                                            <b>Quản lý đơn hàng, chia đơn thuận tiện</b>
+                                          </span>
+                                        </div>
+                                      </li>
+                                      <li class="vc_tta-tab vc_active" data-vc-tab>
+                                        <div
+                                          data-vc-tabs
+                                          data-vc-container=".vc_tta"
+                                          ><i class="vc_tta-icon fal">
+                                            <img src="{% static '/main_site/images/search.svg' %}" alt="Icon performance"/>
+                                          </i>
+                                          <span class="vc_tta-title-text">
+                                            <b>Tra cứu giá gốc, hotline của đại lý nhanh chóng</b>
+                                          </span>
+                                        </div>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                  <div class="vc_tta-panels-container">
+                                    <div class="vc_tta-panels">
+                                      <div
+                                        class="vc_tta-panel vc_active"
+                                        id="1545200936061-4b9fa62a-2de1"
+                                        data-vc-content=".vc_tta-panel-body"
+                                      >
+                                        <div class="vc_tta-panel-body">
+                                          <div
+                                            class="tm-image tm-animation move-up"
+                                            id="tm-image-65b8a2792cf6b"
+                                          >
+                                            <div class="image">
+                                              <img
+                                                src="{% static '/main_site/images/performance.png' %}"
+                                                alt="aeroland-tab-content-image-07"
+                                              />
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div
+                                        class="vc_tta-panel"
+                                        id="1545200936143-0894b24e-2ee1"
+                                        data-vc-content=".vc_tta-panel-body"
+                                      >
+                                        <div class="vc_tta-panel-heading">
+                                          <h4 class="vc_tta-panel-title">
+                                            <div class="performance">
+                                              <i class="vc_tta-icon fal">
+                                                <img src="{% static '/main_site/images/support.svg' %}" alt="Icon performance"/>
+                                              </i>
+                                              <span class="vc_tta-title-text"
+                                                ><b>Giải pháp tối ưu, tận tâm hỗ trợ.</b
+                                                ></span
+                                              ></div
+                                            >
+                                          </h4>
+                                        </div>
+                                      </div>
+                                      <div
+                                        class="vc_tta-panel"
+                                        id="1545200936143-0894b24e-2ee1"
+                                        data-vc-content=".vc_tta-panel-body"
+                                      >
+                                        <div class="vc_tta-panel-heading">
+                                          <h4 class="vc_tta-panel-title">
+                                            <div class="performance">
+                                              <i class="vc_tta-icon fal">
+                                                <img src="{% static '/main_site/images/devices.svg' %}" alt="Icon performance"/>
+                                              </i>
+                                              <span class="vc_tta-title-text">
+                                                <b>Tối ưu trên Mobile, PC, Laptop...</b>
+                                              </span>
+                                            </div>
+                                          </h4>
+                                        </div>
+                                      </div>
+                                      <div
+                                        class="vc_tta-panel"
+                                        id="1545200936143-0894b24e-2ee1"
+                                        data-vc-content=".vc_tta-panel-body"
+                                      >
+                                        <div class="vc_tta-panel-heading">
+                                          <h4 class="vc_tta-panel-title">
+                                            <div class="performance">
+                                              <i class="vc_tta-icon fal">
+                                                <img src="{% static '/main_site/images/warehouse.svg' %}" alt="Icon performance"/> 
+                                              </i>
+                                              <span class="vc_tta-title-text">
+                                                <b>Kho sim hơn 30 triệu số</b>
+                                              </span>
+                                            </div>
+                                          </h4>
+                                        </div>
+                                      </div>
+                                      <div
+                                        class="vc_tta-panel"
+                                        id="1545200936143-0894b24e-2ee1"
+                                        data-vc-content=".vc_tta-panel-body"
+                                      >
+                                        <div class="vc_tta-panel-heading">
+                                          <h4 class="vc_tta-panel-title">
+                                            <div class="performance">
+                                              <i class="vc_tta-icon fal">
+                                                <img src="{% static '/main_site/images/single-division.svg' %}" alt="Icon performance"/>
+                                              </i>
+                                              <span class="vc_tta-title-text">
+                                                <b>Quản lý đơn hàng, chia đơn thuận tiện</b>
+                                              </span>
+                                            </div>
+                                          </h4>
+                                        </div>
+                                      </div>
+                                      <div
+                                        class="vc_tta-panel"
+                                        id="1545200936143-0894b24e-2ee1"
+                                        data-vc-content=".vc_tta-panel-body"
+                                      >
+                                        <div class="vc_tta-panel-heading">
+                                          <h4 class="vc_tta-panel-title">
+                                            <div class="performance">
+                                              <i class="vc_tta-icon fal">
+                                                <img src="{% static '/main_site/images/search.svg' %}" alt="Icon performance"/>
+                                              </i>
+                                              <span class="vc_tta-title-text">
+                                                <b>Tra cứu giá gốc, hotline của đại lý nhanh chóng</b>
+                                              </span>
+                                            </div>
+                                          </h4>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="tm-spacer"
+                              id="tm-spacer-65b8a2792ef0f"
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="vc_row-full-width vc_clearfix"></div>
+                    <div
+                      id="section-contact"
+                      class="vc_row vc_row-outer vc_row-fluid vc_row-o-content-middle vc_row-flex"
+                    >
+                      <div
+                        id="tm-column-65b8a2793c167"
+                        class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-7 vc_col-md-6"
+                      >
+                        <div class="vc_column-inner">
+                          <div class="wpb_wrapper">
+                            <div
+                              class="tm-heading left tm-animation move-up"
+                              id="tm-heading-65b8a2793c2f6"
+                            >
+                              <h3 class="heading">Đăng ký ngay!</h3>
+                            </div>
+
+                            <div
+                              class="tm-spacer"
+                              id="tm-spacer-65b8a2793d25a"
+                            ></div>
+
+                            <div
+                              class="tm-heading left tm-animation move-up"
+                              id="tm-heading-65b8a2793d350"
+                            >
+                              <div class="heading">
+                                Bạn sẵn sàng cho sự đổi mới? Lưu lại thông tin và chúng tôi sẽ nhanh chóng liên hệ lại.
+                              </div>
+                            </div>
+
+                            <div
+                              class="tm-contact-form-7 style-01 tm-animation move-up"
+                            >
+                              <div
+                                class="wpcf7 no-js"
+                                id="wpcf7-f4-p2-o1"
+                                lang="en-US"
+                                dir="ltr"
+                              >
+                                <div class="screen-reader-response">
+                                  <p
+                                    role="status"
+                                    aria-live="polite"
+                                    aria-atomic="true"
+                                  ></p>
+                                  <ul></ul>
+                                </div>
+                                <div>
+                                  {% include 'main_site/register.html' with form=form response_message=response_message main_site_url=main_site_url %}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        id="tm-column-65b8a2793e16c"
+                        class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-5 vc_col-md-6"
+                      >
+                        <div class="vc_column-inner">
+                          <div class="wpb_wrapper">
+                            <div
+                              class="tm-image tm-animation move-up"
+                              id="tm-image-65b8a2793e259"
+                            >
+                              <div class="image">
+                                <img
+                                  src="{% static '/main_site/images/aeroland-startup-image-02.png' %}"
+                                  alt="aeroland-startup-image-02"
+                                />
+                              </div>
+                            </div>
+                            <div
+                              class="tm-spacer"
+                              id="tm-spacer-65b8a2794055c"
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="vc_row-full-width vc_clearfix"></div>
+                  </section>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.content-wrapper -->
+
+      <div
+        id="page-footer-wrapper"
+        class="page-footer-wrapper footer-style-01 parallax"
+      >
+        <div id="page-footer" class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="page-footer-inner">
+                  <section class="wpb-content-wrapper">
+                    <div
+                      id="tm-row-65b8a27945173"
+                      data-vc-full-width="true"
+                      data-vc-full-width-init="false"
+                      class="vc_row vc_row-outer vc_row-fluid"
+                    >
+                      <div
+                        id="tm-column-65b8a2794547a"
+                        class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-4 vc_col-md-4"
+                      >
+                        <div class="vc_column-inner">
+                          <div class="wpb_wrapper">
+                            <div
+                              class="tm-image tm-animation move-up"
+                              id="tm-image-65b8a279456f9"
+                            >
+                              <a
+                                href="/"
+                                ><div class="image">
+                                  <img
+                                    src="{% static '/main_site/images/logowhite.svg' %}"
+                                    alt="light-logo"
+                                  /></div
+                              ></a>
+                            </div>
+                            <div
+                              class="tm-spacer"
+                              id="tm-spacer-65b8a27945b20"
+                            ></div>
+                            <div
+                              class="tm-heading left tm-animation move-up"
+                              id="tm-heading-65b8a27945c58"
+                            >
+                              <div class="heading">
+                                -  Địa chỉ:
+                              </div>
+                            </div>
+
+                            <div
+                              class="tm-heading left tm-animation move-up"
+                              id="tm-heading-65b8a27945c58"
+                            >
+                              <div class="heading">
+                                22 Thành Công, Ba Đình, Hà Nội
+                              </div>
+                            </div>
+
+                            <div
+                              class="tm-spacer"
+                              id="tm-spacer-65b8a27945e3e"
+                            ></div>
+
+                            <div
+                              class="tm-heading left tm-animation move-up"
+                              id="tm-heading-65b8a27945f4c"
+                            >
+                              <div class="heading">
+                                <a href="mailto:contact@aeroland.com"
+                                  >- Liên hệ:</a
+                                >
+                              </div>
+                            </div>
+                            <div
+                              class="tm-heading left tm-animation move-up"
+                              id="tm-heading-65b8a27945f4c"
+                            >
+                              <div class="heading">
+                                <a href="tel:0911202025"
+                                  >Ms. Hồng 0911.2020.25</a
+                                >
+                              </div>
+                            </div>
+
+
+                            <div
+                              class="tm-spacer"
+                              id="tm-spacer-65b8a27945e3e"
+                            ></div>
+
+                            <div
+                              class="tm-heading left tm-animation move-up"
+                              id="tm-heading-65b8a27945f4c"
+                            >
+                              <div class="heading">
+                                <a href="tel:0383202025"
+                                  >Ms. Thuỷ 0383.2020.25</a
+                                >
+                              </div>
+                            </div>
+
+                            <div
+                              class="tm-spacer"
+                              id="tm-spacer-65b8a27945e3e"
+                            ></div>
+
+                            <div
+                              class="tm-heading left tm-animation move-up"
+                              id="tm-heading-65b8a27945f4c"
+                            >
+                              <div class="heading">
+                                <a href="tel:0879202025"
+                                  >Ms. Hương 0879.2020.25</a
+                                >
+                              </div>
+                            </div>
+
+                            <div
+                              class="tm-spacer"
+                              id="tm-spacer-65b8a279468db"
+                            ></div>
+
+                            <div
+                              class="tm-heading left tm-animation move-up"
+                              id="tm-heading-65b8a279469e9"
+                            >
+                              <div class="heading">
+                                <a href="tel:0835202025">Ms. Thảo 0835.2020.25</a>
+                              </div>
+                            </div>
+
+                            <div
+                              class="tm-spacer"
+                              id="tm-spacer-65b8a27946b94"
+                            ></div>
+
+                            <div
+                              class="tm-heading left tm-animation move-up"
+                              id="tm-heading-65b8a27946cc6"
+                            >
+                              <div class="heading">
+                                <a href="tel:0888488919"
+                                  >Ms. Tứ 0888.488.919</a
+                                >
+                              </div>
+                            </div>
+                            
+                            <div
+                              class="tm-spacer"
+                              id="tm-spacer-65b8a27946e7f"
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        id="tm-column-65b8a27947541"
+                        class="wpb_column vc_column_container vc_col-sm-6 vc_col-lg-2 vc_col-md-4"
+                      >
+                        <div class="vc_column-inner">
+                          <div class="wpb_wrapper">
+                            <div
+                              id="tm-widget-title-65b8a2794760a"
+                              class="tm-widget-title widget tm-animation move-up"
+                            >
+                              <h2 class="widgettitle">Truy cập nhanh</h2>
+                            </div>
+
+                            <div
+                              class="tm-list style-normal list-vertical tm-animation move-up"
+                              id="tm-list-65b8a279476b5"
+                            >
+                              <div class="list-item">
+                                <div class="list-header">
+                                  <div class="marker"></div>
+
+                                  <div class="title-wrap">
+                                    <h6 class="title">
+                                      <a class="link" href="#interface">
+                                        Kho giao diện
+                                      </a>
+                                    </h6>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="list-item">
+                                <div class="list-header">
+                                  <div class="marker"></div>
+
+                                  <div class="title-wrap">
+                                    <h6 class="title">
+                                      <a class="link" href="#section-about">
+                                        Tính năng
+                                      </a>
+                                    </h6>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="list-item">
+                                <div class="list-header">
+                                  <div class="marker"></div>
+
+                                  <div class="title-wrap">
+                                    <h6 class="title">
+                                      <a class="link" href="#tm-row-65d805d76fa7a">
+                                        Bảng giá
+                                      </a>
+                                    </h6>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="list-item">
+                                <div class="list-header">
+                                  <div class="marker"></div>
+
+                                  <div class="title-wrap">
+                                    <h6 class="title">
+                                      <a class="link" href="#section-contact">
+                                        Đăng ký dịch vụ
+                                      </a>
+                                    </h6>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="list-item">
+                                <div class="list-header">
+                                  <div class="marker"></div>
+
+                                  <div class="title-wrap">
+                                    <h6 class="title">
+                                      <a class="link" href="#section-team">
+                                        Ý kiến khách hàng
+                                      </a>
+                                    </h6>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div
+                              class="tm-spacer"
+                              id="tm-spacer-65b8a279477f6"
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        id="tm-column-65b8a2794789a"
+                        class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-offset-1 vc_col-md-4"
+                      >
+                        <div class="vc_column-inner">
+                          <div class="wpb_wrapper">
+                            <div
+                              id="tm-widget-title-65b8a279479a3"
+                              class="tm-widget-title widget tm-animation move-up"
+                            >
+                              <h2 class="widgettitle">TẢI ỨNG DỤNG
+                                CHO ĐẠI LÍ SIM</h2>
+                            </div>
+
+                            <div
+                              class="tm-social-networks style-solid-rounded-icon layout-inline tm-animation move-up"
+                              id="tm-social-networks-65b8a27947a71"
+                            >
+                              <ul class="list">
+                                <li class="item">
+                                  <a
+                                    href="https://play.google.com/store/apps/details?id=vn.appsim.app"
+                                    target="_blank"
+                                    aria-label="GooglePlay"
+                                    class=""
+                                  >
+                                  <img
+                                    src="{% static '/main_site/images/GooglePlay.svg' %}"
+                                    alt="Start-ups"
+                                  />
+                                  </a>
+                                </li>
+                                <li class="item">
+                                  <a
+                                    href="https://apps.apple.com/vn/app/appsim-mua-b%C3%A1n-sim-s%E1%BB%91-%C4%91%E1%BA%B9p/id1090616155"
+                                    target="_blank"
+                                    aria-label="AppStore"
+                                    class=""
+                                  >
+                                  <img
+                                    src="{% static '/main_site/images/AppleStore.svg' %}"
+                                    alt="Start-ups"
+                                  />
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                            <div
+                              class="tm-spacer"
+                              id="tm-spacer-65b8a27947c03"
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="vc_row-full-width vc_clearfix"></div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.site -->
+
+    <div class="support">
+      <div class="gom-all-in-one">
+        <div class="button-contact" id="zalo-vr">
+          <div class="contact-vr">
+            <div class="contact-vr-circle-fill"></div>
+            <div class="contact-vr-img-circle">
+              <a target="_blank" href="https://zalo.me/0879202025">
+                <img class="ls-is-cached lazyloaded" src="{% static '/main_site/images/zalo.png' %}">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="button-contact" id="phone-vr">
+          <div class="contact-vr">
+            <div class="contact-vr-circle-fill"></div>
+            <div class="contact-vr-img-circle">
+              <a target="_blank" href="tel:0888488919">
+                <img class="ls-is-cached lazyloaded" src="{% static '/main_site/images/call.png' %}">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page-mobile-main-menu" class="page-mobile-main-menu">
+      <div class="inner">
+        <div class="page-mobile-menu-header">
+          <div class="page-mobile-popup-logo page-mobile-menu-logo">
+            <a href="/" rel="home">
+              <img
+                src="{% static '/main_site/images/logo.svg' %}"
+                alt="Start-ups"
+              />
+            </a>
+          </div>
+          <div id="page-close-mobile-menu" class="page-close-mobile-menu"></div>
+        </div>
+
+        <div class="page-mobile-menu-content">
+          <ul id="mobile-menu-primary" class="menu__container">
+            <li
+              class="menu-item menu-item-type-custom menu-item-object-custom menu-item-137 level-1"
+            >
+              <a href="#section-platforms"
+                ><div class="menu-item-wrap">
+                  <span class="menu-item-title">Kho giao diện</span>
+                </div></a
+              >
+            </li>
+            <li
+              class="menu-item menu-item-type-custom menu-item-object-custom menu-item-138 level-1"
+            >
+              <a href="#section-about"
+                ><div class="menu-item-wrap">
+                  <span class="menu-item-title">Tính năng</span>
+                </div></a
+              >
+            </li>
+            <li
+              class="menu-item menu-item-type-custom menu-item-object-custom menu-item-139 level-1"
+            >
+              <a href="#tm-row-65d805d76fa7a"
+                ><div class="menu-item-wrap">
+                  <span class="menu-item-title">Bảng giá</span>
+                </div></a
+              >
+            </li>
+            <li
+              class="menu-item menu-item-type-custom menu-item-object-custom menu-item-140 level-1"
+            >
+              <a href="#section-team"
+                ><div class="menu-item-wrap">
+                  <span class="menu-item-title">Ý kiến khách hàng</span>
+                </div></a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script
+      type="text/javascript"
+      src="{% static 'main_site/js/SmoothScroll.min.js' %}"
+      id="smooth-scroll-js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static 'main_site/js/picturefill.min.js' %}"
+      id="picturefill-js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static 'main_site/js/jquery.mousewheel.min.js' %}"
+      id="mousewheel-js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static '/main_site/js/lightgallery-all.min.js' %}"
+      id="lightgallery-js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static '/main_site/js/jquery.smooth-scroll.min.js' %}"
+      id="jquery-smooth-scroll-js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static '/main_site/js/imagesloaded.min.js' %}"
+      id="imagesloaded-js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static '/main_site/js/swiper.min.js' %}"
+      id="swiper-js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static '/main_site/js/jquery.waypoints.min.js' %}"
+      id="waypoints-js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static '/main_site/js/jquery.smartmenus.min.js' %}"
+      id="smartmenus-js"
+    ></script>
+   
+    <script
+      type="text/javascript"
+      src="{% static '/main_site/js/lightslider.min.js' %}"
+      id="lightslider-js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static '/main_site/js/js_composer_front.min.js' %}"
+      id="wpb_composer_front_js-js"
+    ></script>
+    <script type="text/javascript" id="aeroland-script-js-extra">
+      var $insight = {
+        primary_color: "#5945e6",
+        header_sticky_enable: "1",
+        header_sticky_height: "80",
+        scroll_top_enable: "1",
+        light_gallery_auto_play: "0",
+        light_gallery_download: "1",
+        light_gallery_full_screen: "1",
+        light_gallery_zoom: "1",
+        light_gallery_thumbnail: "1",
+        light_gallery_share: "1",
+        mobile_menu_breakpoint: "1199",
+        isProduct: "",
+        noticeCookieEnable: "1",
+        noticeCookieConfirm: "yes",
+        isShowNewsletterPopup: "",
+        isRTL: "",
+      };
+    </script>
+    <script
+      type="text/javascript"
+      src="{% static '/main_site/js/main.min.js' %}"
+      id="aeroland-script-js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static '/main_site/js/vc-tta-autoplay.min.js' %}"
+      id="vc_tta_autoplay_script-js"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+{% extends "admin/change_form.html" %}
+
+{% block extrastyle %}
+    {{ block.super }}
+{% endblock %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var errorNote = document.querySelector('.errornote');
+            if (errorNote) {
+                errorNote.textContent = "Vui lòng sửa lỗi dưới đây";
+            }
+            
+            var historyLink = document.querySelector('.historylink');
+            historyLink.innerHTML = "Lịch sử thay đổi";
+
+            var anchors = document.querySelectorAll('a.addlink');
+            anchors.forEach(function(anchor) {
+                var content = anchor.innerHTML || anchor.innerText;
+                if (content.includes("Thêm vào")) {
+                    content = content.replace("Thêm vào", "Tạo mới");
+                    anchor.innerHTML = content;
+                }
+            });
+
+            const view = document.querySelector('a.view-related');
+            view.style.display = 'none';
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% load static %}
+{% load compress %}
+{% load core_tags %}
+{% load sims_tags %}
+
+{% get_current_base_url as base_url %}
+
+<head>
+    <base href="{{base_url}}" />
+    <meta charset="utf-8" />
+    <title>{{seo.title}}</title>
+    <meta name="description" content="{% if seo.meta_description %}{{ seo.meta_description|replace_tenant_site_name:tenant }}{% else %}{{ seo.title }}{% endif %}">
+    <meta property="og:title" content="{% if seo.meta_title %}{{ seo.meta_title|replace_tenant_site_name:tenant }}{% else %}{{ seo.title }}{% endif %}">
+    <meta property="og:description" content="{% if seo.meta_description %}{{ seo.meta_description|replace_tenant_site_name:tenant }}{% else %}{{ seo.title }}{% endif %}">
+    <meta property="og:site_name" content="{{seo.title}}">
+    <meta property="og:locale" content="vi_VN">
+    <meta property="og:url" content="{{ seo.meta_canonical|default:request.build_absolute_uri }}">
+    <meta property="og:image">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="last-updated" content="2023-12-10 07:33:03 UTC" />
+    <meta name="keywords" content="{{seo.meta_keywords|default:''}}" />
+    <meta name="robots" content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <link rel="canonical" href="{{ seo.meta_canonical|default:request.build_absolute_uri }}" />
+    <link rel="icon" type="image/svg+xml" href="{{tenant.theme_config.seo.favicon}}">
+    {% if tenant.theme_config.color.font_family %}
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{ tenant.theme_config.color.font_family }}">
+    {% else %}
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+    {% endif %}
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <!-- Twitter Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="{{request.build_absolute_uri|getDomain}}">
+    <meta property="twitter:url" content="{{ seo.meta_canonical|default:request.build_absolute_uri }}">
+    <meta name="twitter:title" content="{% if seo.meta_title %}{{ seo.meta_title|replace_tenant_site_name:tenant }}{% else %}{{ seo.title }}{% endif %}">
+    <meta name="twitter:description" content="{% if seo.meta_description %}{{ seo.meta_description|replace_tenant_site_name:tenant }}{% else %}{{ seo.title }}{% endif %}">
+
+    <style>
+      :root {
+          {% if tenant.theme_config.color.main_color %} 
+          --color-primary: {{ tenant.theme_config.color.main_color }}; 
+          {% endif %}
+          {% if tenant.theme_config.color.second_color %} 
+          --color-second: {{ tenant.theme_config.color.second_color }}; 
+          {% endif %}
+          {% if tenant.theme_config.color.text_color %} 
+          --color-text: {{ tenant.theme_config.color.text_color }}; 
+          {% endif %}
+          {% if tenant.theme_config.color.text_highlight %} 
+          --color-highlight: {{ tenant.theme_config.color.text_highlight }}; 
+          {% endif %}
+          {% if tenant.theme_config.color.color_bg %} 
+          --color_bg: {{ tenant.theme_config.color.color_bg }}; 
+          {% endif %}
+          {% if tenant.theme_config.color.color_bg_menu %} 
+          --color-bg_menu: {{ tenant.theme_config.color.color_bg_menu }}; 
+          {% endif %}
+          {% if tenant.theme_config.color.color_text_menu %} 
+          --color-text_menu: {{ tenant.theme_config.color.color_text_menu }}; 
+          {% endif %}
+          {% if tenant.theme_config.color.font_family %}  
+          --font_family: {{ tenant.theme_config.color.font_family }};  
+          {% endif %}
+          {% if tenant.theme_config.color.font_size %} 
+          --font_size: {{ tenant.theme_config.color.font_size }}px; 
+          {% endif %}
+      }
+    </style>
+    {% compress css file style %}
+      <link type="text/x-scss" href="{% static 'galaxy/css/style.scss' %}" rel="stylesheet" media="screen">
+    {% endcompress %}
+    <script src="{% static 'core/js/browser_history.js' %}"></script>
+    {% if 'allow_sale_via_bank' in tenant.config and tenant.config.allow_sale_via_bank == 'on' %}
+      <script src="{% static 'banking_affiliate/js/mb.js' %}?v=2115"></script>
+    {% endif %}
+    <script src="{% static 'galaxy/js/script.js' %}"></script>
+    <script src="{% static 'galaxy/js/search-keyword.js' %}"></script>
+    {% if seo.headScript_page %}
+      {{seo.headScript_page|safe}}
+    {% endif %}
+    {% if seo.headScript_tenant %}
+      {{seo.headScript_tenant|safe}}
+    {% endif %}
+</head>

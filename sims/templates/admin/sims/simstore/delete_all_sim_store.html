@@ -1,0 +1,36 @@
+{% extends 'admin/base_site.html' %}
+{% block header %}
+{{ block.super }}
+<script>
+    function redirectToSimStoreList() {
+        window.location.href = "{% url 'admin:sims_simstore_changelist' %}";
+    }
+</script>
+{% endblock %}
+
+{% block content %}
+<form method="post" action="">
+    {% csrf_token %}
+
+    <label style="margin-right: 10px;" for="sims">Xóa tất cả sim: </label>
+
+    <br />
+    <br />
+    <input type="hidden" name="action" value="delete_sim_store">
+    <input
+        type="submit" 
+        name="apply" 
+        style="background-color: #ba2121;"
+        value="Có, tôi chắc chắn"
+    >
+    <input 
+        type="button" 
+        name="cancel" 
+        class="button cancel" 
+        style="background-color: #333; margin-left: 10px" 
+        value="Không, quay trở lại" onclick="redirectToSimStoreList()"
+    >
+</form> 
+<br class="clear">
+<div id="footer"></div>
+{% endblock %}

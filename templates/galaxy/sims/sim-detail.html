@@ -1,0 +1,133 @@
+{% load static %}
+{% load sims_tags %}
+<div class="detail-container">
+  <div class="sim-info-container">
+    <h1>{{seo.h1}}</h1>
+    {% if not config.allow_sale_via_bank %}
+      {% include "galaxy/sims/sim-detail-info-block.html" %} 
+    {% else %}
+      {% include "banking_affiliate/sims/sim-detail-info-block.html" %} 
+    {% endif %}
+  </div>
+
+  <div class="form-buying">
+    <h1>Đặt mua</h1>
+    <form method="POST" action="{{submit_url}}" id="buy-form">
+      {% if sim.price_calc_installment %}
+        <div class="installment" id="installmentSection">
+          <p class="title_form_count_tragop">Ưu đãi trả góp</p>
+          <div id="innnerFormTragop"></div>
+        </div>
+      {% endif %}
+      {% csrf_token %}
+      <div class="block-input block-name">
+        <p>Họ và tên <span class="required">*</span></p>
+        <input name="name" placeholder="Nguyễn Văn A" class="input" required maxlength="50" value="{{customer.name}}" />
+      </div>
+      <div class="block-input block-phone">
+        <p>Số điện thoại <span class="required">*</span></p>
+        <input
+          id="phone"
+          name="phone"
+          placeholder="0988123456"
+          class="input"
+          pattern="^\+?(84|0)((24|28|20[3-9]|21[0-9]|22[0-9]|23[0-9]|25[0-9]|26[0-9]|27[0-9]|29[0-9]|30[2-9]|31[0-9]|32[0-9]|33[0-9]|34[0-9]|35[0-9]|36[0-9]|37[0-9]|38[0-9]|39[0-9]|50[3-9]|52[0-9]|53[0-9]|54[0-9]|55[0-9]|56[0-9]|57[0-9]|58[0-9]|59[0-9]|70[0-9]|76[0-9]|77[0-9]|78[0-9]|79[0-9]|81[0-9]|82[0-9]|83[0-9]|84[0-9]|85[0-9]|86[0-9]|88[0-9]|89[0-9]|91[0-9]|92[0-9]|93[0-9]|94[0-9]|96[0-9]|97[0-9]|98[0-9]|99[0-9])[0-9]{6})$" 
+          title="Vui lòng nhập đúng định dạng số điện thoại"
+          required
+          maxlength="20"
+          value="{{customer.phone}}" 
+        />
+        <span
+          id="phone-warning"
+          style="display: none;"
+        >
+          Số điện thoại không được trùng với số sim được đặt
+        </span>
+      </div>
+      <div class="block-input block-address">
+        <p>Địa chỉ</p>
+        <input
+          name="address"
+          placeholder="Số 7 ngõ 699 Trương Định, Hoàng Mai, Hà Nội"
+          class="input"
+          maxlength="300"
+        />
+      </div>
+      <div class="block-input block-note">
+        <p>Ghi chú</p>
+        <input name="other_option" placeholder="Gọi cho tôi ngay" class="input" maxlength="300" />
+      </div>
+      {% if not customer.phone %}
+      <div class="box_submit_btn">
+        <input type="hidden" name="_is_installment" id="_is_installment" value="">
+        {% if sim.price_calc_installment %}
+          <button type="submit" class="block-submit" value="1" name="_is_installment" id="installmentsubmit_btn">Mua trả góp</button>
+        {% endif %}
+        <button type="submit" class="block-submit" id="submit-btn">
+          {% if sim.price_calc_installment %}
+            Trả thẳng
+          {% else %}
+            Đặt ngay
+          {% endif %}
+        </button>
+      </div>
+      {% else %}
+      {% include "banking_affiliate/sims/sim-detail-button.html" %} 
+      {% endif %}
+    </form>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var form = document.getElementById('buy-form');
+    var inputs = document.querySelectorAll('.input[required]');
+    var phone = document.getElementById('phone');
+    var phoneWarning = document.getElementById('phone-warning');
+    var submit_common_btn = document.getElementById('submit-btn');
+    var installmentsubmit_btn = document.getElementById('installmentsubmit_btn');
+    var _is_installment_input = document.getElementById('_is_installment')
+    installmentsubmit_btn.addEventListener('click', function() {
+      _is_installment_input.value = 1
+    });
+    submit_common_btn.addEventListener('click', function() {
+      _is_installment_input.value = ""
+    });
+    
+    form.addEventListener('submit', function(event) {
+      if (submit_common_btn.disabled) {
+        event.preventDefault();
+        return;
+      }
+      var isValid = true;
+      inputs.forEach(function(input) {
+        if (input.value.trim() === '') {
+          input.classList.add('input-highlight');
+          isValid = false;
+        }
+      });
+
+      if (isValid) {
+        if (phone.value === '{{ sim.id }}') {
+          phoneWarning.style.display = 'block';
+          event.preventDefault(); // Prevent form submission
+          return;
+        }
+        installmentsubmit_btn.disabled = true
+        submit_common_btn.disabled = true
+      } else {
+        event.preventDefault();
+      }
+    });
+
+    inputs.forEach(function(input) {
+      input.addEventListener('blur', function() {
+        if (this.value.trim() === '') {
+          this.classList.add('input-highlight');
+        } else {
+          this.classList.remove('input-highlight');
+        }
+      });
+    });
+  });
+</script>

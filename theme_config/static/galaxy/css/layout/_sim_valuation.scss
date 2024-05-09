@@ -1,0 +1,114 @@
+.sim-price{
+  display: flex;
+  flex-direction: column;
+  padding: 0px 16px 20px 4px;
+  gap: 20px;
+  @media only screen and (max-width:768px) {
+    margin-left: 10px;
+  }
+  @media only screen and (min-width:768px) and (max-width:1023px){
+    margin-left: 18px;
+  }
+  &__detail{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    &__title{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      &__text{
+        color: $color-text;
+        font-size: 125%;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 24px;
+      }
+    }
+    &__form{
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      align-self: stretch;
+      @media only screen and (max-width: 420px) {
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+    }
+    &__price{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 16px;
+      gap: 12px;
+      border-radius: 10px;
+      border: 1px solid $color-second;
+      background: $color_bg;
+      &__sim{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      &__name{
+        color: $color-black;
+        font-size: 100%;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 22px;
+        letter-spacing: 0.1px;
+      }
+      &__phone{
+        color: $color-primary;
+        font-size: 100%;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 22px;
+        letter-spacing: 0.1px;
+      }
+    }
+    &__footer{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-radius: 8px;
+      border: 1px solid $color-second;
+      background: $color_bg;
+      padding: 16px 16px 0 16px;
+      &__text{
+        color: $color-text;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+        h2{
+          font-size: 112.5%;
+          font-weight: 500;
+          margin-bottom: 10px;
+        }
+        p{
+          line-height: 1.5;
+          margin-bottom: 10px;
+        }
+      }
+      &__image{
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+  .form-control{
+    &--sim-price{
+      background: $color_bg;
+    }
+  }
+}
+.btn{
+  &--sim-price{
+    width: 193px !important;
+    height: 44px !important;
+  }
+}
+.w-100 {
+  width: 100%
+}

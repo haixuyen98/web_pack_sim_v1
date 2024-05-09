@@ -1,0 +1,60 @@
+{% load sims_tags %}
+
+<!-- item -->
+<div class="page-articles-left__item">
+  <a
+    href="{% url 'blog:article' article.slug %}"
+    title="{{ article.title|replace_tenant_site_name:tenant }}"
+    class="page-articles-left__item__image"
+  >
+    <img
+      width="195"
+      height="133"
+      loading="lazy"
+      decoding="async"
+      onload="this.style.opacity=1"
+      class="lazy"
+      src="{{ article.featured_image.url }}"
+      alt="{{ article.title|replace_tenant_site_name:tenant }}"
+      title="{{ article.title|replace_tenant_site_name:tenant }}"
+      onError="this.onerror=null;this.src='/static/galaxy/images/fallback.png';"
+    />
+  </a>
+  <div class="page-articles-left__item__content">
+    <a 
+      href="{% url 'blog:article' article.slug %}"
+      title="{{ article.title|replace_tenant_site_name:tenant }}"
+      class="page-articles-left__item__content__title hover-line">
+      {{ article.title|replace_tenant_site_name:tenant }}
+    </a>
+    <div class="page-articles-left__item__content__excerpt">
+      {{ article.excerpt|replace_tenant_site_name:tenant }}
+    </div>
+    <div class="page-articles-left__item__content__group">
+      <time datetime="{{ article.publishedAt|date_format }}" class="date">{{ article.publishedAt|date_format }}</time>
+      {% if article.user.first_name and article.user.last_name %}
+        <a
+          href="{% url 'blog:blog_byAuthor' article.user.username %}"
+          class="fullname hover-line"
+          title="{{ article.user.first_name }} {{ article.user.last_name }}"
+          rel="author"
+          >bởi {{ article.user.first_name }} {{ article.user.last_name }}</a
+        >
+      {% endif %}
+    </div>
+    {% if category_hidden != True %}
+      <div class="page-articles-left__item__content__group">
+        {% if article.category.name %}
+        <a
+          href="{% url 'blog:category' article.category.slug %}"
+          title="{{ article.category.name }}"
+          class="category"
+        >
+          {{ article.category.name }}
+        </a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+<!-- end of item -->

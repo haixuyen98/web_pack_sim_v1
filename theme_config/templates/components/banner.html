@@ -1,0 +1,197 @@
+<div class="theme-editor__panel" id="bannerPanel">
+    <header class="te-panel__header">
+      <button
+        class="ui-button btn--plain te-panel__header-action"
+        onclick="closeSection('bannerPanel')"
+        data-trekkie-id="close-panel"
+        aria-label="Back to theme settings"
+        type="button"
+        name="button"
+      >
+        <i class="las la-angle-left" style="font-size: 22px"></i>
+      </button>
+      <h2 class="ui-heading theme-editor__heading">Cài đặt banner</h2>
+    </header>
+    <div class="theme-editor__panel-body" data-scrollable="">
+      <section class="card mb-2">
+        <div class="card-body">
+          <div class="form-group">
+            <label>BANNER 1 (1140x400px)</label>
+            <div
+              class="d-flex justify-content-between align-items-center upload-box"
+            >
+              <div class="box_img">
+                <img
+                  class="preview"
+                  src="{{tenant.theme_config.banner.banner1}}"
+                  alt="Image logo"
+                />
+                <input
+                  class="file-upload"
+                  name="banner1"
+                  type="file"
+                  accept=".png,.jpg,.jpeg,.gif,.svg,.ico,.webp"
+                />
+              </div>
+              <div class="box-action d-flex flex-column">
+                <a
+                  href="javascript:;"
+                  onclick="$(this).closest('.upload-box').find('.file-upload').trigger('click')"
+                  ><i class="las la-sign-out-alt"></i> Đổi ảnh</a
+                >
+                <a href="javascript:;" onclick="removeImage($(this))"
+                  ><i class="las la-trash-alt"></i> Xóa</a
+                >
+                <input
+                  type="hidden"
+                  name="banner1_path"
+                  class="input_image_value"
+                  value="{{tenant.theme_config.banner.banner1}}"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Đường dẫn banner 1</label>
+            <input
+              type="text"
+              class="form-control"
+              name="url_banner1"
+              value="{{tenant.theme_config.banner.url_banner1}}"
+              placeholder="Đường dẫn"
+            />
+          </div>
+          <div class="form-group">
+            <label>Title banner 1</label>
+            <input
+              type="text"
+              class="form-control"
+              name="title_banner1"
+              value="{{tenant.theme_config.banner.title_banner1}}"
+              placeholder="Tiêu đề"
+            />
+          </div>
+        </div>
+      </section>
+      <section class="card mb-2">
+        <div class="card-body">
+          <div class="form-group">
+            <label>BANNER 2 (1140x400px)</label>
+            <div
+              class="d-flex justify-content-between align-items-center upload-box"
+            >
+              <div class="box_img">
+                <img
+                  class="preview"
+                  src="{{tenant.theme_config.banner.banner2}}"
+                  alt="Image logo"
+                />
+                <input
+                  class="file-upload"
+                  name="banner2"
+                  type="file"
+                  accept=".png,.jpg,.jpeg,.gif,.svg,.ico,.webp"
+                />
+              </div>
+              <div class="box-action d-flex flex-column">
+                <a
+                  href="javascript:;"
+                  onclick="$(this).closest('.upload-box').find('.file-upload').trigger('click')"
+                  ><i class="las la-sign-out-alt"></i> Đổi ảnh</a
+                >
+                <a href="javascript:;" onclick="removeImage($(this))"
+                  ><i class="las la-trash-alt"></i> Xóa</a
+                >
+                <input
+                  type="hidden"
+                  name="banner2_path"
+                  class="input_image_value"
+                  value="{{tenant.theme_config.banner.banner2}}"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Đường dẫn banner 2</label>
+            <input
+              type="text"
+              class="form-control"
+              name="url_banner2"
+              value="{{tenant.theme_config.banner.url_banner2}}"
+              placeholder="Đường dẫn"
+            />
+          </div>
+          <div class="form-group">
+            <label>Title banner 2</label>
+            <input
+              type="text"
+              class="form-control"
+              name="title_banner2"
+              value="{{tenant.theme_config.banner.title_banner2}}"
+              placeholder="Tiêu đề"
+            />
+          </div>
+        </div>
+      </section>
+      <section class="card mb-2">
+        <div class="card-body">
+          <div class="form-group">
+            <label>BANNER 3 (1140x400px)</label>
+            <div
+              class="d-flex justify-content-between align-items-center upload-box"
+            >
+              <div class="box_img">
+                <img
+                  class="preview"
+                  src="{{tenant.theme_config.banner.banner3}}"
+                  alt="Image logo"
+                />
+                <input
+                  class="file-upload"
+                  name="banner3"
+                  type="file"
+                  accept=".png,.jpg,.jpeg,.gif,.svg,.ico,.webp"
+                />
+              </div>
+              <div class="box-action d-flex flex-column">
+                <a
+                  href="javascript:;"
+                  onclick="$(this).closest('.upload-box').find('.file-upload').trigger('click')"
+                  ><i class="las la-sign-out-alt"></i> Đổi ảnh</a
+                >
+                <a href="javascript:;" onclick="removeImage($(this))"
+                  ><i class="las la-trash-alt"></i> Xóa</a
+                >
+                <input
+                  type="hidden"
+                  name="banner3_path"
+                  class="input_image_value"
+                  value="{{tenant.theme_config.banner.banner3}}"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Đường dẫn banner 3</label>
+            <input
+              type="text"
+              class="form-control"
+              name="url_banner3"
+              value="{{tenant.theme_config.banner.url_banner3}}"
+              placeholder="Đường dẫn"
+            />
+          </div>
+          <div class="form-group">
+            <label>Title banner 3</label>
+            <input
+              type="text"
+              class="form-control"
+              name="title_banner3"
+              value="{{tenant.theme_config.banner.title_banner3}}"
+              placeholder="Tiêu đề"
+            />
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>

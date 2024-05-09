@@ -1,0 +1,111 @@
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  &-mi-sort{
+    width: 30px;
+    height: 20px;
+    background-image: url('/static/galaxy/images/icons/mi-sort.svg');
+    background-size: 20px 20px;
+  }
+  &-up-icon-red{
+    width: 30px;
+    height: 20px;
+    background-image: url('/static/galaxy/images/icons/up-icon-red.svg');
+    background-size: 20px 20px;
+  }
+  &-down-icon-red{
+    width: 30px;
+    height: 20px;
+    background-image: url('/static/galaxy/images/icons/up-icon-red.svg');
+    background-size: 20px 20px;
+    transform: rotate(180deg);
+  }
+  &-bar {
+    background-image: url('/static/galaxy/images/icons/bar.svg');
+    width: 18px;
+    height: 14px;
+  }
+  &-heart {
+    background-image: url('/static/galaxy/images/icons/heart.svg');
+    width: 20px;
+    height: 18px;
+  }
+  &-search {
+    background-image: url('/static/galaxy/images/icons/search.svg');
+    width: 20px;
+    height: 20px;
+  }
+  &-dollar {
+    background-image: url('/static/galaxy/images/icons/dollar.svg');
+    width: 20px;
+    height: 16px;
+  }
+  &-remove {
+    background-image: url('/static/galaxy/images/icons/remove.svg');
+    width: 12px;
+    height: 12px;
+  }
+  &-note {
+    background-image: url('/static/galaxy/images/icons/note.svg');
+    width: 20px;
+    height: 20px;
+  }
+  &-free {
+    background-image: url('/static/galaxy/images/icons/free.svg');
+    width: 16px;
+    height: 16px;
+
+    &.big {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  &-247 {
+    background-image: url('/static/galaxy/images/icons/247.svg');
+    width: 16px;
+    height: 16px;
+  }
+  &-best {
+    background-image: url('/static/galaxy/images/icons/best.svg');
+    width: 16px;
+    height: 16px;
+  }
+  &-filter {
+    background-image: url('/static/galaxy/images/icons/filter.svg');
+    width: 20px;
+    height: 20px;
+  }
+  &-close {
+    background-image: url('/static/galaxy/images/icons/close.svg');
+    width: 16px;
+    height: 16px;
+  }
+  &-sim {
+    background-image: url('/static/galaxy/images/icons/sim.svg');
+    width: 34px;
+    height: 25px;
+  }
+  &-headphone {
+    background-image: url('/static/galaxy/images/icons/headphone.svg');
+    width: 20px;
+    height: 20px;
+  }
+  &-security {
+    background-image: url('/static/galaxy/images/icons/security.svg');
+    width: 20px;
+    height: 20px;
+  }
+  &-arrow-right-color {
+    background-image: url('/static/galaxy/images/icons/arrow-right-color.svg');
+    width: 8px;
+    height: 14px;
+  }
+  &-arrow-left {
+    width: 8px;
+    height: 14px;
+    background-image: url('/static/galaxy/images/icons/arrow-left-white.svg');
+  }
+}

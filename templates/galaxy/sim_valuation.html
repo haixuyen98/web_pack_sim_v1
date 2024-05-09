@@ -1,0 +1,23 @@
+{% extends 'galaxy/base.html' %}
+{% load compress %}
+{% load sims_tags %}
+{% load static %}
+
+{% block body %}
+  <div class="wrapper">
+    <div id="page-content-inner">
+      <div class="post-container breadcrumb-articles">
+        <div class="post-container__head">
+          {% include 'galaxy/blog/breadcum.html' with breadcrumb_data=breadcrumb_data %}
+        </div>
+      </div>
+      <div class="crayons-layout crayons-layout--3-cols crayons-layout--article">
+        {% include 'galaxy/layout/sidebar-left.html' with theme_config=theme_config %}
+        <main id="main-content" class="crayons-layout__content gap-4">
+          {% include "galaxy/sims/sim_valuation.html" with theme_folder=theme_folder%}
+        </main>
+        {% include 'galaxy/layout/sidebar.html' %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

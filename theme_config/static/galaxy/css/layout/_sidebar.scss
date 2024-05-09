@@ -1,0 +1,327 @@
+.sim-sidebar {
+  display: flex;
+  padding: 6px 8px 12px 8px !important;
+  flex-direction: column;
+  gap: 12px;
+  align-self: stretch;
+  border-radius: 8px;
+  border: 1px solid #ECECEC;
+  background: $color_bg;
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    color: var(--Support-color-Neutral-700, #4B5460);
+    font-size: 110%;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 42px;
+    &--loadMore {
+      font-size: 85%;
+      display: none;
+      @media (max-width: 640px) {
+        display: block;
+        color: $color-primary;
+      }
+    }
+  }
+
+  &__detail {
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    @media (min-width: 1280px) {
+      grid-template-columns: repeat(3, minmax(0,1fr));
+    }
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+      &--number{
+        grid-template-columns: repeat(5, minmax(0,1fr));
+        gap: 8px;
+        margin-top: 10px;
+      }
+      &--fates{
+        @media (min-width: 1280px) {
+          grid-template-columns: repeat(5, minmax(0,1fr));
+        }
+        @media (max-width: 640px) {
+          display: flex;
+          flex-wrap: wrap;
+        }
+      }
+      &__link {
+        display: flex;
+        padding: 8px;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        flex: 1 0 0;
+        border-radius: 8px;
+        background: $color-second;
+        border: 1px solid $color_bg;
+        white-space: nowrap;
+        &--types{
+          padding: 4px;
+        }
+        &--linkImage{
+          padding: 5px 12px;
+        }
+
+        &__src {
+          vertical-align: middle;
+          max-width: 100%;
+          max-height: 100%;
+          width: auto;
+          height: auto;
+          object-fit: contain;
+        }
+
+        &__image {
+          width: 80px;
+          height: 40px;
+          display: flex;
+          justify-content: center;
+
+          &--logo {
+            width: 40px;
+          }
+        }
+
+        &:hover{
+          border: 1px solid $color-primary;
+        }
+      }
+
+      &--fate {
+        flex-direction: column;
+        padding: 8px 10px;
+        height: 100%;
+      }
+
+    &--key {
+      display: inline-block;
+      width: 100%;
+    }
+    &__tag{
+      float: left;
+      margin-right: 2px;
+      margin-top: 4px;
+      margin-bottom: 4px;
+      padding: 4px;
+    }
+  }
+  &--tag{
+    gap: 0;
+  }
+  &__hidden {
+    @media only screen and (max-width: 640px) {
+      display: none;
+    }
+  }
+
+  @media only screen and (max-width: 640px) {    
+    &__price {
+      &--prices {
+        display: flex;
+        flex-wrap: wrap;
+        &__link {
+          &:nth-child(n+6) {
+            display: none;
+          }
+        }
+      }
+    }
+  
+    &__type {
+      &--type {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        &__link {
+          &:nth-child(n+10) {
+            display: none;
+          }
+        }
+      }
+    }
+    
+    .side-bar__telco {
+      &--tel-co {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+  }
+}
+
+.sim-tag {
+  color: $color-text;
+  font-size: 75%;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+
+  &--new {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    &--label{
+      color: var(--Primary, $color-primary);
+      font-weight: 600;
+      font-size: 112.5%;
+    }
+    &--title{
+      color: $color-text;
+      font-weight: 600;
+    }
+  }
+
+  &--key {
+    color: var(--Primary, $color-primary);
+    font-variant-numeric: lining-nums proportional-nums;
+    font-size: 100%;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: -0.1px;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+}
+
+.filter-container {
+  &__title__search {
+    display: none;
+  }
+  @media only screen and (max-width: 640px) {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    &--dp {
+      display: none;
+    }
+
+    &--block {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 20px;
+    }
+
+    &__title__none {
+      display: none;
+    }
+
+    &__title__search {
+      display: block;
+      color: #4b5460;
+      font-weight: 600;
+      font-size: 18px;
+      padding-left: 12px;
+    }
+
+    .side-bar__telco {
+      padding: 0 12px !important;
+      order: 2;
+      background: none;
+      border: none;
+      &--tel-co {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    .sim-sidebar__price {
+      padding: 0 12px !important;
+      order: 1;
+      background: none;
+      border: none;
+      &--prices {
+        display: flex;
+        flex-wrap: wrap;
+        overflow-y: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none; 
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        &__link {
+          background-color: #ecfce7;
+          white-space: nowrap;
+          div {
+            color: #007f00;
+          }
+          &:nth-child(n + 6) {
+            @media (max-width: 640px) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
+    .sim-sidebar__type {
+      padding: 4px 12px;
+      order: 3;
+      border: none;
+      margin: 0 12px;
+      &--type {
+        margin-left: -6px;
+        margin-right: -6px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        &__link {
+          padding-left: 6px;
+          padding-right: 6px;
+          flex: 0 0 50%;
+          max-width: 30%;
+          white-space: nowrap;
+          &:nth-child(n + 10) {
+            @media (max-width: 640px) {
+              display: none;
+            }
+          }
+        }
+        @media only screen and (max-width: 366px) {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 8px;
+          &__link {
+            max-width: 100%;
+          }
+        }
+      }
+    }
+
+    .crayons-layout__sidebar-right {
+      width: 100%;
+
+      .sim-sidebar__detail--number {
+        display: none;
+      }
+    }
+  }
+}
+
+.suggest {
+  &__title {
+    font-size: 100%;
+    color: #EF2827;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    &--title {
+      font-weight: 600;
+      color: $color-highlight;
+      font-size: 88%;
+      margin: 0 4px 4px 0;
+      padding: 4px 12px;
+      background-color: $color-second;
+      border-radius: 0.25rem
+    }
+  }
+}

@@ -1,0 +1,145 @@
+{% extends 'base.html' %} {% load compress %} {% load sims_tags %} {% load
+static %} {% load static %} {% block head %}
+<title>Chỉnh Sửa Theme | {{tenant.site_name}}</title>
+<link href="https://doan.websim.vn/sortable/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css"
+  integrity="sha512-vebUliqxrVkBy3gucMhClmyQP9On/HAWQdKDXRaAlb/FKuTbxkjPKUyqVOxAcGwFDka79eTF+YXwfke1h3/wfg=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+{% compress css file theme_config %}
+<style>
+  :root {
+    {% if tenant.theme_config.color.main_color %}
+    --color-primary: {{ tenant.theme_config.color.main_color }};
+    {% endif %}
+    {% if tenant.theme_config.color.second_color %}
+    --color-second: {{ tenant.theme_config.color.second_color }};
+    {% endif %}
+    {% if tenant.theme_config.color.text_color %}
+    --color-text: {{ tenant.theme_config.color.text_color }};
+    {% endif %}
+    {% if tenant.theme_config.color.text_highlight %}
+    --color-highlight: {{ tenant.theme_config.color.text_highlight }};
+    {% endif %}
+    {% if tenant.theme_config.color.color_bg %}
+    --color-bg: {{ tenant.theme_config.color.color_bg }};
+    {% endif %}
+    {% if tenant.theme_config.color.color_bg_menu %}
+    --color-bg_menu: {{ tenant.theme_config.color.color_bg_menu }};
+    {% endif %}
+    {% if tenant.theme_config.color.color_text_menu %}
+    --color-text_menu: {{ tenant.theme_config.color.color_text_menu }};
+    {% endif %}
+    {% if tenant.theme_config.color.font_family %}
+    --font_family: {{ tenant.theme_config.color.font_family }};
+    {% endif %}
+    {% if tenant.theme_config.color.font_size %}
+    --font_size: {{ tenant.theme_config.color.font_size }}px;
+    {% endif %}
+  }
+</style>
+<link
+  type="text/x-scss"
+  href="{% static 'theme_config/css/theme_config_style.scss' %}"
+  rel="stylesheet"
+  media="screen"
+/>
+{% endcompress %}
+{% endblock %} {% block body %}
+
+<div class="left" id="app">
+  <div id="theme-editor-sidebar">
+    <form
+      method="POST"
+      action="{% url 'theme_config:submit_config'%}"
+      class="theme-editor__sidebar"
+      id="theme-settings-form"
+      autocomplete="off"
+      enctype="multipart/form-data"
+      novalidate="novalidate"
+    >
+      {% csrf_token %}
+      <section class="theme-editor__index">
+        <header class="te-top-bar">
+          <div class="te-top-bar__branding">
+            <a
+              title="Về trang giao diện"
+              aria_label="Về trang giao diện"
+              class="te-brand-link"
+              data-no-turbolink="true"
+              href="/admin"
+              style="color: #fff; font-size: 20px"
+            >
+              <img
+                class="nav-icon fas"
+                src="https://doan.websim.vn/images/back.png"
+                alt=""
+              />
+            </a>
+          </div>
+          <div class="te-top-bar__list">
+            <div class="te-top-bar__item te-top-bar__item--fill">
+              <h2 class="ui-heading theme-editor__heading">TÙY CHỈNH GIAO DIỆN</h2>
+            </div>
+          </div>
+        </header>
+        <div class="theme-editor__panel-body">
+          {% include "components/theme_menu.html" with tenant=tenant %}
+          {% include "components/general_info.html" with tenant=tenant %}
+          {% include "components/banner.html" with tenant=tenant %} 
+          {% include "components/menu.html" with tenant=tenant %}
+          {% include "components/hotline.html" with tenant=tenant %} 
+          {% include "components/theme_style.html" with tenant=tenant theme_color_templates=theme_color_templates font_family_templates=font_family_templates %} 
+          {% include "components/sidebar_right.html" with tenant=tenant %} 
+          {% include "components/footer_link.html" with tenant=tenant %} 
+
+      </section>
+      <div class="theme-editor__panel theme-editor__panel--vertical" id="presets-panel">
+        <header class="te-panel__header">
+          <h2 class="ui-heading theme-editor__heading">Áp dụng</h2>
+          <button
+            class="ui-button btn--plain btn--full-width te-panel__header-action te-panel__header-action--subdued"
+            onclick="closePreset()"
+            type="button"
+            name="button"
+          >
+            <i class="las la-trash-alt"></i>
+          </button>
+        </header>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="main">
+  <iframe
+    width="100%"
+    height="100%"
+    title="Xem trước website"
+    name="customize-preview-0"
+    onmousewheel=""
+    sandbox="allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-presentation allow-same-origin allow-scripts"
+    src="http://{{home_page_url}}"
+  ></iframe>
+</div>
+{% include "components/menu_add_item.html" with tenant=tenant %}
+{% include "components/sidebar_add_module.html" with tenant=tenant %}
+{% include "components/footer_link_add_item.html" with tenant=tenant %}
+{% include "components/reset_theme.html" with tenant=tenant %}
+{% include "components/footer_content.html" with tenant=tenant %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script src="https://doan.websim.vn/adminlte/bower_components/ckeditor/ckeditor.js"></script>
+
+<script src="{% static 'theme_config/js/theme-config.js' %}"></script>
+<script src="{% static 'theme_config/js/menu.js' %}"></script>
+<script src="{% static 'theme_config/js/sidebar_right.js' %}"></script>
+<script src="{% static 'theme_config/js/footer_link.js' %}"></script>
+<script src="{% static 'theme_config/js/theme_style.js' %}"></script>
+<script src="{% static 'theme_config/js/general_info.js' %}"></script>
+{% endblock %}

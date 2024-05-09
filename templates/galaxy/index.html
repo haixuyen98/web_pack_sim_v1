@@ -1,0 +1,28 @@
+{% extends 'galaxy/base.html' %}
+{% load sims_tags %}
+{% load core_tags %}
+
+{% block body %}
+  <div class="wrapper">
+    <div id="page-content-inner">
+      <div class="crayons-layout crayons-layout--3-cols crayons-layout--article filter-container">
+        {% include 'galaxy/layout/sidebar-left.html' with theme_config=theme_config %}
+        <main id="main-content" class="crayons-layout__content gap-4">
+          {{content}}
+        </main>
+        {% include 'galaxy/layout/sidebar.html' with theme_config=theme_config theme_folder=theme_folder %}
+      </div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      if (window.innerWidth <= 640) {
+        var slideshow = document.querySelector('.slideshow');
+        var sidebarRight = document.querySelector('.crayons-layout__sidebar-right');
+        if (slideshow && sidebarRight) {
+          sidebarRight.parentNode.insertBefore(slideshow, sidebarRight.nextSibling);
+        }
+      }
+    });
+  </script>
+{% endblock %}

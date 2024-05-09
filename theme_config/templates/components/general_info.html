@@ -1,0 +1,149 @@
+<div class="theme-editor__panel" id="generalInfo">
+    <header class="te-panel__header">
+      <button
+        class="ui-button btn--plain te-panel__header-action"
+        onclick="closeSection('generalInfo')"
+        type="button"
+        name="button"
+      >
+        <i class="las la-angle-left" style="font-size: 22px"></i>
+      </button>
+      <h2 class="ui-heading theme-editor__heading">Cài đặt chung</h2>
+    </header>
+    <div
+      class="theme-editor__panel-body"
+      data-scrollable=""
+      data-title="Cài đặt chung"
+    >
+      <div class="card mt-3">
+        <div class="card-body">
+          <div class="form-group">
+            <label for="exampleSiteName">TÊN WEBSITE</label>
+            <input
+              class="form-control"
+              type="text"
+              name="site_name"
+              value="{{tenant.site_name}}"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="card mt-3">
+        <div class="card-body">
+          <div class="form-group">
+            <label for="exampleDescription">MÔ TẢ</label>
+            <textarea
+              class="form-control" 
+              name="description" 
+              rows="4" cols="50">{{ tenant.theme_config.seo.description }}</textarea>
+          </div>
+        </div>
+      </div>
+      <div class="card mt-3">
+        <div class="card-body">
+          <div class="form-group">
+            <label>LOGO WEBSITE</label>
+            <div
+              class="d-flex justify-content-between align-items-center upload-box"
+            >
+              <div class="box_img">
+                <img
+                  class="preview"
+                  src="{{tenant.site_image}}"
+                  alt="Image logo"
+                />
+                <input
+                  class="file-upload"
+                  name="site_image"
+                  type="file"
+                  accept=".png,.jpg,.jpeg,.gif,.svg,.ico,.webp"
+                />
+              </div>
+              <div class="box-action d-flex flex-column">
+                <a
+                  href="javascript:;"
+                  onclick="$(this).closest('.upload-box').find('.file-upload').trigger('click')"
+                  ><i class="las la-sign-out-alt"></i> Đổi ảnh</a
+                >
+                <a href="javascript:;" onclick="removeImage($(this))"
+                  ><i class="las la-trash-alt"></i> Xóa</a
+                >
+                <input
+                  type="hidden"
+                  name="site_image_path"
+                  class="input_image_value"
+                  value="{{tenant.site_image}}"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mt-3">
+        <div class="card-body">
+          <div class="form-group">
+            <label>Biểu tượng website (Favicon)</label>
+            <div
+              class="d-flex justify-content-between align-items-center upload-box"
+            >
+              <div class="box_img">
+                <img
+                  class="preview"
+                  src="{{tenant.theme_config.seo.favicon}}"
+                  alt="Image favicon"
+                />
+                <input
+                  class="file-upload"
+                  name="favicon"
+                  type="file"
+                  accept=".png,.jpg,.jpeg,.gif,.svg,.ico,.webp"
+                />
+              </div>
+              <div class="box-action d-flex flex-column">
+                <a
+                  href="javascript:;"
+                  onclick="$(this).closest('.upload-box').find('.file-upload').trigger('click')"
+                  ><i class="las la-sign-out-alt"></i> Đổi ảnh</a
+                >
+                <a href="javascript:;" onclick="removeImage($(this))"
+                  ><i class="las la-trash-alt"></i> Xóa</a
+                >
+                <input
+                  type="hidden"
+                  name="favicon_path"
+                  class="input_image_value"
+                  value="{{tenant.theme_config.seo.favicon}}"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mt-3">
+        <div class="card-body">
+          <div class="form-group">
+            <label for="exampleHeadScript">HeadScript</label>
+            <textarea 
+              class="form-control" 
+              name="headScript" 
+              style="height: 150px;"
+              rows="4" cols="50">{{ tenant.theme_config.seo.headScript }}</textarea>
+          </div>
+        </div>
+      </div>
+      <div class="card mt-3">
+        <div class="card-body">
+          <div class="form-group">
+            <label for="exampleFooterScript">FooterScript</label>
+            <textarea
+              class="form-control" 
+              name="footerScript" 
+              style="height: 150px;"
+              rows="4" cols="50">{{ tenant.theme_config.seo.footerScript }}</textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

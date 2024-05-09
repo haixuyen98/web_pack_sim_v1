@@ -1,0 +1,136 @@
+{% load static %}
+
+<header id="topbar" class="crayons-header topbar print-hidden">
+    <span id="route-change-target" tabindex="-1"></span>
+    <div class="crayons-header__container">
+        <div class="crayons-header__container--logo">
+            <a href="/" class="site-logo" aria-label="LOGO" title="{{tenant.site_name}}">
+                <img onload="this.style.opacity=1"
+                    alt="logo-icon"
+                    {% if tenant.site_image %}
+                        src="{{ tenant.site_image }}"
+                    {% else %}
+                        src="{% static 'galaxy/images/icons/sim.svg' %}"
+                    {% endif %}            
+                />
+            </a>
+            <span class="inline-block m:hidden">
+                <button
+                    class="c-btn c-btn--icon-alone js-hamburger-trigger mx-2"
+                    data-hamburger-src="{% static '/galaxy/images/hamburger.svg' %}"
+                    data-close-src="{% static '/galaxy/images/close.svg' %}"
+                >
+                    <img loading="lazy" decoding="async" onload="this.style.opacity=1"
+                        src="{% static '/galaxy/images/hamburger.svg' %}"
+                        alt="Navigation menu"
+                        class="crayons-icon lazy"
+                    />
+                </button>
+            </span>
+        </div>
+
+        <div class="crayons-header--search js-search-form" id="header-search">
+            <form
+                accept-charset="UTF-8"
+                method="get"
+                role="search"
+                onSubmit="return handleSearchSubmit()"
+            >
+                <div class="crayons-fields crayons-fields--horizontal">
+                    <div class="crayons-field flex-1 relative">
+                        <input
+                            class="crayons-header--search-input crayons-textfield js-search-input"
+                            type="tel"
+                            id="nav-search"
+                            name="q"
+                            autocomplete="off"
+                            oninput="handleSearchChange(this)"
+                            placeholder="Nhập số sim bạn cần tìm"
+                        />
+                        <button
+                            type="submit"
+                            aria-label="Search"
+                            class="c-btn c-btn--icon-alone absolute inset-px left-auto py-0 crayons-header--btn--search"
+                        >
+                            <img loading="lazy" decoding="async" onload="this.style.opacity=1"
+                            class="phone__icon lazy"
+                            src="/static/galaxy/images/icons/search-header.svg"
+                            alt="Icon phone"/>
+                        </button>
+                    </div>
+                    <div class="suggest-search">
+                        <div class="text-help">
+                            <p>Tìm sim có số đuôi bằng <b>6789</b>, bạn hãy nhập <b>6789</b></p>
+                            <p>Tìm sim có đuôi bằng <b>888</b> đầu số bất kỳ, bạn hãy nhập <b>888</b></p>
+                            <p>Tìm sim bắt đầu bằng <b>0914</b> đuôi bất kỳ, bạn hãy nhập <b>0914*</b></p>
+                            <p>Tìm sim có đầu <b>098</b> đuôi <b>888</b>, bạn hãy nhập <b>098*888</b></p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        {% comment %} <div class="flex items-center h-100 ml-auto">
+            <a
+                class="c-link c-link--icon-alone c-link--block m:hidden mx-1"
+                id="search-link"
+                aria-label="Search"
+                href="/search"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    role="img"
+                    aria-labelledby="a2z8e20ozrv9w7nk1jxjfcnfsiij0gj9"
+                    class="crayons-icon"
+                >
+                    <title id="a2z8e20ozrv9w7nk1jxjfcnfsiij0gj9">Search</title>
+                    <path
+                        d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0111 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 01-1.969 5.617zm-2.006-.742A6.977 6.977 0 0018 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 004.875-1.975l.15-.15z"
+                    ></path>
+                </svg>
+            </a>
+            <div class="flex" id="authentication-top-nav-actions">
+                <span class="hidden m:block">
+                    <a
+                        href="#"
+                        class="c-link mr-2 whitespace-nowrap ml-auto"
+                        data-no-instant
+                    >
+                        Giới thiệu về {đại lý}
+                    </a>
+                </span>
+            </div>
+        </div> {% endcomment %}
+    </div>
+    <div class="crayons-sub-header__container">
+        <div class="menu-header">
+            <ul class="menu-header_list">
+                {%for item in theme_config.menu_top %}
+                    <li><a class="hover-line" href="{{item.link}}">{{item.title}}</a></li>
+
+                {% endfor %}
+               
+            </ul>
+        </div>
+    </div>
+</header>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.querySelector('#nav-search');
+        const suggestSearch = document.querySelector('.suggest-search');
+
+        searchInput.addEventListener('click', function(event) {
+            suggestSearch.style.display = 'block';
+            event.stopPropagation();
+        });
+
+        document.addEventListener('click', function(event) {
+            if (event.target !== searchInput) {
+            suggestSearch.style.display = 'none';
+            }
+        });
+    });
+</script>

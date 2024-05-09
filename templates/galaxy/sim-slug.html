@@ -1,0 +1,56 @@
+{% extends 'galaxy/base.html' %}
+{% load compress %}
+{% load sims_tags %}
+{% load static %}
+
+{% include 'galaxy/layout/head-seo.html' with seo=seo %}
+
+{% block body %}
+  <div class="wrapper">
+    <div id="page-content-inner">
+      <div class="crayons-layout crayons-layout--3-cols crayons-layout--article">
+        {% include 'galaxy/layout/sidebar-left.html' with theme_config=theme_config %}
+        <main id="main-content" class="crayons-layout__content gap-4">
+            {% if head_title%}
+              <div class="breadcrumb-slug">
+                {% include 'galaxy/blog/breadcum.html' with breadcrumb_data=breadcrumb_data %}
+              </div>
+            {% endif %}
+            <h1 class="seo_title">{{seo.h1}}</h1>
+            {% if page and page.excerpt %}
+              <div class="excerpt">
+                <p>{{excerpt}}</p>
+              </div>
+            {% endif %}
+            {% showFilterAdv 0 %}
+            {% if listSim %}
+              {% include "galaxy/sims/sim-block.html" with listSim=listSim %}
+            {% else %}
+              {% include "galaxy/not_sim.html" with tenant=tenant %}
+            {% endif %}
+            {% if relatedPages%}
+              <div class="suggest">
+                <h3 class="suggest__title">Mọi người cũng tìm kiếm</h3>
+                <div class="suggest__content">
+                  {% for item in relatedPages %}
+                    <a href="{{ item.link }}">
+                      <div class="suggest__content--title">{{ item.title }} </div>
+                    </a>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+            {% if content %}
+              <div class="seo">
+                <div class="seo__content">
+                  {{ content }}
+                </div>
+              </div>
+            {% endif %}
+        </main>
+        {% include 'galaxy/layout/sidebar.html' with theme_config=theme_config %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
+

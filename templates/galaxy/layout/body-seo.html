@@ -1,0 +1,9 @@
+{% load static %}
+{% load compress %}
+
+{% if seo.footerScript_page %}
+    {{ seo.footerScript_page|safe }}
+{% endif %}
+{% if seo.footerScript_tenant %}
+    {{ seo.footerScript_tenant|safe }}
+{% endif %}

@@ -1,0 +1,60 @@
+{% if 'allow_sale_via_bank' in tenant.config %}
+<fieldset>
+  <legend><h2>Mở tính năng bán qua APP MB</h2></legend>
+<div class="fm-customize__item">
+    <div class="form-group">
+      <input type="hidden" name="allow_sale_via_bank" value="off">
+      <input id="allow_sale_via_bank" {% if config.allow_sale_via_bank == 'on' %}checked{% endif %}  type="checkbox" name="allow_sale_via_bank" value="on"></input>
+      <label for="allow_sale_via_bank">&nbsp;<strong>Bán qua APP MB</strong></label>
+    </div>
+  </div>
+  <div class="fm-customize__item">
+    <span class="fm-customize__item__label">
+      <strong>Link API MB</strong>  
+    </span>
+    <div class="form-group">
+      <input class="form-control form-control--settings" type="text" name="mb_bank_base_api" value="{{config.mb_bank_base_api}}">
+    </div>
+  </div>
+  <div class="fm-customize__item">
+    <span class="fm-customize__item__label">
+      <strong>Merchant Code</strong>  
+    </span>
+    <div class="form-group">
+      <input class="form-control form-control--settings" type="text" name="mb_bank_merchant_code" value="{{config.mb_bank_merchant_code}}">
+    </div>
+  </div>
+  <div class="fm-customize__item">
+    <span class="fm-customize__item__label">
+      <strong>Merchant Secret</strong>  
+    </span>
+    <div class="form-group">
+      <input class="form-control form-control--settings" type="text" name="mb_bank_merchant_secret" value="{{config.mb_bank_merchant_secret}}">
+    </div>
+  </div>
+  <div class="fm-customize__item">
+    <span class="fm-customize__item__label">
+      <strong>Transaction Type</strong>  
+    </span>
+    <div class="form-group">
+      <input class="form-control form-control--settings" type="text" name="mb_bank_transaction_type" value="{{config.mb_bank_transaction_type}}">
+    </div>
+  </div>
+  <div class="fm-customize__item">
+    <span class="fm-customize__item__label">
+      <strong>Check Sum Secret</strong>  
+    </span>
+    <div class="form-group">
+      <input class="form-control form-control--settings" type="text" name="mb_bank_check_sum_secret" value="{{config.mb_bank_check_sum_secret}}">
+    </div>
+  </div>
+  <div class="fm-customize__item">
+    <span class="fm-customize__item__label">
+      <strong>Phần trăm giữ SIM</strong>  
+    </span>
+    <div class="form-group">
+      <input class="form-control form-control--settings" type="text" name="sim_keeping_percent" value="{{config.sim_keeping_percent}}">
+    </div>
+  </div>
+</fieldset>
+  {% endif %}

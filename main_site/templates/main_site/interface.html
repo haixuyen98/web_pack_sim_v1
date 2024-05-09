@@ -1,0 +1,54 @@
+{% load static %}
+<div
+  id="interface"
+  class="wpb_column vc_column_container vc_col-sm-12"
+>
+  <div class="vc_column-inner">
+    <div class="wpb_wrapper">
+      <div class="tm-spacer" id="tm-spacer-65b8a2790d483"></div>
+
+      <div
+        class="tm-heading center tm-animation move-up"
+        id="tm-heading-65b8a2790d5c8"
+      >
+        <h3 class="heading">Kho giao diện web sim</h3>
+        <h4>
+          Websim luôn đồng hành và hỗ trợ bạn xây dựng website sim kinh doanh,
+          quản lí tập trung và marketing online hiệu quả
+        </h4>
+      </div>
+
+      <div class="tm-spacer" id="tm-spacer-65b8a2790da2d"></div>
+      <div
+        class="tm-grid-wrapper tm-grid-group"
+        id="tm-grid-65b8a2790eacb"
+        data-item-wrap="1"
+      >
+        <div class="tm-grid modern-grid has-animation move-up">
+          {% for interface in tenant_templates %}
+          <div
+            class="tm-box-icon style-06 tm-animation move-up"
+            id="tm-box-icon-65b8a2790ecc9"
+          >
+            <a
+              href="{{interface.link}}"
+              class="link-secret"
+              target="_blank"
+            >
+              <div class="industry-item">
+                <img
+                  class="ls-is-cached lazyloaded"
+                  alt="{{interface.name}}"
+                  src="/static/{{ interface.featured_img }}"
+                  onError="this.onerror=null;this.src='/static/galaxy/images/fallback.png';"
+                />
+                <p class="industry-item__title">{{interface.name}}</p>
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

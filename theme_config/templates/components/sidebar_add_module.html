@@ -1,0 +1,38 @@
+<div class="modal fade in" id="sidebar-module-modal" role="dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form id="form-custom-module" method="post" action="#">
+          <div class="box-body row">
+            <div class="form-group col-md-12">
+              <label for="name-text-input">Tiêu đề:</label>
+              <input
+                class="form-control"
+                type="text"
+                value=""
+                name="module_title"
+                id="module_title"
+              />
+            </div>
+            <div class="checkbox checkbox-primary">
+              <input type="checkbox" id="hide_title" name="hide_title" value="1">
+              <label for="hide_title" class="text-info">Ẩn tiêu đề</label>
+            </div>
+            <div class="form-group col-md-12">
+              <label for="url-text-input">Nội dung:</label>
+              <textarea class="ckeditor" name="module_content" id="module_content">&nbsp;</textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Đóng
+        </button>
+        <button type="button" onclick="saveModuleForm()" class="btn btn-primary">
+          Lưu
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

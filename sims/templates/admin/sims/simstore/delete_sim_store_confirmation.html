@@ -1,0 +1,50 @@
+{% extends 'admin/sims/custom_action_base.html' %}
+{% block header %}
+{{ block.super }}
+<script>
+    function redirectToSimStoreList() {
+        window.location.href = "{% url 'admin:sims_simstore_changelist' %}";
+    }
+</script>
+{% endblock %}
+
+{% block content %}
+<form method="post" action="">
+    {% csrf_token %}
+    <h2>Sim:</h2>
+    <input 
+        type="hidden" 
+        name="sims" 
+        value="{% for sim in sims %}{{ sim.id }}{% if not forloop.last %},{% endif %}{% endfor %}"
+    >
+    <ul>
+        {% for sim in sims %}
+            <li>
+                <input type="hidden" name="{{ action_checkbox_name }}" value="{{ sim.id }}">
+                <h4>{{ sim }}</h4>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <label style="margin-right: 10px;" for="sims">Xóa các sim đã chọn ở trên: </label>
+
+    <br />
+    <br />
+    <input type="hidden" name="action" value="delete_sim_store">
+    <input
+        type="submit" 
+        name="apply" 
+        style="background-color: #ba2121;"
+        value="Có, tôi chắc chắn"
+    >
+    <input 
+        type="button" 
+        name="cancel" 
+        class="button cancel" 
+        style="background-color: #333; margin-left: 10px" 
+        value="Không, quay trở lại" onclick="redirectToSimStoreList()"
+    >
+</form> 
+<br class="clear">
+<div id="footer"></div>
+{% endblock %}

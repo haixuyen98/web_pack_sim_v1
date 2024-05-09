@@ -1,0 +1,167 @@
+{% load sims_tags %}
+<aside class="crayons-layout__sidebar-left" aria-label="Article actions">
+  {% if theme_config.support.displayStyle == "2" %}
+    <div class="reaction-drawer__outer hoverdown home-contact style2">
+      {% if theme_config.support.hotline1 %}
+      <a href="tel:{{theme_config.support.hotline1|removeDot}}"
+        title="phone support"
+        class="phone_hotline"
+        id="hotline"
+      >
+        {{theme_config.support.hotline1}}
+      </a>
+      {% endif %}
+      <div class="social">
+        {% if theme_config.support.facebook %}
+        <a href="{{theme_config.support.facebook}}"
+          title="facebook support"
+          class="social__support2 phone__hidden"
+        >
+          <img
+            loading="lazy"
+            decoding="async"
+            onload="this.style.opacity=1"
+            class="phone__sidebar2 lazy"
+            src="/static/{{tenant.theme_folder}}/images/home_contact/facebook.svg"
+            alt="Icon facebook"
+          />
+        </a>
+        {% endif %} {% if theme_config.support.messenger %}
+        <a href="{{theme_config.support.messenger}}"
+          title="messenger support"
+          class="social__support2"
+        >
+          <img
+            loading="lazy"
+            decoding="async"
+            onload="this.style.opacity=1"
+            class="phone__sidebar2 lazy"
+            src="/static/{{tenant.theme_folder}}/images/home_contact/messenger.svg"
+            alt="Icon messenger"
+          />
+        </a>
+        {% endif %} {% if theme_config.support.zalo %}
+        <a href="{{theme_config.support.zalo}}"
+          title="zalo support"
+          class="social__support2"
+          id="zalo"
+        >
+          <img
+            loading="lazy"
+            decoding="async"
+            onload="this.style.opacity=1"
+            class="phone__sidebar2 lazy"
+            src="/static/{{tenant.theme_folder}}/images/home_contact/zalo.svg"
+            alt="Icon zalo"
+          />
+        </a>
+        {% endif %} {% if theme_config.support.linkedin %}
+        <a href="{{theme_config.support.linkedin}}"
+          title="linkedin support"
+          class="social__support2 phone__hidden"
+        >
+          <img
+            loading="lazy"
+            decoding="async"
+            onload="this.style.opacity=1"
+            class="phone__sidebar2 lazy"
+            src="/static/{{tenant.theme_folder}}/images/home_contact/linkedin.svg"
+            alt="Icon linkedin"
+          />
+        </a>
+        {% endif %} {% if theme_config.support.twitter %}
+        <a href="{{theme_config.support.twitter}}"
+          title="twitter support"
+          class="social__support2 phone__hidden"
+        >
+          <img
+            loading="lazy"
+            decoding="async"
+            onload="this.style.opacity=1"
+            class="phone__sidebar2 lazy"
+            src="/static/{{tenant.theme_folder}}/images/home_contact/twitter.svg"
+            alt="Icon twitter"
+          />
+        </a>
+        {% endif %} {% if theme_config.support.youtube %}
+        <a href="{{theme_config.support.youtube}}"
+          title="youtube support"
+          class="social__support2 phone__hidden"
+        >
+          <img
+            loading="lazy"
+            decoding="async"
+            onload="this.style.opacity=1"
+            class="phone__sidebar2 lazy"
+            src="/static/{{tenant.theme_folder}}/images/home_contact/youtube.svg"
+            alt="Icon youtube"
+          />
+        </a>
+        {% endif %}
+      </div>
+    </div>
+  {% else %}
+    <div class="crayons-article-actions print-hidden">
+      <div class="crayons-article-actions__inner">
+        <div class="reaction-drawer__outer hoverdown home-contact">
+          {% if theme_config.support.hotline1 %}
+          <a href="tel:{{theme_config.support.hotline1|removeDot}}" title="phone support" class="support__social" id="hotline">
+            <img loading="lazy" decoding="async" onload="this.style.opacity=1"
+            class="phone__sidebar lazy"
+            src="/static/{{tenant.theme_folder}}/images/home_contact/phone-call.svg"
+            alt="Icon phone"/>
+          </a>
+          {% endif %}
+          {% if theme_config.support.facebook %}
+          <a href="{{theme_config.support.facebook}}" title="facebook support" class="phone__hidden support__social">
+            <img loading="lazy" decoding="async" onload="this.style.opacity=1"
+            class="phone__sidebar lazy"
+            src="/static/{{tenant.theme_folder}}/images/home_contact/facebook.svg"
+            alt="Icon facebook"/>
+          </a>
+          {% endif %}
+          {% if theme_config.support.messenger %}
+          <a href="{{theme_config.support.messenger}}" title="messenger support" class="support__social">
+            <img loading="lazy" decoding="async" onload="this.style.opacity=1"
+            class="phone__sidebar lazy"
+            src="/static/{{tenant.theme_folder}}/images/home_contact/messenger.svg"
+            alt="Icon messenger"/>
+          </a>
+          {% endif %}
+          {% if theme_config.support.zalo %}
+          <a href="{{theme_config.support.zalo}}" title="zalo support" class="support__social" id="zalo">
+            <img loading="lazy" decoding="async" onload="this.style.opacity=1"
+            class="phone__sidebar lazy"
+            src="/static/{{tenant.theme_folder}}/images/home_contact/zalo.svg"
+            alt="Icon zalo"/>
+          </a>
+          {% endif %}
+          {% if theme_config.support.linkedin %}
+          <a href="{{theme_config.support.linkedin}}" title="linkedin support" class="phone__hidden support__social">
+            <img loading="lazy" decoding="async" onload="this.style.opacity=1"
+            class="phone__sidebar lazy"
+            src="/static/{{tenant.theme_folder}}/images/home_contact/linkedin.svg"
+            alt="Icon linkedin"/>
+          </a>
+          {% endif %}
+          {% if theme_config.support.twitter %}
+          <a href="{{theme_config.support.twitter}}" title="twitter support" class="phone__hidden support__social">
+            <img loading="lazy" decoding="async" onload="this.style.opacity=1"
+            class="phone__sidebar lazy"
+            src="/static/{{tenant.theme_folder}}/images/home_contact/twitter.svg"
+            alt="Icon twitter"/>
+          </a>
+          {% endif %}
+          {% if theme_config.support.youtube %}
+          <a href="{{theme_config.support.youtube}}" title="youtube support" class="phone__hidden support__social">
+            <img loading="lazy" decoding="async" onload="this.style.opacity=1"
+            class="phone__sidebar lazy"
+            src="/static/{{tenant.theme_folder}}/images/home_contact/youtube.svg"
+            alt="Icon youtube"/>
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</aside>

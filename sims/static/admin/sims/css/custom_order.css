@@ -1,0 +1,52 @@
+.object-tools {
+  margin-top: 0;
+  float: left;
+  padding: 0 1rem;
+}
+.object-tools li {
+  height: 100%;
+  font-weight: 300;
+  color: var(--body-quiet-color);
+  margin-top: 5px;
+}
+/* .module .original {
+  display: none;
+} */
+.field-user_create input {
+  max-width: 170px;
+}
+.field-created_at p,
+.field-created_userpay p {
+  margin: 0;
+  padding: 0;
+}
+.datetimeshortcuts {
+  white-space: nowrap;
+}
+.delete {
+  vertical-align: middle;
+}
+.delete div {
+  display: flex;
+  justify-content: center;
+}
+
+.ov-flow {
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+  
+    &::-webkit-scrollbar {
+      display: none;
+    }
+}
+
+fieldset.module {
+    display: inline-block; /* Đảm bảo fieldset không chiếm toàn bộ chiều rộng */
+}
+
+.reverse_history {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  flex-direction: column;
+}

@@ -1,0 +1,83 @@
+.module table:has(.public-disabled) {
+    display: none;
+}
+#content {
+    width: 93%;
+}
+fieldset {
+    width: 100%;
+    padding: 1rem;
+}
+nav[aria-label="Breadcrumbs"] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--breadcrumbs-bg);
+}
+.btn-clear-cache{
+    margin-right: 20px;
+}
+.btn-clear-cache > a {
+    padding: 0.35rem 0.5rem;
+    color: var(--breadcrumbs-link-fg);
+    background: var(--header-bg);
+    border-radius: 5px;
+}
+.btn-clear-cache > a:hover {
+    color: var(--breadcrumbs-fg);
+}
+.field-formatted_amount_payment,
+.field-formatted_amount_remaining,
+.column-formatted_amount_payment,
+.column-formatted_amount_remaining,
+.field-formatted_amount_interest,
+.field-formatted_amount_interest_temp,
+.column-formatted_amount_interest,
+.column-formatted_amount_interest_temp {
+    text-align: right;
+}
+
+.column-formatted_amount_interest_temp .text,
+.column-formatted_amount_interest .text,
+.column-formatted_amount_payment .text,
+.column-formatted_amount_remaining .text {
+    width: 117px;
+}
+
+.column-row_sim_amount .text {
+    width: 130px;
+}
+
+.column-row_name .text {
+    width: 170px;
+}
+
+.column-get_store_type .text {
+    width: 80px;
+}
+
+.column-get_amount_format .text {
+    width: 100px;
+    text-align: center;
+}
+
+.field-get_amount_format {
+    text-align: right;
+}
+
+.column-row_code_created_at .text {
+    width: 140px;
+}
+
+.column-row_store_type .text,
+.column-get_order_store_type .text {
+    width: 105px;
+}
+
+.column-row_agency_id .text {
+    width: 110px;
+}
+
+.column-row_status_action_popup .text {
+    width: 230px;
+}

@@ -1,0 +1,24 @@
+<div class="modal fade in" id="reset-theme" role="dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <form id="form-reset-theme" method="post" action="{% url 'theme_config:submit_config'%}">
+            <div class="box-body row">
+              <div class="form-group col-md-12">
+                <label for="name-text-input" class="title_reset">Bạn có đồng ý reset lại cài đặt theme không?</label>
+              </div>
+            </div>
+            <input type="hidden" name="resetTheme" value="true" />
+            <div class="modal-footer-reset">
+              <button type="button" class="btn btn_cancel_reset" data-dismiss="modal">
+                Hủy
+              </button>
+              <button type="submit" class="btn btn-primary">
+                Xác nhận
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>

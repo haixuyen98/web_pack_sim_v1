@@ -1,0 +1,12 @@
+FROM python:3.9
+WORKDIR /app
+COPY . /app
+RUN apt-get update && apt-get install -y gettext && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN pip install -r requirements.txt
+# RUN python manage.py migrate
+RUN python manage.py collectstatic --noinput
+# RUN python manage.py compress --force
+EXPOSE 80
+
+CMD python manage.py runserver 0.0.0.0:80 
+#--insecure

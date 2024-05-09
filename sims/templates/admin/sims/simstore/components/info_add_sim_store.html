@@ -1,0 +1,170 @@
+
+<div class="data_fields">
+  <div class="data_title">Các trường dữ liệu</div>
+  <div class="data_content">
+    <div class="data_column_left">
+      <div class="data_column">
+        1 - <span>Số sim</span> <i>*</i> : Nhập bằng số, tối đa 10 số
+      </div>
+      <div class="data_column">
+        2 - <span>Giá bán</span><i>*</i> : Nhập bằng số, chọn đơn vị trước khi
+        nhập
+      </div>
+      <div class="data_column">3 - <span>Loại sim</span><i>*</i> : Nhập bằng số ( 1: trả trước/TT, 2: trả sau/TS )
+      </div>
+    </div>
+    <div  class="data_column_right">
+      <div class="data_column">
+        4 - <span>Nhà mạng</span><i>*</i> : Nhập kí tự chữ theo mẫu sau:
+        Viettel/VT, Mobifone/Mobi, Vinaphone, Vietnamobile/VNMB, Itel, Gmobile
+      </div>
+      <div class="data_column">5 - <span>Ghi chú :</span></div>
+    </div>
+  </div>
+  <div class="fields_note">
+    <span>Lưu ý:</span> <i>*</i> Trường dữ liệu bắt buộc<br/>
+    <span class="list_sim">Mỗi lần up tối đa 50,000 số</span>
+  </div>
+  <div>
+    <div class="images_upsim">
+      Ảnh minh họa
+    </div>
+    <div>
+      <img
+        class="preview"
+        src="/static/images/image_up_sim.svg"
+        style="max-width: 100%;
+              height: auto;
+              background-size: cover;
+              background-position: center center;"
+      />
+    </div>
+  </div>
+</div>
+
+<div class="table_category">
+  <div class="category_title">
+    <span> Đăng bảng số theo danh mục </span>
+    <label class="switch">
+      <input
+        type="checkbox"
+        name="is-handle-cate"
+        class="check-category"
+        onchange="toggleSelectCategory(this)"
+      />
+      <span class="slider round"></span>
+    </label>
+  </div>
+  <div class="toggle-category prepayment_rate" style="display: none">
+    <div class="mb_6">
+      <label class="color_text">Chọn danh mục</label>
+    </div>
+    <select class="cat-multiple w_input" name="categories" multiple="multiple">
+      {% for choice_value, choice_label in category_list %}
+      <option value="{{ choice_value }}">{{ choice_label }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="category_note">
+    <ul>
+      <li>
+        Nếu không lựa chọn danh mục, bảng số sẽ mặc định được đăng vào Bảng số
+        tổng, phân loại Nhà mạng và loại sim theo quy luật của hệ thống.
+      </li>
+      <li>
+        Nếu lựa chọn danh mục, bảng số sẽ được up theo cả danh mục tương ứng.
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="table_category">
+  <div class="category_title">
+    <span> Cho phép trả góp </span>
+    <label class="switch">
+      <input
+        type="checkbox"
+        name="is-handle-installment"
+        class="check-installment"
+        onchange="toggleSelectInstallment(this)"
+      />
+      <span class="slider round"></span>
+    </label>
+  </div>
+  <div class="toggle-installment">
+    <div class="installment_access">
+      <div class="prepayment_rate">
+        <div class="mb_6">
+          <label class="color_text">Mức trả trước</label>
+        </div>
+        <select
+          class="installment_payment w_input"
+          name="installment_payment"
+          multiple="multiple"
+        >
+          <option></option>
+          {% for choice_value, choice_label in installment_payment %}
+          <option value="{{ choice_value }}">{{ choice_label }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="prepayment_rate">
+        <div class="mb_6">
+          <label class="color_text">Kỳ hạn trả góp</label>
+        </div>
+        <select
+          class="installment_term w_input"
+          name="installment_term"
+          multiple="multiple"
+        >
+          <option></option>
+          {% for choice_value, choice_label in installment_term %}
+          <option value="{{ choice_value }}">{{ choice_label }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+    <div class="mt_15">
+      <div class="installment-percent">
+        <div class="mb_6">
+          <label class="color_text">Chọn đơn vị lãi suất</label>
+        </div>
+        <div id="id_installment_type">
+          <div class="installment-item">
+            <input type="radio" name="installment_type" value="1" checked/>
+            <label class="color_text"> % / tháng</label>
+          </div>
+          <div class="installment-item">
+            <input type="radio" name="installment_type" value="2"/>
+            <label class="color_text"> đồng / triệu</label>
+          </div>
+        </div>
+        <div class="prepayment_rate">
+          <div class="mb_6">
+            <label class="color_text">Lãi suất</label>
+          </div>
+          <div class="input_percent_month">
+            <input
+              type="number"
+              name="iir"
+              class="interest"
+            />
+            <div class="txt_percent"> % / tháng</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).on("change", "input[type=radio][name=installment_type]", function () {
+    var txt_type = $(this).val();
+    if(txt_type == '1'){
+      $('.input_percent_month').find('.txt_percent').text('% / tháng');
+    } else {
+      $('.input_percent_month').find('.txt_percent').text('đồng / triệu');
+    }
+  });
+</script>
+

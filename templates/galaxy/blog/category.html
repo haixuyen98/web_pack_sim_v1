@@ -1,0 +1,48 @@
+{% extends 'galaxy/base.html' %}
+{% load static %}
+{% load sims_tags %}
+
+{% block body %}
+<div class="wrapper">
+  <div id="page-content-inner">
+    <div class="post-container breadcrumb-articles">
+      <div class="post-container__head">
+        {% include 'galaxy/blog/breadcum.html' with breadcrumb_data=breadcrumb_data %}
+        <h1 class="post-container__title">{{ article.title }}</h1>
+      </div>
+    </div>
+    <div class="bg-article-repeat">
+      {% if name_content %}
+        <h1 class="bg-article-repeat__title">{{ name_content }}</h1>
+      {% else %}
+        <h1 class="bg-article-repeat__title">Tin tức</h1>
+      {% endif %}
+    </div>
+    <div class="crayons-layout crayons-layout--3-cols crayons-layout--article filter-container">
+      {% include 'galaxy/layout/sidebar-left.html' with theme_config=theme_config %}
+      <main id="main-content" class="grid gap-4 width-full">
+        <section class="crayons-layout__content pb-4">
+          <div class="search_articles">
+            {% include 'galaxy/blog/article-filter.html' %}
+          </div>
+          <div class="page-articles-left">
+            <div class = "container pd-container">
+              <div class="page-articles-left__details">
+                {% for article in articles %}
+                  {% include 'galaxy/blog/articles-item.html' with article=article %}
+                {% empty %}
+                  <h3>Chưa có bài viết nào...</h3>
+                {% endfor %}
+              </div>
+              {% if request.path %}
+                {% pagination %}
+              {% endif %}
+            </div>
+          </div>
+        </section>
+      </main>
+      {% include 'galaxy/blog/blog_sidebar.html' with className="articles-hidden"%}
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+<div class="slideshow">
+    <div class="slides">
+        {% for banner_tuple in urls %}
+            {% with banner_url=banner_tuple.0 banner_link=banner_tuple.1 banner_title=banner_tuple.2 %}
+                <div class="img-wrapper">
+                    <a href="{{ banner_link }}">
+                        <img loading="lazy" decoding="async" onload="this.style.opacity=1"
+                            src="{{ banner_url }}"
+                            alt="{{ banner_title }}"
+                            class="lazy"
+                        />
+                    </a>
+                </div>
+            {% endwith %}
+        {% endfor %}
+    </div>
+
+    <div class="dots">
+        {% for _ in rangeAmount %}
+            <div class="dot"></div>
+        {% endfor %}
+    </div>
+</div>

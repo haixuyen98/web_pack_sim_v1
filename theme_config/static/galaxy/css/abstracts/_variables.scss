@@ -1,0 +1,36 @@
+$color-2nd: var(--color_bg, #ffffff);
+$color-warning: #F7B811;
+$color-black: #000000;
+$color-blue: #3B82F6;
+$color-green: #08c708;
+$color-light-green: #7A9D4B;
+$color-text-head: #222222;
+$color-text-content: #404040;
+$color-text-link: #3498DB;
+
+$color-primary: var(--color-primary,#dd1a21);
+$color-second: var(--color-second,#eeeeee);
+$color-text: var(--color-text, #48484A);
+$color-highlight: var(--color-highlight, #007a57);
+$color_bg: var(--color_bg, #ffffff);
+$color-bg_menu: var(--color-bg_menu, #29293a);
+$color-text_menu: var(--color-text_menu, #dfdddd);
+
+$font_size: var(--font_size, 16px);
+
+$font-primary: var(--font_family, 'Inter', 'system-ui');
+// breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+// width and height unit
+$header-top-height: 56px;
+$header-bottom-height: 52px;
+$w-full: 100vw;
+$h-full: 100vh;
+// spacing
+$item-spacing: 20px;
+// font size 
+$logo-font-size: 27px;

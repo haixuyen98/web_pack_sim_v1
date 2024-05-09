@@ -1,0 +1,83 @@
+{% load static %}
+{% load sims_tags %}
+{% load banking_tags %}
+
+<div class="sim-info-block">
+    <div class="sim-info-tel">
+      <div class="sim-info-tel_title">Nhà mạng:</div>
+      <div class="sim-info-tel_logo">
+        <img loading="lazy" decoding="async" onload="this.style.opacity=1" src="{{theme_folder|renderLogoTelIcon:sim.telcoText}}" class="lazy" alt="{{ sim.telcoText }}" />
+      </div>
+    </div>
+
+    <div class="sim-info-number">
+      <div class="sim-info-number_title">Số sim:</div>
+      <div class="sim-info-number_detail">
+        <h2 class="text-gray-800 font-bold not-italic">
+          {% if sim.highlight %}
+            {{ sim.highlight|safe }}
+          {% else %}
+            {{ sim.id }}
+          {% endif %}
+        </h2>
+      </div>
+    </div>
+
+    <div class="sim-number-pattern">
+      <div class="pretty-number">
+        <p>Kiểu số đẹp:</p>
+        <div class="pretty-number_list">
+          <div class="pretty-number_list_block">{{sim.categoryText}}</div>
+        </div>
+      </div>
+      <div class="pretty-head">
+        <p>Đầu số đẹp:</p>
+        <span class="pretty-head_link">
+          <a href="#">{{head}}</a>
+        </span>
+      </div>
+      <div class="pretty-tail">
+        <p>Đuôi số đẹp:</p>
+        <span class="pretty-tail_link">
+          <a>
+            {% if sim.e %}
+              {{ sim.e }}
+            {% else %}
+              {{ tail }}
+            {% endif %}
+          </a>
+        </span>
+      </div>
+      {% if sim.ck %}
+      <div class="pretty-head">
+        <p>Gói cước:</p>
+        <span class="pretty-head_link">
+          {{sim|get_ck_detail}}
+        </span>
+      </div>
+      {% endif %}
+      {% if sim.ck %}
+      
+      <div class="pretty-head">
+        <p>Khuyến mại:</p>
+        <span class="pretty-head_link align-right">
+          {{sim|get_ck_promotion|safe}}
+        </span>
+      </div>
+      {% endif %}
+
+    </div>
+
+    <div class="sim-info-price">
+      <div class="sim-info-price_title">Giá bán:</div>
+      <div class="sim-info-price_content">
+        <span id="price_sim_details">{{sim.price_calc|formatPrice}}</span>
+        {% if sim.adjust_percent < 0 %}
+        <p class="sim-info-price_detail_adjust">
+          <span class="sim-info-price_detail_adjust_cost">{{sim.price|formatPrice}}</span>
+          <span class="sim-info-price_detail_adjust_promotion">({{sim.adjust_percent}}%)</span>
+        </p>
+        {% endif %}
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,63 @@
+{% load sims_tags %}
+<div class="theme-customize-header">
+  <div class="theme-customize-header__left">
+  </div>
+  <div class="theme-customize-header__right">
+    <button type="button" class="btn btn--add" onclick="addCustomizeWebhookUrl($(this))">
+      <img
+        class="preview"
+        src="/static/theme_config/images/icon_add.svg"
+        style="max-width: 100%;
+              height: auto;
+              background-size: cover;
+              background-position: center center;"
+      />
+      <span>Thêm webhook</span>
+    </button>
+  </div>
+</div>
+<div class="theme-customize-content">
+  <div style="overflow-x: auto;">
+    <table id="tbl-customize-price">
+        <tr>
+            <th>URL</th>
+            <th>Content</th>
+            <th>Action</th>
+        </tr>
+        {% if customize_webhook_url %} 
+          {% for item in customize_webhook_url %}
+            <tr class="item-customize-webhook-url"
+                data-id="{{ item.id }}"
+                data-uuid="{{ item.uuid }}"
+                data-webhook-url="{{ item.webhook_url }}"
+                data-content="{{ item.content }}">
+                <td>{{ item.webhook_url }}</td>
+                <td>{{ item.content }}</td>
+                <td class="btn-action">
+                <a href="javascript:void(0)" onclick="editCustomizeWebhookUrl($(this))">
+                    <img
+                    class="preview"
+                    src="/static/theme_config/images/icon_edit.svg"
+                    style="max-width: 100%;
+                        height: auto;
+                        background-size: cover;
+                        background-position: center center;"
+                />
+                </a>
+                <a href="javascript:void(0)" onclick="deleteCustomizeWebhookUrl($(this))">
+                    <img
+                    class="preview"
+                    src="/static/theme_config/images/icon_delete.svg"
+                    style="max-width: 100%;
+                        height: auto;
+                        background-size: cover;
+                        background-position: center center;"
+                />
+                </a>
+                </td>
+            </tr>
+          {% endfor %}
+        {% endif %}
+    </table>
+  </div>
+</div>

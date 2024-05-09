@@ -1,0 +1,81 @@
+{% load sims_tags %} 
+<div class="theme-customize-header">
+  <div class="theme-customize-header__left">
+    <div class="theme-customize-header__left__title">Quản lý Tuỳ chỉnh hiển thị Ưu tiên theo danh mục</div>
+    <div class="theme-customize-header__left__record">6 bản ghi</div>
+  </div>
+  <div class="theme-customize-header__right">
+    <button type="button" class="btn btn--add" onclick="addCustomizeCategory($(this))">
+      <img
+        class="preview"
+        src="../../static/theme_config/images/icon_add.svg"
+        style="max-width: 100%;
+              height: auto;
+              background-size: cover;
+              background-position: center center;"
+      />
+      <span>Thêm tuỳ chỉnh</span>
+    </button>
+  </div>
+</div>
+<div class="theme-customize-content">
+  <div style="overflow-x: auto;">
+    <table>
+      <tr>
+        <th width="70">Page</th>
+        <th width="120">Path</th>
+        <th width="50">Kho</th>
+        <th width="150">Số ưu tiên</th>
+        <th width="50">Nhà mạng ưu tiên</th>
+        <th width="120">Khoảng giá ưu tiên</th>
+        <th width="70">Sắp xếp ưu tiên</th>
+        <th width="100">Hành động</th>
+      </tr>
+      {% for item in data_list_table %}
+        {% for customize in customize_category %}
+          {% if forloop.counter == forloop.parentloop.counter %}
+            <tr class="item-customize-category"
+                data-category="{{ customize.category }}"
+                data-path="{{ customize.path }}" 
+                data-warehouse="{{ customize.warehouse }}" 
+                data-priority-number="{{ customize.priority_number }}"
+                data-network="{{ customize.network }}"
+                data-price-from="{{ customize.price_from }}" 
+                data-price-to="{{ customize.price_to }}"
+                data-arrange="{{ customize.arrange }}">
+              <td>{{ item.category }}</td>
+              <td>{{ item.path }}</td>
+              <td>{{ item.warehouse }}</td>
+              <td>{{ item.priority_number }}</td>
+              <td>{{ item.network }}</td>
+              <td>{{ item.price_from|formatPrice }} - {{ item.price_to|formatPrice }}</td>
+              <td>{{ item.arrange }}</td>
+              <td>
+                <a href="javascript:void(0)" onclick="editCustomizeCategory($(this))">
+                  <img
+                  class="preview"
+                  src="../../static/theme_config/images/icon_edit.svg"
+                  style="max-width: 100%;
+                        height: auto;
+                        background-size: cover;
+                        background-position: center center;"
+                />
+                </a>
+                <a href="javascript:void(0)" onclick="deleteCustomizeCategory($(this))">
+                  <img
+                  class="preview"
+                  src="../../static/theme_config/images/icon_delete.svg"
+                  style="max-width: 100%;
+                        height: auto;
+                        background-size: cover;
+                        background-position: center center;"
+                />
+                </a>
+              </td>
+            </tr>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </table>
+  </div>
+</div>

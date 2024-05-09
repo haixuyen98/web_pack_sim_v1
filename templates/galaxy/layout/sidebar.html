@@ -1,0 +1,50 @@
+{% load sims_tags %}
+<aside class="crayons-layout__sidebar-right {{className}}" aria-label="Author details">
+  <div class="crayons-article-sticky grid gap-4 pb-4 break-word filter-container--block">
+    {% comment %} <div class="filter-container__title__search">Tìm kiếm nhanh</div> {% endcomment %}
+      {% block sidebar_top %}{% endblock %}
+      {%for item in theme_config.sidebar %}
+        {% if item.is_hide != "1" %}
+          <div class="sim-sidebar sim-sidebar--tag {% if 'sidebar_telco_block' not in item.content and 'sidebar_prices_block' not in item.content %}sim-sidebar__hidden{% endif %}">
+            {% if item.hide_title != "1" %}
+              <div class="sim-sidebar__title">
+                {{ item.title }}
+                {% if 'sidebar_types_block' in item.content %}
+                <div onclick="loadMoreContent('.sim-sidebar__type--type__link', 10, 'loadMoreTypes')" id="loadMoreTypes" class="sim-sidebar__title--loadMore">Xem thêm</div>
+                {% endif %}
+                {% if 'sidebar_prices_block' in item.content %}
+                <div onclick="loadMoreContent('.sim-sidebar__price--prices__link', 6, 'loadMorePrices')" id="loadMorePrices" class="sim-sidebar__title--loadMore">Xem thêm</div>
+                {% endif %}
+              </div>
+            {% endif %}
+
+            {{item.content|parseSideBarItem:theme_folder}}
+          </div>
+        {% endif %}
+      {% endfor %}
+      {% block sidebar_end %}{% endblock %}
+    </div>
+  </div>
+  <div class="crayons-article-sticky grid gap-4 break-word"></div>
+</aside>
+
+<script>
+  function loadMoreContent(selector, limit, loadMoreId) {
+    var links = document.querySelectorAll(selector + ':nth-child(n + ' + (limit) + ')');
+    var loadMore = document.getElementById(loadMoreId);
+    
+    links.forEach(function(link) {
+      var computedStyle = window.getComputedStyle(link);
+
+      if (computedStyle.display === 'none') {
+        link.style.display = (selector.includes('prices') ? 'flex' : 'block');
+        loadMore.innerHTML = "Ẩn bớt";
+      } else {
+        link.style.display = 'none';
+        loadMore.innerHTML = "Xem thêm";
+      }
+    });
+  }
+</script>
+
+

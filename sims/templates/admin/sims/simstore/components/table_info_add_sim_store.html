@@ -1,0 +1,54 @@
+<div class='hidden table-data'>
+    <div class="delete_old">
+      <div>
+        <span>Xoá bảng cũ</span>
+        <input id="delete-table" type="checkbox" name="is-delete-table" />
+      </div>
+      <div class="delete_old_note">Mặc định bỏ tích nếu up thêm</div>
+    </div>
+</div>
+
+<div class="clusterize-scroll table-data hidden ov_flow">
+    <p class="phones-invalid"></p>
+    <p class="phones-valid"></p>
+    <div class="price_unit">
+      <span>Đơn vị giá bán (VNĐ)</span>
+      <div class="price_display">
+        <input type="radio" id="hold" name="exchange_rate" value="1" checked>
+        <label for="hold">Giữ nguyên</label><br>
+      </div>
+      <div class="price_display">
+        <input type="radio" id="thousand" name="exchange_rate" value="1000">
+        <label for="thousand">x1000</label><br>
+      </div>
+      <div class="price_display">
+        <input type="radio" id="million" name="exchange_rate" value="1000000">
+        <label for="million">x1.000.000</label>
+      </div>
+      <button id="delete-sim-error" type="button" onclick="deleteSimsError()" class="btn_download hidden"> Xoá số lỗi </button>
+    </div>
+    <table class="table_upload table table-bordered table_load_sim">
+      <thead>
+        <tr>
+          <td>STT</td>
+          <td>Số <span style="color: red">*</span></td>
+          <td>Giá <span style="color: red">*</span></td>
+          <td>Loại mạng (TT/TS)</td>
+          <td>Nhà mạng</td>
+          <td>Ghi chú</td>
+        </tr>
+        </head>
+      <tbody id="contentTable" class="clusterize-content" tabindex="0"
+        style="counter-increment: clusterize-counter -1;">
+      </tbody>
+    </table>
+    <div class="pagination-controls mt_15">
+      <button onclick="prevPage()" type='button' id="btn-prev">Trước</button>
+      <span id="pagination-info"></span>
+      <button onclick="nextPage()" type='button' id="btn-next">Sau</button>
+    </div>
+</div>
+<div class='hidden table-data mt_15'>
+    <input type="hidden" name="data" id="data_input" />
+    <input type="submit" value="Thêm vào kho sim" name="submit-form">
+</div>

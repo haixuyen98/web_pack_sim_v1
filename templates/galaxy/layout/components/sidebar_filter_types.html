@@ -1,0 +1,13 @@
+  <div class="sim-sidebar__detail sim-sidebar__type--type">
+    {% for item in filterTypes %}
+    <a
+      href="{{ item.link }}"
+      class="sim-sidebar__detail__link sim-sidebar__detail__link--types sim-sidebar__type--type__link"
+    >
+      <div class="sim-tag sim-tag--new">
+        <span class="sim-tag--new--label">{{ item.label }}</span>
+        <span class="sim-tag--new--title">{{ item.title }}</span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>

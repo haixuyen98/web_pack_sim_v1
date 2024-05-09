@@ -1,0 +1,180 @@
+.crayons-header {
+    height: 108px;
+    background-color: $color-primary;
+    @media only screen and (max-width: $breakpoint-md) {
+        height: 100px;
+    }
+    .crayons-header__container {
+        height: $header-top-height;
+        @media only screen and (max-width: $breakpoint-md) {
+            z-index: 200;
+            display: block;
+        }
+
+        @media only screen and (max-width: $breakpoint-md) {
+            padding: 0;
+        }
+        .crayons-icon {
+            @media only screen and (max-width: $breakpoint-md) {
+                transition: transform 0.3s ease;
+            }
+        }
+
+        &--logo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            @media only screen and (max-width: 768px) {
+                padding: 5px 0 5px 12px;
+            }
+        }
+
+        .site-logo {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            max-width: fit-content;
+            font-size: $logo-font-size;
+            font-style: normal;
+            font-weight: 700;
+            color: $color_bg;
+            line-height: normal;
+            img {
+                height: 36px;
+                object-fit: contain;
+            }
+            @media only screen and (max-width: $breakpoint-md) {
+                img {
+                    height: 34px;
+                }
+            }
+        }
+        .site-logo:hover {
+            text-decoration: none;
+        }
+
+        .crayons-header--search {
+            width: 360px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            @media only screen and (max-width: $breakpoint-md) {
+                width: 100%;
+                max-width: 100%;
+                margin: auto;
+                padding: 0 8px;
+            }
+            @media only screen and (min-width: 769px) and (max-width: $breakpoint-lg) {
+                left: 60%;
+            }
+        }
+
+        .c-link {
+            font-weight: 600;
+            color: $color_bg;
+        }
+
+        #authentication-top-nav-actions {
+            .c-link {
+                @media only screen and (max-width: $breakpoint-md) {
+                    display: none;
+                }
+            }
+            .c-link:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .m\:hidden {
+            @media only screen and (min-width: $breakpoint-md) {
+                display: none;
+            }
+        }
+    }
+
+    .crayons-header--btn--search {
+        background: $color-primary;
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        margin: 2px;
+        @media only screen and (max-width: $breakpoint-md) {
+            margin: 2px 10px 2px 2px;
+        }
+    }
+    
+    .crayons-sub-header__container {
+        height: $header-bottom-height;
+        background-color: $color-bg_menu;
+        overflow-x: auto;
+        white-space: nowrap;
+        position: relative;
+        z-index: -1;
+        @media only screen and (min-width: $breakpoint-md) {
+            display: block !important;
+        }
+        @media only screen and (max-width: $breakpoint-md) {
+            display: none;
+            transition: all 0.3s ease;
+            width: $w-full;
+            height: $h-full;
+            position: relative;
+            background-color: $color_bg;
+            z-index: 500;
+            margin-top: 34px;
+        }
+        &:focus {
+            overflow-x: auto;
+        }
+        .menu-header {
+            max-width: var(--site-width);
+            height: 100%;
+            display: flex;
+            padding-left: 100px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            position: relative;
+            .menu-header_list {
+                display: flex;
+                align-items: center;
+                gap: 22px;
+                @media only screen and (max-width: $breakpoint-md) {
+                    display: grid;
+                    position: absolute;
+                    top: $item-spacing;
+                    left: var(--su-4);
+                    gap: $item-spacing;
+                }
+                li {
+                    list-style: none;
+                    a {
+                        color: $color-text_menu;
+                        font-weight: 700;
+                        opacity: 0.8;
+                    }
+                }
+                li:hover {
+                    @media only screen and (max-width: $breakpoint-md) {
+                        background-color: $color-text;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.seo_title {
+    font-size: 150%;
+    @media only screen and (max-width: 768px) {
+        padding-left: 8px;
+        font-size: 125%;
+    }
+}
+
+.excerpt {
+    padding-bottom: 8px;
+    @media only screen and (max-width: 768px) {
+        padding: 0 0 0 8px;
+    }
+}

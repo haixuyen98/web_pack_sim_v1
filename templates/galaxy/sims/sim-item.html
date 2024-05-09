@@ -1,0 +1,34 @@
+{% load sims_tags %}
+
+{% if sim.t > 0 %}
+  <a href="{% url 'sims:sim_detail' sim.id %}" class="item">
+    <div class="item_block">
+      <div class="item__head">
+        <div class="item__logo">
+          <img loading="lazy" decoding="async" onload="this.style.opacity=1"
+            class="{{sim.telcoText}} lazy"
+            src="{{ theme_folder|renderLogoTelIcon:sim.telcoText }}"
+            alt="{{ sim.telcoText }}"
+          />
+        </div>
+      </div>
+      <div class="item_block_number">
+        <span class="item__number">
+          {{sim.highlight|parserHtmlToPY|default:sim.id }}
+        </span>
+        <div class="item__price">
+          <p>{{ sim.price_calc|formatPrice }}</p>
+          {% if sim.adjust_percent < 0 %}
+          <p>
+            <span class="item__price__cost">{{sim.price|formatPrice}}</span>
+            <span class="item__price__promotion">({{sim.adjust_percent}}%)</span>
+          </p>
+          {% endif %}
+          {% if sim.price_calc_installment %}
+          <p class="item_price_tragop_sim">{{ sim.price_calc_installment|format_tra_gop }}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </a>
+{% endif %}

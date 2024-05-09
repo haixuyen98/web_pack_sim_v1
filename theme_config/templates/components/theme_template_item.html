@@ -1,0 +1,55 @@
+<div class="items">
+  {% if item.slug == theme_folder %}
+    <div class="card">
+      <div class="card-body table-responsive">
+        <img
+          class="preview"
+          src="/static/{{item.featured_img}}"
+          onError="this.onerror=null;this.src='/static/galaxy/images/fallback.png';"
+          style="max-width: 100%;
+                height: auto;
+                background-size: cover;
+                background-position: center center;"
+        />
+        <a class="control" href="{{ item.link }}" target="_blank" style="opacity: 1;">
+          <div class="title-control">
+            <img src="/media/public/{{ item.featured_img }}" alt="">
+            <br>
+            <br>
+            <span type="button" class="success-order-content">Đang sử dụng</span>
+          </div>
+        </a>
+      </div>
+      <div class="card-footer">
+        <h3 class="card-title">{{ item.name }}</h3>
+        <div class="input-group pull-right">
+          <a target="_blank" href="{{base_url}}/{{ item.theme_config_url }}" type="button" class="btn btn-sm custom_btn">Tùy chỉnh giao diện</a>
+      </div>
+      </div>
+    </div>  
+  {% else %}
+    <div class="card">
+      <div class="card-body table-responsive">
+        <img
+          class="preview"
+          src="/static/{{item.featured_img}}"
+          onError="this.onerror=null;this.src='/static/galaxy/images/fallback.png';"
+          style="max-width: 100%;
+                height: auto;
+                background-size: cover;
+                background-position: center center;"
+        />
+        <div class="control">
+          <div class="title-control">
+              <button type="submit" class="btn btn-primary title title-btn" name="template_name" value="{{ item.slug}}">Sử dụng giao diện này</button>
+            <br/>
+            <a class="title" target="_blank" href="{{ item.link }}">Xem thử</a>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <h3 class="card-title">{{ item.name }}</h3>
+      </div>
+    </div>
+  {% endif %}
+</div>

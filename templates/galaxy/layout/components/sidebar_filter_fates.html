@@ -1,0 +1,15 @@
+  <div class="sim-sidebar__detail sim-sidebar__detail--fates">
+    {% for item in items %}
+    <a
+      href="{{ item.link }}"
+      class="sim-sidebar__detail__link sim-sidebar__detail--fate"
+    >
+      <div
+        class="sim-sidebar__detail__link__image sim-sidebar__detail__link__image--logo"
+      >
+        <img onload="this.style.opacity=1" src="{{ item.logo }}" class="sim-sidebar__detail__link__src lazy" alt="Image logo fates" />
+      </div>
+      <div class="sim-tag">{{ item.name }}</div>
+    </a>
+    {% endfor %}
+  </div>

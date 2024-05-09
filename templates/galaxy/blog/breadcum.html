@@ -1,0 +1,20 @@
+<nav aria-label="breadcrumb">
+  <div class="breadcrumb">
+    <ol class="breadcrumb__item breadcrumb__item--space">
+        {% for breadcrumb_item in breadcrumb_data %}
+          {% if breadcrumb_item.href %}
+          <li class="breadcrumb__item__list hover-line">
+              <a href="{{ breadcrumb_item.href }}" class="breadcrumb__item__current" title={{breadcrumb_item.title}}>{{ breadcrumb_item.title }}</a>
+          </li>
+          {% else %}
+          <li class="breadcrumb__item__list">
+              <span class="breadcrumb__item__active">{{ breadcrumb_item.title }}</span>
+          </li>
+          {% endif %}
+          {% if not forloop.last %}
+            <li class="breadcrumb__item__next-tab">/</li>
+          {% endif %}
+        {% endfor %}
+      </ol>
+  </div>
+</nav>

@@ -1,0 +1,85 @@
+{% load sims_tags %} 
+<div class="theme-customize-note">
+  <div class="theme-customize-note__title">Lưu ý:</div>
+  <div class="theme-customize-note__content">
+    - Tạo Khuyến mại (giảm giá sim) chỉ áp dụng cho Bảng số kho cá nhân. 
+  </div>
+  <div class="theme-customize-note__content">
+    - Điều chỉnh tăng giá sim chỉ áp dụng cho Bảng số Appsim.
+  </div>
+  <div class="theme-customize-note__content">
+    Chú ý Cài đặt kho Kiểu bán (Hỗn hợp, Appsim, Kho cá nhân) để áp dụng tuỳ chỉnh giá tương ứng.
+  </div>
+</div>
+<div class="theme-customize-header">
+  <div class="theme-customize-header__left">
+    <div class="theme-customize-header__left__title">Danh sách Tuỳ chỉnh giá</div>
+    <div class="theme-customize-header__left__record">{{ customize_length }} bản ghi</div>
+  </div>
+  <div class="theme-customize-header__right">
+    <button type="button" class="btn btn--add" onclick="addCustomizePrice($(this))">
+      <img
+        class="preview"
+        src="/static/theme_config/images/icon_add.svg"
+        style="max-width: 100%;
+              height: auto;
+              background-size: cover;
+              background-position: center center;"
+      />
+      <span>Thêm tuỳ chỉnh</span>
+    </button>
+  </div>
+</div>
+<div class="theme-customize-content">
+  <div style="overflow-x: auto;">
+    <table id="tbl-customize-price">
+      <tr>
+        <th>No.</th>
+        <th>Giá từ (VNĐ)</th>
+        <th>Giá đến (VNĐ)</th>
+        <th>Phần trăm</th>
+        <th>Hành động</th>
+      </tr>
+        {% if customize_price_list is not None %} 
+          {% for item in customize_price_list %}
+          <tr class="item-customize-price"
+              data-id="{{ item.id }}"
+              data-price-from="{{ item.price_from }}" 
+              data-price-to="{{ item.price_to }}" 
+              data-percent="{{ item.percent }}"
+              data-uuid="{{ item.uuid }}"
+              data-rounding="{{ item.rounding }}">
+              <td>{{ forloop.counter }}</td>
+              <td>{{ item.price_from|formatPrice }}</td>
+              <td>{{ item.price_to|formatPrice }}</td>
+              <td>{{ item.percent }} %</td>
+              <td class="btn-action">
+                <a href="javascript:void(0)" onclick="editCustomizePrice($(this))">
+                  <img
+                  class="preview"
+                  src="/static/theme_config/images/icon_edit.svg"
+                  style="max-width: 100%;
+                        height: auto;
+                        background-size: cover;
+                        background-position: center center;
+                        filter: invert(1);"
+                />
+                </a>
+                <a href="javascript:void(0)" onclick="deleteCustomizePrice($(this))">
+                  <img
+                  class="preview"
+                  src="/static/theme_config/images/icon_delete.svg"
+                  style="max-width: 100%;
+                        height: auto;
+                        background-size: cover;
+                        background-position: center center;
+                        filter: invert(1);"
+                />
+                </a>
+              </td>
+            </tr>
+          {% endfor %}
+        {% endif %}
+    </table>
+  </div>
+</div>

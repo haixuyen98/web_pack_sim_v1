@@ -1,0 +1,28 @@
+<div class="fengshui">
+  <form id="fengshui-form" method="post">
+    <div class="fengshui__head">
+      <div class="fengshui__head--title">
+        Nhập thông tin để xem bói phong thủy sim
+      </div>
+      <div class="phone">
+        {{ form.phone }}
+        {{ form.phone.errors }}
+      </div>
+      <div class="datetime">
+        <div class="datetime__column">
+          {{ form.birthday }}
+        </div>
+        <div class="datetime__column">
+          {{ form.appt }}
+        </div>
+      </div>
+      <div class="gioiTinh">
+        {{ form.sex.label_tag }}
+        {{ form.sex }}
+      </div>
+    </div>
+    <button type="submit" class="fengshui__btn--center">
+      <span class="fengshui__btn--center--title">Xem bói phong thuỷ sim</span>
+    </button>
+  </form>
+</div>

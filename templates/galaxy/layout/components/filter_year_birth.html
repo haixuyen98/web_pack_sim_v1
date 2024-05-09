@@ -1,0 +1,10 @@
+<div class="fengshui__title">{{ title }}</div>
+<div class="fengshui__detail fengshui__detail--fates">
+  {% for item in items %}
+  <a href="{{ item.link }}" class="fengshui__detail__link fengshui__detail--fate">
+    <div class="sim-tag">
+      {{ item.name }}
+    </div>
+  </a>
+  {% endfor %}
+</div>

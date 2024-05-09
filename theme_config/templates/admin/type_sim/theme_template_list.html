@@ -1,0 +1,57 @@
+{% extends 'admin/change_list.html' %}
+{% load compress %} 
+{% load sims_tags %} 
+{% load static %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css"
+    integrity="sha512-vebUliqxrVkBy3gucMhClmyQP9On/HAWQdKDXRaAlb/FKuTbxkjPKUyqVOxAcGwFDka79eTF+YXwfke1h3/wfg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  {% compress css file theme_templates %}
+  <link
+    type="text/x-scss"
+    href="{% static 'theme_config/css/theme_template_style.scss' %}"
+    rel="stylesheet"
+    media="screen"
+  />
+  {% endcompress %}
+{% endblock %}
+
+
+{% block pagination %}{% endblock %}
+{% block filters %}{% endblock filters %}
+{% block object-tools %}{% endblock object-tools %}
+{% block search %}{% endblock %}
+ 
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+  <a href="{% url 'admin:index' %}">Home</a>
+  {% if page_name %} &rsaquo; {{ page_name }}{% endif %}
+</div>
+<div class="btn-clear-cache">
+  <a href="/clear">Xoá cache</a>
+</div>
+{% endblock %}
+ 
+{% block result_list %}
+<div class="theme-wrapper">
+  <div class="content-wrapper">
+    <div class="content">
+      <div class="content-fluid">
+        <div class="list-template">
+          {% for item in items %}
+              {% include "components/theme_template_item.html" with base_url=base_url item=item theme_folder=theme_folder %} 
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+{% endblock result_list %}

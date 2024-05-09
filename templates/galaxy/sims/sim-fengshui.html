@@ -1,0 +1,29 @@
+{% load sims_tags %}
+
+<div class="fengshui">
+  <form id="fengshui-form" method="post">
+    <div class="fengshui__head">
+      <div class="fengshui__head--title">
+        Nhập thông tin để chọn sim hợp phong thủy
+      </div>
+      <div class="datetime">
+        <div class="datetime__column">
+          {{ form.birthday.label_tag }}
+          {{ form.birthday }}
+        </div>
+        <div class="datetime__column">
+          {{ form.appt.label_tag }}
+          {{ form.appt }}
+        </div>
+      </div>
+      <div class="gioiTinh">
+        {{ form.sex.label_tag }}
+        {{ form.sex }}
+      </div>
+    </div>
+    <button type="submit" class="fengshui__btn--center">
+      <span class="fengshui__btn--center--title">Chọn sim hợp tuổi</span>
+    </button>
+  </form>
+</div>
+

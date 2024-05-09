@@ -1,0 +1,21 @@
+{% load static %}
+{% load compress %}
+{% load core_tags %}
+
+<!DOCTYPE html>
+<html lang="vi">
+{% block head %}
+  {% include 'galaxy/layout/head-seo.html' with seo=seo %}
+{% endblock %}
+<body class="default-header">
+  {% include 'galaxy/layout/header.html' with theme_config=theme_config %}
+
+  {% block body %}
+  {% endblock %}
+
+  {% include 'galaxy/layout/footer.html' with theme_config=theme_config tenant=tenant %}
+  {% include 'galaxy/layout/body-seo.html' with seo=seo %}
+
+</body>
+
+</html>

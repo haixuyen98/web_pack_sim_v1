@@ -1,0 +1,319 @@
+{% load static %}
+<div id="app" class="filter-head">
+  <div class="filter-result quick-search">
+    <div
+      class="filter-result__tab"
+      @click="showFilter($event, 'telco')"
+      :class="{ 'active' : filter_data.t!='', 'hidden': filter_data?.notFilterItem?.includes('telco')}"
+    >
+      Nhà mạng
+    </div>
+    <div
+      class="filter-result__tab"
+      @click="showFilter($event, 'head')"
+      :class="{ 'active' : filter_data.h!='', 'hidden': filter_data?.notFilterItem?.includes('head')}"
+    >
+      Đầu số
+    </div>
+    <div
+      class="filter-result__tab"
+      @click="showFilter($event, 'types')"
+      :class="{ 'active' : filter_data.c!='', 'hidden': filter_data?.notFilterItem?.includes('types')}"
+    >
+      Loại sim
+    </div>
+    <div
+      class="filter-result__tab"
+      @click="showFilter($event, 'prices')"
+      :class="{ 'active' : filter_data.pr!='', 'hidden': filter_data?.notFilterItem?.includes('prices')}"
+    >
+      Khoảng giá
+    </div>
+    <div
+      class="filter-result__tab arrow_hidden"
+      :class=" {'active': sort_class!='icon-mi-sort', 'hidden': hide_sort}"
+      @click="handleSort($event)"
+    >
+      <i class="icon" :class="[[sort_class]]"></i>
+      <span class="sort_label">Sắp xếp</span>
+    </div>
+  </div>
+  <div
+    class="filter"
+    :class="active_class"
+    :style="{ left: popupLocation.left, top: popupLocation.top }"
+  >
+    <div class="filter__before">
+      <div class="filter__head">
+        Bộ lọc tìm kiếm
+        <button class="filter__head__close" @click="showFilter()">
+          <i class="icon icon-close"></i>
+        </button>
+      </div>
+      <div class="container">
+        <div class="filter__pane">
+          <div
+            class="filter__item"
+            :class="{ 'hidden' : active_section!='' && active_section!='telco' }"
+          >
+            <div class="filter__item__label">Mạng di động</div>
+            <div class="filter__item__ct">
+              <span
+                class="tag mr-8 mb-10"
+                tabindex="-1"
+                rel="nofollow"
+                :class="{ 'active' : filter_data.t?.split(',').includes(item.t) }"
+                @click="checkTelco(item)"
+                :key="index"
+                v-for="(item, index) in filterTel"
+              >
+                <img loading="lazy" decoding="async" onload="this.style.opacity=1" :src="[[item.logo]]" class="lazy" />
+              </span>
+            </div>
+          </div>
+          <div
+            class="filter__item"
+            :class="{ 'hidden' : active_section!='' && active_section!='head' }"
+          >
+            <div class="filter__item__label">Đầu số</div>
+            <div class="filter__item__ct">
+              <span
+                class="tag mr-8 mb-10"
+                tabindex="-1"
+                rel="nofollow"
+                :class="{ 'active' : filter_data.h?.split(',').includes(item.h) }"
+                @click="checkHead(item)"
+                :key="index"
+                v-for="(item, index) in filterHead"
+                v-show="item.hide!=1"
+              >
+                [[item.name]]
+              </span>
+            </div>
+          </div>
+          <div
+            class="filter__item"
+            :class="{ 'hidden' : active_section!='' && active_section!='types' }"
+          >
+            <div class="filter__item__label">Loại sim</div>
+            <div class="filter__item__ct">
+              <span
+                class="tag mr-8 mb-10"
+                tabindex="-1"
+                rel="nofollow"
+                :class="{ 'active' : filter_data.c?.split(',').includes(item.c) }"
+                @click="checkType(item)"
+                :key="index"
+                v-for="(item, index) in filterTypes"
+              >
+                [[item.title ]]
+              </span>
+            </div>
+          </div>
+          <div
+            class="filter__item"
+            :class="{ 'hidden' : active_section!='' && active_section!='prices' }"
+          >
+            <div class="filter__item__label">Sim theo giá</div>
+            <div class="filter__item__ct">
+              <span
+                class="tag mr-8 mb-10"
+                tabindex="-1"
+                rel="nofollow"
+                :class="{ 'active' : filter_data.pr?.split(',').includes(item.pr) }"
+                @click="checkPrice(item)"
+                :key="index"
+                v-for="(item, index) in filterPrice"
+              >
+                [[item.name ]]
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="filter__ctrl">
+        <div class="row filter__ctrl--row">
+          <div class="col filter__ctrl__col">
+            <button
+              class="btn filter__ctrl__btn --border"
+              @click="handleReset($event)"
+            >
+              Thiết lập lại
+            </button>
+          </div>
+          <div class="col filter__ctrl__col">
+            <button class="btn filter__ctrl__btn" @click="handleFilter()">
+              Áp dụng
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="module">
+  import {
+    createApp,
+    ref, reactive
+  } from "https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js";
+  import {
+    dataFilterToArrayParams
+  } from "{% static 'galaxy/js/common.js' %}";
+  createApp({
+    delimiters: ["[[", "]]"],
+    name: 'simFilter',
+    inheritAttrs: false,
+    props: ["hide_sort", "filterPrice", "filterTel", "filterFates", "filterTypes", "filterHead", "filterObj"],
+    setup() {
+      const active_class = ref("")
+      const active_section = ref("")
+      const sort_class = ref("icon-mi-sort")
+      const popupLocation = reactive({
+        left: '',
+        top: ''
+      })
+      const filter_data_default ={
+        q: "",
+        d: "0",
+        c: "",
+        t: "",
+        notin: "",
+        yc: "",
+        cf: "",
+        h: "",
+        pr: "",
+        tail: "",
+        mid: "",
+        p: "1",
+        s: "",
+        limit: '',
+        includesSim: '',
+        link:''
+      }
+      const filter_data = reactive(Object.assign({}, filter_data_default))
+      return {
+        showFilter,
+        checkPrice,
+        checkTelco,
+        checkFates,
+        checkType,
+        checkHead,
+        handleFilter,
+        handleReset,
+        handleSort,
+        active_class,
+        active_section,
+        filter_data,
+        filter_data_default,
+        popupLocation,
+        sort_class
+      };
+      // handle sorting
+      function handleSort(e) {
+        if (filter_data.d=="1") {
+          filter_data.d = "0"
+        } else if (filter_data.d=="0") {
+          filter_data.d = "-1"
+        } else if (filter_data.d=="-1") {
+          filter_data.d = "1"
+        }
+        this.handleFilter();
+      }
+      // an hien popup
+      function showFilter(e, section_name) {
+        this.active_class = this.active_class === "active"? "": "active";
+        this.active_section = section_name;
+        if (this.active_class==="active") {
+          let offset = e.target.getBoundingClientRect();
+          let left = e.pageX- 30;
+          let top = offset.top + 50;
+          if (left + 400 > document.body.clientWidth) {
+            left = document.body.clientWidth - 400;
+          }
+          this.popupLocation = {
+            left: `${left}px`,
+            top: `${top}px`
+          }
+        }
+      }
+      // select or un select prices
+      function checkPrice(item) {
+        let arr = filter_data.pr?.split(',') ?? [];
+        arr = toggleItemArray(arr, item.pr);
+        filter_data.pr = arr.join(',')
+      }
+      // select or un select telco
+      function checkTelco(item) {
+        let arr = filter_data.t?.split(',') ?? [];
+        arr = toggleItemArray(arr, item.t);
+        filter_data.t = arr.join(',')
+      }
+      // select or un select types
+      function checkType(item) {
+        let arr = filter_data.c?.split(',') ?? [];
+        arr = toggleItemArray(arr, item.c);
+        filter_data.c = arr.join(',')
+      }
+      // select or un select fates
+      function checkFates(item) {
+        filter_data.cf = filter_data.cf==item.cf? "": item.cf;
+      }
+      // select or un select head
+      function checkHead(item) {
+        filter_data.h = filter_data.h==item.h? "": item.h;
+      }
+      function toggleItemArray(arr, item) {
+        if (arr.includes(item)) {
+          arr.splice(arr.indexOf(item), 1) //deleting
+        } else if (item) {
+          arr.unshift(item)
+        }
+        if (arr.length>0 && arr[arr.length-1]=='') {
+          arr.pop()
+        }
+        return arr
+      }
+      function handleReset(e) {
+        e.preventDefault();
+        for (const [key, value] of Object.entries(filter_data_default)) {
+          filter_data[key] = value;
+        }
+        console.log(filter_data)
+      }
+      function handleFilter() {
+        const paramsArray = dataFilterToArrayParams(filter_data, this.filterTypes, this.filterTel, this.filterPrice);
+        let urlParams = paramsArray[0].join("&")
+        let pathname = window.location.pathname;
+        console.log(paramsArray)
+        if (paramsArray[3]) { // is ignoreOldUrl
+          pathname = paramsArray[2] ? paramsArray[2].replace("/", "") : "";
+        } else if (pathname === "/" || /\/\d{10,11}/.test(pathname)) {
+          pathname = paramsArray[2] ? paramsArray[2].replace("/", "") : "";
+        }
+        if (urlParams) {
+          urlParams = `?${urlParams}`
+        }
+        if (pathname[0]!=="/") {
+          pathname = `/${pathname}`
+        } else if (pathname=="" && window.location.pathname!="/") {
+          // neu pathname sau khi xu ly va gia trị goc !="/"
+          pathname = window.location.pathname;
+        }
+        window.location.href = `${pathname}${urlParams}`;
+      }
+    },
+    mounted() {
+      for (const [key, value] of Object.entries(this.filterObj)) {
+        this.filter_data[key] = value;
+      }
+      if(this.filter_data.d=="0") {
+        this.sort_class ="icon-mi-sort";
+      } else if(this.filter_data.d=="1") {
+        this.sort_class ="icon-down-icon-red";
+      } else if(this.filter_data.d=="-1") {
+        this.sort_class ="icon-up-icon-red";
+      }
+    }
+
+  }, {hide_sort: {{hide_sort}}, filterObj:{{filterObj|safe}},filterHead: {{filterHead|safe}},filterTypes: {{filterTypes|safe}}, filterFates: {{filterFates|safe}}, filterPrice: {{filterPrice|safe}}, filterTel: {{filterTel|safe}}}).mount("#app");
+</script>

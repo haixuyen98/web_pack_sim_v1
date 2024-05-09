@@ -1,0 +1,132 @@
+.bsh {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba($color: #000000, $alpha: 0.6);
+    z-index: 7;
+  }
+  
+  &__dialog {
+    position: fixed;
+    z-index: 9;
+    background-color: $color_bg;  
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 16px 16px 0 0;
+
+    &::before {
+      content: '';
+      width: 32px;
+      height: 4px;
+      background-color: $color_bg;
+      border-radius: 4px;
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      margin-left: -16px;
+      z-index: 8;
+    }
+
+    &__content {
+      padding: 1.6rem;
+      overflow-x: hidden;
+      overflow-y: auto;
+      max-height: 70vh;
+      background-color: $color_bg;
+      position: relative;
+      z-index: 9;
+      border-radius: 16px 16px 0 0;
+    }
+  }
+
+  &__banner {
+    max-width: 768px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.container {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+// .slick-dots {
+//   display: flex;
+//   justify-content: center;
+
+//   li {
+//     flex: 0 0 6px;
+//     width: 6px;
+//     height: 6px;
+//     border-radius: 6px;
+//     background-color: #FFCBD0;
+//     transition: .2s;
+//     margin: 0 2px;
+
+//     &.slick-active {
+//       background-color: #F69795;
+//       flex: 0 0 32px;
+//       width: 32px;
+//     }
+
+//     button {
+//       display: none;
+//     }
+//   }
+// }
+
+.ms-mobile-select {
+  position: fixed;
+
+  .ms-content {
+    border-radius: 16px 16px 0 0;
+  }
+
+  .ms-btn-bar {
+    border-bottom: solid 1px #D3D3D3;
+    height: 55px;
+    line-height: 55px;
+    font-weight: 600;
+  }
+
+  .ms-cancel {
+    color: #5B6876;
+  }
+
+  .ms-ensure {
+    color: $color-primary;
+  }
+
+  .ms-title {
+    font-size: 16px;
+  }
+
+  .ms-fix-width {
+    width: 100%;
+    // padding: 0 16px;
+  }
+
+  .ms-select-line {
+    border: 0;
+    background-color: rgba(#000, 0.04);
+  }
+
+  .ms-select-container li {
+    font-size: 20px;
+  }
+
+  .ms-shadow-mask {
+    opacity: 1;
+  }
+}

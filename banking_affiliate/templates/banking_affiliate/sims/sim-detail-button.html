@@ -1,0 +1,7 @@
+{% if 'allow_sale_via_bank' in tenant.config %}
+    <div class="banking_affiliate">
+        <input type="hidden" id="type_submit" name="type_submit" value="">
+        <button type="submit" class="block-submit">Đặt ngay</button>
+        <button type="submit" class="block-submit" onclick="changeSubmitType('keep_sim')">Giữ SIM</button>
+    </div>
+{% endif %}

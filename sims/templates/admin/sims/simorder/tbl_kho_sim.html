@@ -1,0 +1,143 @@
+{% load sims_tags %} 
+{% load static %}
+<style>
+  .first_value {
+    color: var(--link-fg);
+    font-weight: 600;
+  }
+</style>
+
+<div style="margin: 0 0 20px 16px;">
+  {% if agencies is not None %} 
+  <table class="tbl_detail_sim" style="width:100%; table-layout: fixed; overflow-wrap: break-word;"> 
+    <tr> 
+      <th width="%;" style="text-align: center;">Chọn</th> 
+      <th width="25%;" style="text-align: center;">Giá web/
+        Giá đại lý/
+        Giá thu</th> 
+      <th width="25%;" style="text-align: center;">Lợi nhuận <br/>
+        (Chênh lệch giá web và giá thu)</th>
+      <th width="25%;" style="text-align: center;">Thông tin thợ</th>
+      <th>Ngày cập nhật</th>
+    </tr> 
+      {% for agency_id in agencies %}
+      <tr> 
+        <td style='text-align:center; vertical-align:middle'>
+          {% if original.attributes.agency_id is not none %}
+            {% if agency_id in original.attributes.agency_id %}
+              <input type="radio" id="huey" name="agency_id" value="{{agency_id}}" checked/>
+            {% else %}
+              <input type="radio" id="huey" name="agency_id" value="{{agency_id}}"/>
+            {% endif %}
+          {% else %}
+            {% for item in search_store_list %}
+              {% if agency_id in item.s3 %}
+                {% with pi_max=phonesInfo|get_max_from_array:item.id %}
+                  {% with pi=phonesInfo|get_value_from_key:item.id|get_record_from_array:agency_id|get_value_from_key:"pi" %}
+                    {% if pi == pi_max %}
+                      <input type="radio" id="huey" name="agency_id" value="{{agency_id}}" checked/>
+                    {% else %}
+                      <input type="radio" id="huey" name="agency_id" value="{{agency_id}}"/>
+                    {% endif %}
+                  {% endwith %}
+                {% endwith %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        </td> 
+
+        <td style='text-align:center; vertical-align:middle'>
+          <div>
+            {% for item in search_store_list %}
+              {% if agency_id in item.s3 %}
+                {% with p=phonesInfo|get_value_from_key:item.id|get_record_from_array:agency_id|get_value_from_key:"p" %}
+                  {{ p.st }}
+                  {% if p|formatPrice == '0' %}
+                    Chưa có thông tin
+                  {% else %}
+                    Giá web: {{ p|formatPrice }}
+                  {% endif %}
+                {% endwith %}
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div>
+            {% for item in search_store_list %}
+              {% if agency_id in item.s3 %}
+                {% with pb=phonesInfo|get_value_from_key:item.id|get_record_from_array:agency_id|get_value_from_key:"pb" %}
+                  {% if pb|formatPrice == '0' %}
+                    Chưa có thông tin
+                  {% else %}
+                    Giá đại lý: {{ pb|formatPrice }}
+                  {% endif %}
+                {% endwith %}
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div>
+            {% for item in search_store_list %}
+              {% if agency_id in item.s3 %}
+                {% with pg=phonesInfo|get_value_from_key:item.id|get_record_from_array:agency_id|get_value_from_key:"pg" %}
+                  {% if pg|formatPrice == '0' %}
+                    Chưa có thông tin
+                  {% else %}
+                    Giá thu: {{ pg|formatPrice }}
+                  {% endif %}
+                {% endwith %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </td>
+
+        <td style='text-align:center; vertical-align:middle'>
+          {% for item in search_store_list %}
+            {% if agency_id in item.s3 %}
+              {% with pi=phonesInfo|get_value_from_key:item.id|get_record_from_array:agency_id|get_value_from_key:"pi" %}
+                {% if pi|formatPrice == '0' %}
+                  Chưa có thông tin
+                {% else %}
+                  {{ pi|formatPrice }}
+                {% endif %}
+              {% endwith %}
+              {% if not forloop.last %}<br/> {% endif %}
+            {% endif %}
+          {% endfor %}
+        </td>
+        <td style='text-align:left; vertical-align:middle'>
+          <div>Mã thợ:  {{ agency_id }}</div>
+          <div>Tên thợ:   {% if agency_id in agencies %}
+                            {{ agencies|get_value_from_key:agency_id|get_value_from_key:"name" }}
+                          {% endif %} </div>
+          </div>
+          <div>Số điện thoại: {% if agency_id in agencies %}
+                                {{ agencies|get_value_from_key:agency_id|get_value_from_key:"phone" }}
+                              {% endif %} </div>
+        </td>
+        <td style='text-align:left; vertical-align:middle'>
+          {% for item in search_store_list %}
+            {{ item.publish|date_format }}
+          {% endfor %}
+        </td>
+      </tr>
+      {% endfor %}
+  </table> 
+{% endif %}
+</div>
+<script>
+  const priceCells = Array.from(document.querySelectorAll('.tbl_detail_sim td:nth-child(3)'));
+  const prices = priceCells.map(cell => {
+      const price = parseFloat(cell.textContent.trim());
+      return { price: isNaN(price) ? null : price, row: cell.parentNode };
+  });
+
+  if (prices.length > 0) {
+      prices.sort((a, b) => (b.price !== null && a.price !== null) ? b.price - a.price : (a.price === null) ? 1 : -1);
+
+      if (prices[0].price !== null) {
+          prices[0].row.classList.add('first_value');
+      }
+
+      const tableBody = document.querySelector('.tbl_detail_sim tbody');
+      prices.forEach(item => tableBody.appendChild(item.row));
+  }
+</script>

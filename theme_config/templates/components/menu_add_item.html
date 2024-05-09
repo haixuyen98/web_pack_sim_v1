@@ -1,0 +1,47 @@
+<div class="modal fade in" id="menu-modal" role="dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form id="form-add-menu" method="post" action="#">
+          <div class="box-body row">
+            <div class="form-group col-md-12">
+              <label for="name-text-input">Tên menu:</label>
+              <input
+                class="form-control"
+                type="text"
+                value=""
+                name="menu_name"
+                id="name-text-input"
+              />
+            </div>
+            <div class="form-group col-md-12">
+              <label for="url-text-input">Url:</label>
+              <input
+                style="margin: 5px 0"
+                class="form-control"
+                type="text"
+                value=""
+                name="menu_link"
+                id="url-text-input"
+              />
+              <p class="help-block">
+                Chọn một đường dẫn hay 1 trang trong website của bạn mà bạn muốn
+                menu trỏ tới
+              </p>
+            </div>
+          </div>
+          <input type="hidden" name="action_menu" value="add" />
+          <input type="hidden" name="edit_id" value="" />
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Đóng
+        </button>
+        <button type="button" onclick="saveMenuForm()" class="btn btn-primary">
+          Lưu
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+.logout-appsim-btn{
+    margin-top: 1rem;
+}
+
+.appsim-account-info{
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 1px 0 3px 2px #CFD3D4;
+    border-left: 5px solid #008000;;
+    border-radius: 6px;
+    gap: 10px;
+    margin-top: 15px;
+    h3{
+        font-size: 18px;
+    }
+}

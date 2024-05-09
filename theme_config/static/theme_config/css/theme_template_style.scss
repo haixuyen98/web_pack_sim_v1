@@ -1,0 +1,151 @@
+.theme-wrapper {
+  min-height: 100%;
+  .content-header {
+    padding: 15px 0.8rem;
+  }
+  .container-fluid 
+  {
+    width: 100%;
+    padding-right: 7.5px;
+    padding-left: 7.5px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .content-header h1 {
+    font-size: 1.8rem;
+    margin: 0;
+    font-weight: 400;
+  }
+  .content-wrapper .content {
+    padding: 0 0.8rem;
+  }
+  .list-template{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+  }
+  .card{
+    box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
+    margin-bottom: 1rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+  }
+  .card-body {
+    padding: 0;
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 1px;
+  }
+  .table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .control{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    color: #fff;
+    line-height: 1.1;
+    opacity: 0;
+    display: inline-block;
+    background: #000000bd;
+    height: 100%;
+    width: 100%;
+  }
+  .title-control{
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    text-align: center;
+    right: 0;
+  }
+  .title_control a.title {
+    margin-top: 5px;
+    display: inline-block;
+  }
+  .title {
+    border: 1px solid #FFFFFF;
+    font-size: 14px;
+    background: transparent;
+    color: #FFFFFF;
+    padding: 10px 0;
+    border-radius: 50px;
+    width: 210px;
+    margin-top: 5px;
+    display: inline-block;
+  }
+  .card-body::after {
+    display: block;
+    clear: both;
+    content: "";
+    cursor: pointer;
+  }
+  .card-body.table-responsive:hover .control {
+    z-index: 2;
+    opacity: 1;
+    cursor: pointer;
+  }
+  .card-footer{
+    padding: 15px 15px;
+    padding-bottom: 10px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+  .card-title{
+    float: left;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin: 0;
+    line-height: 30px;
+    color: black;
+  }
+  .title-btn{
+    margin-top: 0;
+    margin-bottom: 15px;
+    background-color: #0069d9;
+    cursor: pointer;
+  }
+  a:hover {
+    color: #FFFFFF;
+    text-decoration: none;
+  }
+  .btn-primary:hover {
+    color: #fff;
+    background-color: #0069d9;
+    border-color: #0062cc;
+  }
+  .success-order-content{
+    color: #fff
+  }
+  .pull-right {
+    float: right;
+  }
+  .input-group.pull-right {
+    width: auto;
+  }
+  .custom_btn {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    border: 1px solid #007bff;
+    margin: 0;
+    padding: 0.25rem 0.5rem;
+  }
+  .custom_btn:hover {
+    color: #007bff;
+    background-color: #fff;
+  }
+}

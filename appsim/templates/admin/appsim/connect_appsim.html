@@ -1,0 +1,37 @@
+{% if 'allow_sync_appsim' in tenant.config %}
+{% load static %}
+{% block style %}
+  <link rel="stylesheet" type="text/css" href="{% static "css/connect_appsim.css" %}">
+{% endblock %}
+
+<fieldset>
+<legend><h2>Kết nối Appsim</h2></legend>
+{% if tenant.config.appsim_account %}
+    <div class="appsim-account">
+        <div class="appsim-account-info">
+            <h3>Tên Appsim: {{ tenant.config.appsim_account.appsim_name }}</h3>
+            <p>Id Appsim: {{ tenant.config.appsim_account.appsim_agency_id }}</p>
+            <p>Sđt Appsim: {{ tenant.config.appsim_account.appsim_phone }}</p>
+        </div>
+        <input class="action-btn logout-appsim-btn" type="submit" name="logout" value="Đăng xuất">
+    </div>
+{% else %}
+    <div class="fm-customize__item">
+        <span class="fm-customize__item__label">
+            <strong>Số điện thoại</strong>  
+        </span>
+        <div class="form-group">
+            <input class="form-control form-control--settings" type="text" name="webhook_phone" placeholder="Số điện thoại">
+        </div>
+    </div>
+    <div class="fm-customize__item">
+        <span class="fm-customize__item__label">
+            <strong>Mật khẩu</strong>  
+        </span>
+        <div class="form-group">
+            <input class="form-control form-control--settings" type="password" name="webhook_password" placeholder="Mật khẩu">
+        </div>
+    </div>
+{% endif %}
+</fieldset>
+{% endif %}

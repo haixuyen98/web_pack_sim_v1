@@ -1,0 +1,22 @@
+  <div class="sim-sidebar__detail side-bar__telco--tel-co">
+    {% for image in images %}
+    <a
+      href="{{ image.link }}"
+      class="sim-sidebar__detail__link sim-sidebar__detail__link--linkImage"
+    >
+      <div class="sim-sidebar__detail__link__image">
+        <img onload="this.style.opacity=1" src="{{ image.logo }}" class="sim-sidebar__detail__link__src lazy" alt="Image logo telco"/>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  <div class="sim-sidebar__detail sim-sidebar__detail--number">
+    {% for item in numbers %}
+    {% if item.hide is None or item.hide == 0 %}
+    <a href="{{ item.link }}" class="sim-sidebar__detail__link">
+      <div class="sim-tag">{{ item.name }}</div>
+    </a>
+    {% endif %}
+    {% endfor %}
+  </div>
+

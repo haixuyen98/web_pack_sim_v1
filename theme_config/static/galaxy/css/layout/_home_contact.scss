@@ -1,0 +1,45 @@
+.home-contact {
+    gap: 8px;
+    margin-top: 20px;
+    @media only screen and (max-width: 768px) {
+        display: contents;
+    }
+}
+
+// .support {
+//     display: flex;
+//     padding: 2px 18px 2px 2px;
+//     align-items: center;
+//     gap: 7px;
+//     border-radius: 100px;
+//     background: linear-gradient(90deg, #DD1A21 2.53%, #FD7C58 99.97%);
+//     position: fixed;
+//     margin-left: 1%;
+//     margin-bottom: 1%;
+//     bottom: 0;
+//     left: 0;
+
+//     @media only screen and (max-width: 768px){
+//         display: none;
+//     }
+
+//     .box-icon-phone {
+//         padding: 5px;
+//         border: 1px solid #ffffff;
+//         border-radius: 50%;
+//         .icon-phone {
+//             width: 28.8px;
+//             height: 28.8px;
+//             flex-shrink: 0;
+//         }
+//     }
+
+//     .text-phone {
+//         color: #FFF;
+//         font-family: Roboto;
+//         font-size: 18px;
+//         font-style: normal;
+//         font-weight: 700;
+//         line-height: normal;
+//     }
+// }

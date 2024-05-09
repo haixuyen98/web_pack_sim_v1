@@ -1,0 +1,23 @@
+
+{% block content %} 
+
+<select id="{{id}}" class="choice-multiple" name="{{name}}" multiple="multiple" style="width:274px">
+    {% for choice_value, choice_label in choices %}
+        <option value="{{ choice_value }}" {% if choice_value in value %}selected{% endif %}>
+            {{ choice_label }}
+        </option>
+    {% endfor %}
+</select>
+<script>
+
+  $(document).ready(function() {
+    $('.choice-multiple').select2({
+        placeholder: "Chọn nhiều giá trị"
+    });
+    $('.selection').css('color', 'black');
+    $(document).on('select2:open', function () {
+      $('.select2-results').css('color', 'black');
+    });
+  })
+</script>
+{% endblock %}

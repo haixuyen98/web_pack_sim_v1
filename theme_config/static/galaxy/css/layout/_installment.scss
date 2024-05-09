@@ -1,0 +1,93 @@
+.installment {
+    width: 100%;
+    background-color: $color_bg;
+    border-radius: 8px;
+    border: 1px solid #ececec;
+    padding: 16px 12px;
+    // margin-top: 20px;
+    .title_form_count_tragop {
+        font-size: 110%;
+        font-weight: 700;
+
+    }
+    .box_tratruoc {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        @media only screen and (max-width: 357px) {
+            gap: 0;
+        }
+        #percentageForm {
+            & label {
+                padding-right: 12px;
+            }
+            & input {
+                cursor: pointer;
+            }
+        }
+    }
+    .box_laixuatmonth {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        @media only screen and (max-width: 560px) {
+            gap: 0;
+        }
+        #numberForm {
+            & label {
+                padding-right: 12px;
+            }
+            & input {
+                cursor: pointer;
+            }
+        }
+    }
+    .title_item_method_count {
+        font-size: 100%;
+        font-weight: 700;
+    }
+    .box_footer_count {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        @media only screen and (max-width: 275px) {
+            gap: 0;
+        }
+        & p {
+            font-size: 100%;
+            font-weight: 700;
+        }
+        #tongtientamtinh {
+            font-size: 110%;
+            color: $color-primary;
+        }
+        #totalValuesItems {
+            font-size: 110%;
+            color: $color-primary;
+        }
+    }
+}
+#installmentSection {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.form_check_tragop_trathang {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: 21px 0;
+    form {
+        label {
+            font-size: 19px;
+            font-weight: 500;
+            cursor: pointer;
+            input {
+                margin-right: 8px;
+            }
+
+        }
+        label:nth-child(2) {
+            margin-left: 24px;
+        }
+    }
+}

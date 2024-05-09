@@ -1,0 +1,105 @@
+@mixin set-spacing($x, $grid: '') {
+  @if $grid != '' {
+    $grid: -#{$grid};
+  }
+
+  $pre: 'px';
+
+  @if $x == 0 {
+    $pre: '';
+  }
+
+  $value: #{$x}#{$pre} !important;
+
+  .mt#{$grid}-#{$x} {
+    margin-top: $value;
+  }
+
+  .mr#{$grid}-#{$x} {
+    margin-right: $value;
+  }
+
+  .mb#{$grid}-#{$x} {
+    margin-bottom: $value;
+  }
+
+  .ml#{$grid}-#{$x} {
+    margin-left: $value;
+  }
+
+  .m#{$grid}-#{$x} {
+    margin: $value;
+  }
+
+  .pt#{$grid}-#{$x} {
+    padding-top: $value;
+  }
+
+  .pr#{$grid}-#{$x} {
+    padding-right: $value;
+  }
+
+  .pb#{$grid}-#{$x} {
+    padding-bottom: $value;
+  }
+
+  .pl#{$grid}-#{$x} {
+    padding-left: $value;
+  }
+
+  .p#{$grid}-#{$x} {
+    padding: $value;
+  }
+}
+
+@mixin set-spacing-negative($x, $grid: '') {
+  @if $grid != '' {
+    $grid: -#{$grid};
+  }
+
+  $pre: 'px';
+  $value: #{$x}#{$pre} !important;
+
+  .mt#{$grid}-n#{$x} {
+    margin-top: -#{$x}px !important;
+  }
+
+  .mr#{$grid}-n#{$x} {
+    margin-right: -#{$x}px !important;
+  }
+
+  .mb#{$grid}-n#{$x} {
+    margin-bottom: -#{$x}px !important;
+  }
+
+  .ml#{$grid}-n#{$x} {
+    margin-left: -#{$x}px !important;
+  }
+}
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+@mixin scrollbarHidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none; 
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

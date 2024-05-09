@@ -1,0 +1,25 @@
+{% load sims_tags %}
+
+<div class="sim-container mt-10">
+  {% if listSim|length > 0 %}
+    <div class="sim-container--title">
+      <h1>{{title}}</h1>
+      {% comment %} {% if link_more %}
+        <a href="{{link_more}}" class="sim-container--title__load-more">Xem thêm</a>
+      {% endif %} {% endcomment %}
+    </div>
+    <div class="sim-container__list">
+      {% for sim in listSim %}
+        {% include "galaxy/sims/sim-item.html" with sim=sim theme_folder=theme_folder %} 
+      {% endfor %}
+    </div>
+    {% if request.path %}
+      {% pagination %}
+    {% endif %}
+    {% if link_more %}
+    <div class="text-center mb-15 w-full">
+      <a href="{{link_more}}" title="{{title}}" class="sim-container__load-more mr-2">Xem thêm {{title}}...</a>
+    </div>
+    {% endif %}
+  {% endif %}
+</div>

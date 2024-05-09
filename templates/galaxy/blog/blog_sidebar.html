@@ -1,0 +1,6 @@
+{% extends 'galaxy/layout/sidebar.html' %}
+{% block sidebar_top %}
+    {% if not disable_sidebar_article %}
+        {% include 'galaxy/blog/article-filter.html' with className="search_articles__hidden"%}
+    {% endif %}
+{% endblock %}
